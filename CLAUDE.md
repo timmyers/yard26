@@ -6,9 +6,10 @@ Yard planning and landscape design project for "Yard 26." This repo tracks desig
 
 ## Current Projects
 
-### Foundation Bed (between porch stairs)
+### Foundation Bed (house wall corner)
 - **File:** `foundation-bed-design.html` — self-contained HTML design document with SVG layout diagram
-- **Location:** Narrow ~1.5 × 4.5 ft strip between porch corner and concrete stairs, against house wall
+- **Photo:** `foundation-bed-initial-status.jpg` — initial condition (March 2026)
+- **Location:** Narrow ~1.5 × 4.5 ft strip in house wall corner — green siding forms L-shape along left (long edge) and top, exposed concrete below siding at top, stairs at upper-right (~1/3), sidewalk and walkway along right and bottom
 - **Exposure:** Full sun (6+ hours)
 - **Climate:** Colorado Front Range, Zones 4–5
 - **Budget:** Under $200 (estimated $70–116 for materials)

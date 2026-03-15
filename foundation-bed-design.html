@@ -108,6 +108,8 @@
   .texture-card h4 { font-size: 0.85em; color: #2a4a20; margin-bottom: 3px; }
   .texture-card p { font-size: 0.76em; color: #777; }
 
+  .status-photo { width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); display: block; margin: 0 auto; }
+
   .footer { text-align: center; padding: 30px 20px; color: #999; font-size: 0.78em; }
 
   .source-list { font-size: 0.82em; color: #777; margin-top: 10px; }
@@ -118,7 +120,7 @@
 
 <div class="hero">
   <h1>Native Biodiversity Pocket Garden</h1>
-  <div class="subtitle">Foundation bed between porch corner &amp; stairs</div>
+  <div class="subtitle">Foundation bed in house wall corner</div>
   <div class="tagline">Maximizing ecological value in a tiny space — every plant earns its spot</div>
   <div class="specs">
     <div class="spec"><strong>~1.5 × 4.5 ft</strong>Narrow strip</div>
@@ -129,6 +131,17 @@
 </div>
 
 <div class="container">
+
+  <!-- INITIAL STATUS -->
+  <section>
+    <h2>Initial Status — March 2026</h2>
+    <div class="card" style="text-align: center;">
+      <img src="foundation-bed-initial-status.jpg" alt="Foundation bed initial status — narrow strip along house wall corner with dead weeds and debris" class="status-photo">
+      <p style="font-size:0.88em; color:#666; margin-top:14px;">
+        Narrow bed tucked into the house wall corner. Green siding forms an L-shape — running along the left wall (long edge) and across the top. Exposed concrete visible below the siding at top. Stairs at the upper-right, sidewalk and walkway along the right and bottom. Currently filled with dead weeds, old gravel, and leaf debris — a blank canvas for native planting.
+      </p>
+    </div>
+  </section>
 
   <!-- WHY NATIVE -->
   <section>
@@ -181,7 +194,7 @@
       <div class="texture-card">
         <div class="swatch" style="background: radial-gradient(circle at 30% 40%, #c4956a, #906838);"></div>
         <h4>Cedar Bark Mulch</h4>
-        <p>Back strip — holds moisture, suppresses weeds near house wall</p>
+        <p>Wall-side strip — holds moisture, suppresses weeds near house wall</p>
       </div>
       <div class="texture-card">
         <div class="swatch" style="background: radial-gradient(circle at 40% 35%, #c8b898, #a89878);"></div>
@@ -196,7 +209,7 @@
       <div class="texture-card">
         <div class="swatch" style="background: radial-gradient(circle at 35% 40%, #a0c870, #78a840);"></div>
         <h4>Living Groundcover</h4>
-        <p>Front edge — Pussytoes mat softens pavers, hosts small native bees</p>
+        <p>Walkway edge — Pussytoes mat softens pavers, hosts small native bees</p>
       </div>
     </div>
   </section>
@@ -205,101 +218,129 @@
   <section>
     <h2>Layout Plan</h2>
     <div class="card">
-      <p style="font-size:0.88em; color:#666; margin-bottom:14px;">Top-down view. Narrow bed (~18" deep × ~54" long). House wall along top, porch corner left, concrete stairs right. Grey pavers along front edge (keeping).</p>
+      <p style="font-size:0.88em; color:#666; margin-bottom:14px;">Top-down view. Narrow bed (~18" deep × ~54" long) in a house wall corner. House wall (green siding) forms an L along the left (long edge) and top. Exposed concrete visible at top below the siding. Right side: stairs (top third), then sidewalk, then walkway. Bottom: concrete walkway. Pavers line the bottom and lower-right edges.</p>
 
-      <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
-        <!-- House wall -->
-        <rect x="50" y="5" width="500" height="22" rx="3" fill="#8faa88" stroke="#6a8862" stroke-width="1.5"/>
-        <text x="300" y="19" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">HOUSE WALL (green siding)</text>
-        <!-- Foundation trim -->
-        <rect x="50" y="27" width="500" height="7" rx="1" fill="#e8e4de" stroke="#ccc" stroke-width="0.5"/>
+      <svg viewBox="0 0 340 600" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width: 440px; display: block; margin: 0 auto;">
 
-        <!-- Porch corner (left) -->
-        <rect x="0" y="0" width="50" height="250" rx="4" fill="#b0a898" stroke="#8a8278" stroke-width="1.5"/>
-        <text x="25" y="130" text-anchor="middle" font-size="8" fill="#fff" font-weight="600" transform="rotate(-90,25,130)">PORCH CORNER</text>
+        <!-- House wall — LEFT side (long edge, green siding) -->
+        <rect x="0" y="0" width="22" height="560" rx="3" fill="#8faa88" stroke="#6a8862" stroke-width="1.5"/>
+        <text x="11" y="280" text-anchor="middle" font-size="10" fill="#fff" font-weight="600" transform="rotate(-90,11,280)">HOUSE WALL (green siding)</text>
+        <!-- Foundation trim along left wall -->
+        <rect x="22" y="0" width="7" height="560" rx="1" fill="#e8e4de" stroke="#ccc" stroke-width="0.5"/>
 
-        <!-- Stairs (right) -->
-        <rect x="550" y="36" width="50" height="210" rx="4" fill="#b0a898" stroke="#8a8278" stroke-width="1.5"/>
-        <text x="575" y="145" text-anchor="middle" font-size="8" fill="#fff" font-weight="600" transform="rotate(-90,575,145)">CONCRETE STAIRS</text>
+        <!-- House wall — TOP (short edge, green siding + exposed concrete below) -->
+        <rect x="0" y="0" width="300" height="14" rx="3" fill="#8faa88" stroke="#6a8862" stroke-width="1.5"/>
+        <text x="170" y="11" text-anchor="middle" font-size="7" fill="#fff" font-weight="600">GREEN SIDING</text>
+        <rect x="22" y="14" width="278" height="16" rx="2" fill="#b0a898" stroke="#8a8278" stroke-width="1"/>
+        <text x="170" y="25" text-anchor="middle" font-size="7" fill="#fff" font-weight="600">EXPOSED CONCRETE</text>
+        <!-- Foundation trim along top -->
+        <rect x="22" y="30" width="278" height="5" rx="1" fill="#e8e4de" stroke="#ccc" stroke-width="0.5"/>
+
+        <!-- RIGHT side — top third: STAIRS -->
+        <rect x="290" y="0" width="48" height="185" rx="4" fill="#b0a898" stroke="#8a8278" stroke-width="1.5"/>
+        <text x="314" y="95" text-anchor="middle" font-size="8" fill="#fff" font-weight="600" transform="rotate(90,314,95)">STAIRS</text>
+
+        <!-- RIGHT side — middle: SIDEWALK -->
+        <rect x="290" y="189" width="48" height="185" rx="4" fill="#c5c0b8" stroke="#aaa" stroke-width="1"/>
+        <text x="314" y="282" text-anchor="middle" font-size="8" fill="#777" font-weight="600" transform="rotate(90,314,282)">SIDEWALK</text>
+
+        <!-- RIGHT side — bottom: CONCRETE WALKWAY -->
+        <rect x="290" y="378" width="48" height="182" rx="4" fill="#c5c0b8" stroke="#aaa" stroke-width="1"/>
+        <text x="314" y="469" text-anchor="middle" font-size="7" fill="#777" font-weight="600" transform="rotate(90,314,469)">CONCRETE WALKWAY</text>
+
+        <!-- BOTTOM — concrete walkway -->
+        <rect x="29" y="540" width="261" height="22" rx="2" fill="#c5c0b8" stroke="#aaa" stroke-width="1"/>
+        <text x="160" y="554" text-anchor="middle" font-size="8" fill="#777" font-weight="600">CONCRETE WALKWAY</text>
 
         <!-- Bed outline -->
-        <rect x="54" y="36" width="492" height="155" rx="4" fill="#e8e0d0" stroke="#c5b9a6" stroke-width="1" stroke-dasharray="4,3"/>
+        <rect x="32" y="38" width="254" height="498" rx="4" fill="#e8e0d0" stroke="#c5b9a6" stroke-width="1" stroke-dasharray="4,3"/>
 
-        <!-- ZONE: Back mulch strip -->
-        <rect x="58" y="38" width="484" height="36" rx="3" fill="#a07850" opacity="0.4"/>
+        <!-- ZONE: Wall-side mulch strip (along left wall) -->
+        <rect x="34" y="42" width="40" height="490" rx="3" fill="#a07850" opacity="0.4"/>
 
-        <!-- Dwarf Lead Plant (back left) -->
-        <ellipse cx="160" cy="58" rx="52" ry="18" fill="#6a9a50" opacity="0.6" stroke="#4a7a30" stroke-width="1"/>
-        <text x="160" y="55" text-anchor="middle" font-size="8" font-weight="700" fill="#1a4a10">Dwarf Lead Plant</text>
-        <text x="160" y="64" text-anchor="middle" font-size="7" fill="#2a5a18" font-style="italic">Amorpha nana</text>
+        <!-- Dwarf Lead Plant (wall side, upper) -->
+        <ellipse cx="55" cy="130" rx="20" ry="52" fill="#6a9a50" opacity="0.6" stroke="#4a7a30" stroke-width="1"/>
+        <text x="55" y="125" text-anchor="middle" font-size="8" font-weight="700" fill="#1a4a10">Dwarf</text>
+        <text x="55" y="134" text-anchor="middle" font-size="8" font-weight="700" fill="#1a4a10">Lead Plant</text>
+        <text x="55" y="144" text-anchor="middle" font-size="6.5" fill="#2a5a18" font-style="italic">Amorpha nana</text>
 
-        <!-- Butterfly Milkweed (back center-right) -->
-        <ellipse cx="370" cy="58" rx="44" ry="18" fill="#e8884c" opacity="0.55" stroke="#c06830" stroke-width="1"/>
-        <text x="370" y="55" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3010">Butterfly Milkweed</text>
-        <text x="370" y="64" text-anchor="middle" font-size="7" fill="#8a4018" font-style="italic">Asclepias tuberosa</text>
+        <!-- Butterfly Milkweed (wall side, lower) -->
+        <ellipse cx="55" cy="340" rx="20" ry="44" fill="#e8884c" opacity="0.55" stroke="#c06830" stroke-width="1"/>
+        <text x="55" y="334" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3010">Butterfly</text>
+        <text x="55" y="344" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3010">Milkweed</text>
+        <text x="55" y="354" text-anchor="middle" font-size="6.5" fill="#8a4018" font-style="italic">A. tuberosa</text>
 
         <!-- ZONE: Middle — mix of stone, bare soil, plants -->
-        <rect x="58" y="76" width="484" height="48" rx="3" fill="#d8d0c0" opacity="0.35"/>
+        <rect x="76" y="42" width="106" height="490" rx="3" fill="#d8d0c0" opacity="0.35"/>
 
-        <!-- Pineleaf Penstemon (mid-left) -->
-        <ellipse cx="120" cy="100" rx="36" ry="16" fill="#d05050" opacity="0.5" stroke="#a03030" stroke-width="1"/>
-        <text x="120" y="97" text-anchor="middle" font-size="7.5" font-weight="700" fill="#6a1818">Pineleaf</text>
-        <text x="120" y="107" text-anchor="middle" font-size="7" fill="#7a2020">Penstemon</text>
+        <!-- Pineleaf Penstemon (mid, upper) -->
+        <ellipse cx="128" cy="110" rx="18" ry="38" fill="#d05050" opacity="0.5" stroke="#a03030" stroke-width="1"/>
+        <text x="128" y="106" text-anchor="middle" font-size="7.5" font-weight="700" fill="#6a1818">Pineleaf</text>
+        <text x="128" y="116" text-anchor="middle" font-size="7" fill="#7a2020">Penstemon</text>
 
         <!-- Bare soil patch 1 -->
-        <ellipse cx="210" cy="98" rx="22" ry="14" fill="#d8cca8" opacity="0.7" stroke="#b8a880" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="210" y="96" text-anchor="middle" font-size="6.5" fill="#8a7a50" font-weight="600">bare soil</text>
-        <text x="210" y="104" text-anchor="middle" font-size="5.5" fill="#8a7a50">bee nesting</text>
+        <ellipse cx="130" cy="195" rx="14" ry="22" fill="#d8cca8" opacity="0.7" stroke="#b8a880" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="130" y="193" text-anchor="middle" font-size="6.5" fill="#8a7a50" font-weight="600">bare soil</text>
+        <text x="130" y="202" text-anchor="middle" font-size="5.5" fill="#8a7a50">bee nesting</text>
 
         <!-- Native accent rock -->
-        <ellipse cx="300" cy="95" rx="20" ry="12" fill="#a89880" stroke="#887860" stroke-width="1.5"/>
-        <text x="300" y="98" text-anchor="middle" font-size="6" fill="#5a4a30" font-weight="600">rock</text>
+        <ellipse cx="125" cy="270" rx="14" ry="20" fill="#a89880" stroke="#887860" stroke-width="1.5"/>
+        <text x="125" y="273" text-anchor="middle" font-size="6" fill="#5a4a30" font-weight="600">rock</text>
 
-        <!-- Blanket Flower (mid-right) -->
-        <ellipse cx="410" cy="100" rx="38" ry="16" fill="#e8c840" opacity="0.5" stroke="#c0a020" stroke-width="1"/>
-        <text x="410" y="97" text-anchor="middle" font-size="7.5" font-weight="700" fill="#6a5010">Blanket Flower</text>
-        <text x="410" y="107" text-anchor="middle" font-size="7" fill="#7a6018">Gaillardia</text>
+        <!-- Blanket Flower (mid, lower) -->
+        <ellipse cx="128" cy="380" rx="18" ry="40" fill="#e8c840" opacity="0.5" stroke="#c0a020" stroke-width="1"/>
+        <text x="128" y="376" text-anchor="middle" font-size="7.5" font-weight="700" fill="#6a5010">Blanket</text>
+        <text x="128" y="386" text-anchor="middle" font-size="7.5" font-weight="700" fill="#6a5010">Flower</text>
+        <text x="128" y="396" text-anchor="middle" font-size="6.5" fill="#7a6018">Gaillardia</text>
 
         <!-- Bare soil patch 2 -->
-        <ellipse cx="490" cy="98" rx="18" ry="12" fill="#d8cca8" opacity="0.7" stroke="#b8a880" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="490" y="96" text-anchor="middle" font-size="6.5" fill="#8a7a50" font-weight="600">bare soil</text>
-        <text x="490" y="104" text-anchor="middle" font-size="5.5" fill="#8a7a50">bee nesting</text>
+        <ellipse cx="130" cy="468" rx="14" ry="20" fill="#d8cca8" opacity="0.7" stroke="#b8a880" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="130" y="466" text-anchor="middle" font-size="6.5" fill="#8a7a50" font-weight="600">bare soil</text>
+        <text x="130" y="475" text-anchor="middle" font-size="5.5" fill="#8a7a50">bee nesting</text>
 
-        <!-- ZONE: Front — groundcover -->
-        <rect x="58" y="126" width="484" height="60" rx="3" fill="#b0cc78" opacity="0.25"/>
+        <!-- ZONE: Open side — groundcover (along right/walkway side) -->
+        <rect x="184" y="42" width="98" height="490" rx="3" fill="#b0cc78" opacity="0.25"/>
 
-        <!-- Pussytoes (front, spreading) -->
-        <ellipse cx="140" cy="152" rx="48" ry="16" fill="#c8dca0" opacity="0.6" stroke="#90a860" stroke-width="0.8"/>
-        <text x="140" y="155" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3a5a18">Pussytoes</text>
+        <!-- Pussytoes (open edge, spreading) -->
+        <ellipse cx="230" cy="120" rx="18" ry="50" fill="#c8dca0" opacity="0.6" stroke="#90a860" stroke-width="0.8"/>
+        <text x="230" y="123" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3a5a18">Pussytoes</text>
 
-        <ellipse cx="280" cy="155" rx="55" ry="18" fill="#c8dca0" opacity="0.6" stroke="#90a860" stroke-width="0.8"/>
-        <text x="280" y="152" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3a5a18">Pussytoes</text>
-        <text x="280" y="162" text-anchor="middle" font-size="6.5" fill="#4a6a28" font-style="italic">Antennaria parvifolia</text>
+        <ellipse cx="230" cy="290" rx="20" ry="58" fill="#c8dca0" opacity="0.6" stroke="#90a860" stroke-width="0.8"/>
+        <text x="230" y="285" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3a5a18">Pussytoes</text>
+        <text x="230" y="296" text-anchor="middle" font-size="6" fill="#4a6a28" font-style="italic">A. parvifolia</text>
 
-        <ellipse cx="430" cy="152" rx="48" ry="16" fill="#c8dca0" opacity="0.6" stroke="#90a860" stroke-width="0.8"/>
-        <text x="430" y="155" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3a5a18">Pussytoes</text>
+        <ellipse cx="230" cy="450" rx="18" ry="50" fill="#c8dca0" opacity="0.6" stroke="#90a860" stroke-width="0.8"/>
+        <text x="230" y="453" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3a5a18">Pussytoes</text>
 
-        <!-- Grey pavers -->
-        <rect x="54" y="192" width="62" height="16" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
-        <rect x="120" y="192" width="62" height="16" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
-        <rect x="186" y="192" width="62" height="16" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
-        <rect x="252" y="192" width="62" height="16" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
-        <rect x="318" y="192" width="62" height="16" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
-        <rect x="384" y="192" width="62" height="16" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
-        <rect x="450" y="192" width="62" height="16" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
-        <text x="300" y="203" text-anchor="middle" font-size="7" fill="#666" font-weight="600">EXISTING GREY PAVERS (keep)</text>
+        <!-- EXISTING GREY PAVERS — along full bottom edge -->
+        <rect x="36" y="522" width="40" height="14" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="80" y="522" width="40" height="14" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="124" y="522" width="40" height="14" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="168" y="522" width="40" height="14" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="212" y="522" width="40" height="14" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="256" y="522" width="26" height="14" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
 
-        <!-- Walkway -->
-        <rect x="54" y="212" width="492" height="16" rx="2" fill="#c5c0b8"/>
-        <text x="300" y="223" text-anchor="middle" font-size="8" fill="#777">CONCRETE WALKWAY</text>
+        <!-- EXISTING GREY PAVERS — along bottom half of right edge -->
+        <rect x="270" y="378" width="14" height="40" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="270" y="422" width="14" height="40" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="270" y="466" width="14" height="40" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+        <rect x="270" y="510" width="14" height="26" rx="2" fill="#a8a4a0" stroke="#8a8680" stroke-width="1"/>
+
+        <!-- Paver labels -->
+        <text x="160" y="531" text-anchor="middle" font-size="5.5" fill="#666" font-weight="600">EXISTING GREY PAVERS (keep)</text>
 
         <!-- Dimension annotations -->
-        <line x1="54" y1="238" x2="546" y2="238" stroke="#999" stroke-width="0.8" marker-start="url(#arrowL)" marker-end="url(#arrowR)"/>
-        <text x="300" y="248" text-anchor="middle" font-size="8" fill="#999">~4.5 feet</text>
+        <line x1="32" y1="580" x2="286" y2="580" stroke="#999" stroke-width="0.8" marker-start="url(#arrowL)" marker-end="url(#arrowR)"/>
+        <text x="160" y="593" text-anchor="middle" font-size="8" fill="#999">~1.5 ft (depth)</text>
+
+        <line x1="6" y1="38" x2="6" y2="536" stroke="#999" stroke-width="0.8" marker-start="url(#arrowU)" marker-end="url(#arrowD)"/>
+        <text x="6" y="290" text-anchor="middle" font-size="8" fill="#999" transform="rotate(-90,6,290)">~4.5 ft (length)</text>
 
         <defs>
           <marker id="arrowL" viewBox="0 0 6 6" refX="0" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M6,0 L0,3 L6,6" fill="none" stroke="#999" stroke-width="0.8"/></marker>
           <marker id="arrowR" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#999" stroke-width="0.8"/></marker>
+          <marker id="arrowU" viewBox="0 0 6 6" refX="3" refY="0" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,6 L3,0 L6,6" fill="none" stroke="#999" stroke-width="0.8"/></marker>
+          <marker id="arrowD" viewBox="0 0 6 6" refX="3" refY="6" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L3,6 L6,0" fill="none" stroke="#999" stroke-width="0.8"/></marker>
         </defs>
       </svg>
 
@@ -329,7 +370,7 @@
         <h3>Dwarf Lead Plant</h3>
         <div class="botanical">Amorpha nana</div>
         <div class="details">
-          The structural anchor, tucked against the house wall at the left end. Compact native shrub (2–3 ft) with fine-textured foliage and dense purple flower spikes in summer. One of the best native bee plants on the Front Range — its concentrated nectar attracts dozens of specialist and generalist bee species. Late-leafing, so it won't crowd spring bloomers.
+          The structural anchor, tucked against the house wall at the upper end of the bed. Compact native shrub (2–3 ft) with fine-textured foliage and dense purple flower spikes in summer. One of the best native bee plants on the Front Range — its concentrated nectar attracts dozens of specialist and generalist bee species. Late-leafing, so it won't crowd spring bloomers.
         </div>
         <div class="wildlife-row">
           <span class="wildlife-badge">Native bees (dozens of species)</span>
@@ -587,11 +628,11 @@
       </div>
       <div class="step">
         <h3>Plant Back to Front</h3>
-        <p>Start with Dwarf Lead Plant (back-left, 4" from wall) and Butterfly Milkweed (back-right). Then Pineleaf Penstemon (mid-left) and Blanket Flower (mid-right). Finish with Pussytoes plugs along the front edge, spaced ~8" apart. Water everything deeply.</p>
+        <p>Start with Dwarf Lead Plant (wall side, upper end, 4" from wall) and Butterfly Milkweed (wall side, lower end). Then Pineleaf Penstemon (middle zone, upper) and Blanket Flower (middle zone, lower). Finish with Pussytoes plugs along the walkway edge, spaced ~8" apart. Water everything deeply.</p>
       </div>
       <div class="step">
         <h3>Apply Mulch &mdash; Selectively</h3>
-        <p>Spread a thin layer (1–2" max) of cedar bark mulch in the back strip around the Lead Plant and Milkweed only. Leave the middle zone with exposed sandy soil patches between the rock and plants. Leave the front zone for Pussytoes to spread into naturally.</p>
+        <p>Spread a thin layer (1–2" max) of cedar bark mulch in the wall-side strip around the Lead Plant and Milkweed only. Leave the middle zone with exposed sandy soil patches between the rock and plants. Leave the walkway-side zone for Pussytoes to spread into naturally.</p>
       </div>
       <div class="step">
         <h3>Water &amp; Establish</h3>

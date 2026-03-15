@@ -11,12 +11,14 @@ Yard planning and landscape design project for "Yard 26." This repo tracks desig
 - **Location:** Narrow ~1.5 × 4.5 ft strip between porch corner and concrete stairs, against house wall
 - **Exposure:** Full sun (6+ hours)
 - **Climate:** Colorado Front Range, Zones 4–5
-- **Budget:** Under $200 (estimated $58–82 for materials)
-- **Design:** Three horizontal texture zones — cedar bark mulch (back), river rock band (middle), Angelina Stonecrop living edge (front)
-- **Plants:** Phenomenal Lavender (focal), Angelina Stonecrop (ground cover), Creeping Phlox (accent), mixed Sedum (optional accents)
+- **Budget:** Under $200 (estimated $70–116 for materials)
+- **Design philosophy:** Native biodiversity pocket garden — every plant chosen for ecological relationships, not just aesthetics. Intentional bare soil patches for ground-nesting bees.
+- **Design:** Three vertical layers (ground, mid, upper) with four ground surface types (bark mulch, native stone, bare sandy soil, living groundcover)
+- **Plants (all Colorado natives):** Dwarf Lead Plant (structural anchor), Butterfly Milkweed (monarch host), Pineleaf Penstemon (hummingbird magnet), Blanket Flower (longest bloomer), Pussytoes (native groundcover)
+- **Key rule:** No pesticides, no cultivars — true native species only. Source from native nurseries (Harlequin's Gardens, Chatfield Farms sales, Resource Central)
 
 ## Conventions
 
 - Design documents are self-contained HTML files with inline CSS and SVG diagrams
-- Plant selections target drought-tolerant, Colorado Front Range hardy species
+- Plant selections are 100% Colorado Front Range natives (Zones 4–5), drought-tolerant, chosen for ecological value
 - Budget estimates use ranges to account for local nursery pricing

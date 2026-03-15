@@ -12,11 +12,13 @@ Yard planning and landscape design project for "Yard 26." This repo tracks desig
 - **Location:** Narrow ~1.5 × 4.5 ft strip in house wall corner — green siding forms L-shape along left (long edge) and top, exposed concrete below siding at top, stairs at upper-right (~1/3), sidewalk and walkway along right and bottom
 - **Exposure:** Full sun (6+ hours)
 - **Climate:** Colorado Front Range, Zones 4–5
-- **Budget:** Under $200 (estimated $70–116 for materials)
+- **Budget:** Under $200 (estimated $77–130 for materials)
 - **Design philosophy:** Native biodiversity pocket garden — every plant chosen for ecological relationships, not just aesthetics. Intentional bare soil patches for ground-nesting bees.
-- **Design:** Three vertical layers (ground, mid, upper) with four ground surface types (bark mulch, native stone, bare sandy soil, living groundcover)
-- **Plants (all Colorado natives):** Dwarf Lead Plant (structural anchor), Butterfly Milkweed (monarch host), Pineleaf Penstemon (hummingbird magnet), Blanket Flower (longest bloomer), Pussytoes (native groundcover)
+- **Microclimate:** Foundation heat island (effective Zone 5b-6a), rain shadow from eaves, amplified sun from concrete/siding reflection
+- **Design:** Three vertical layers (ground, mid, upper) with four ground surface types (decomposed granite, native stone, bare sandy soil, living groundcover)
+- **Plants (6 Colorado Front Range natives):** Dwarf Lead Plant (structural anchor), Butterfly Milkweed (monarch host), Rocky Mountain Penstemon (hummingbird/bee magnet), Blanket Flower (longest bloomer), Pussytoes (native groundcover), Pasque Flower (CO state flower, early-spring ephemeral)
 - **Key rule:** No pesticides, no cultivars — true native species only. Source from native nurseries (Harlequin's Gardens, Chatfield Farms sales, Resource Central)
+- **Foundation protection:** 4-6" clearance soil-to-siding, grade 2%+ away from house, DG (not organic mulch) against wall
 
 ## Conventions
 

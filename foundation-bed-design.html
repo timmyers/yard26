@@ -55,6 +55,7 @@
   .tag-bird { background: #dde8f8; color: #2a4a7a; }
   .tag-size { background: #f0ecf8; color: #5a4a7a; }
   .tag-bee { background: #f8f0d8; color: #6a5a20; }
+  .tag-state { background: #f0e8f8; color: #5a3a7a; }
 
   /* Wildlife badges */
   .wildlife-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
@@ -98,6 +99,10 @@
   .callout strong { color: #2a4a20; }
   .callout p { font-size: 0.9em; color: #3a5a30; }
 
+  .warn-box { background: #fef3f0; border: 1px solid #e8c8c0; border-radius: 12px; padding: 18px; margin-top: 14px; }
+  .warn-box h3 { color: #8b3014; font-size: 0.95em; margin-bottom: 6px; }
+  .warn-box p { font-size: 0.88em; color: #6b3a2a; }
+
   .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; justify-content: center; }
   .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.8em; color: #555; }
   .legend-swatch { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); }
@@ -114,19 +119,47 @@
 
   .source-list { font-size: 0.82em; color: #777; margin-top: 10px; }
   .source-list a { color: #557a48; }
+
+  /* Assessment grid */
+  .assess-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .assess-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .assess-card h4 { font-size: 0.9em; color: #2a4a20; margin-bottom: 6px; }
+  .assess-card p { font-size: 0.82em; color: #555; }
+  .assess-card .assess-tag { display: inline-block; font-size: 0.7em; padding: 2px 7px; border-radius: 8px; margin-bottom: 6px; }
+  .assess-good { background: #e0f0d0; color: #3a6820; }
+  .assess-caution { background: #fff3d0; color: #8a6a10; }
+  .assess-critical { background: #fde0e0; color: #a03030; }
+
+  /* Vision timeline */
+  .vision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .vision-card { background: white; border-radius: 14px; padding: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid #7a9e50; }
+  .vision-card h3 { font-size: 1em; color: #2a4a20; margin-bottom: 4px; }
+  .vision-card .vision-sub { font-size: 0.78em; color: #999; margin-bottom: 8px; }
+  .vision-card p { font-size: 0.85em; color: #555; }
+
+  /* Mistakes list */
+  .mistake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mistake-card { background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 3px solid #c06830; }
+  .mistake-card h4 { font-size: 0.88em; color: #8b3014; margin-bottom: 4px; }
+  .mistake-card p { font-size: 0.8em; color: #666; }
+
+  @media (max-width: 600px) {
+    .assess-grid, .vision-grid, .mistake-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
 <div class="hero">
   <h1>Native Biodiversity Pocket Garden</h1>
-  <div class="subtitle">Foundation bed in house wall corner</div>
-  <div class="tagline">Maximizing ecological value in a tiny space — every plant earns its spot</div>
+  <div class="subtitle">Foundation bed in house wall corner — multi-disciplinary design</div>
+  <div class="tagline">Six Colorado native species in 6.75 sq ft — every plant earns its ecological spot</div>
   <div class="specs">
-    <div class="spec"><strong>~1.5 × 4.5 ft</strong>Narrow strip</div>
-    <div class="spec"><strong>Full Sun</strong>6+ hours</div>
-    <div class="spec"><strong>100% Native</strong>CO Front Range</div>
+    <div class="spec"><strong>~1.5 x 4.5 ft</strong>Narrow strip</div>
+    <div class="spec"><strong>Full Sun</strong>6+ hrs (amplified)</div>
+    <div class="spec"><strong>6 Native Species</strong>CO Front Range</div>
     <div class="spec"><strong>Under $200</strong>Budget</div>
+    <div class="spec"><strong>Zone 5a (eff. 5b-6a)</strong>Microclimate</div>
   </div>
 </div>
 
@@ -143,24 +176,58 @@
     </div>
   </section>
 
+  <!-- SITE ASSESSMENT -->
+  <section>
+    <h2>Professional Site Assessment</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Before planting, a professional team evaluates the site from four disciplines: microclimate, soil, drainage, and light. This foundation corner has quirks that actually <em>favor</em> Colorado natives — if we work with them, not against them.</p>
+
+    <div class="assess-grid">
+      <div class="assess-card">
+        <span class="assess-tag assess-good">Advantage</span>
+        <h4>Microclimate: Foundation Heat Island</h4>
+        <p>Concrete foundation and siding absorb solar radiation during the day and re-radiate heat at night. This corner runs <strong>5-10 degrees F warmer</strong> than open yard, effectively bumping the site from Zone 5a to <strong>Zone 5b-6a</strong>. This extends the growing season by 2-3 weeks on each end and protects against late spring freezes. All selected species tolerate heat — several prefer it.</p>
+      </div>
+      <div class="assess-card">
+        <span class="assess-tag assess-caution">Work With It</span>
+        <h4>Soil: Compacted, Alkaline, Lean</h4>
+        <p>Photo shows compacted soil with gravel and construction debris mixed in. Concrete foundation leaches calcium carbonate, pushing pH to <strong>7.5-8.5</strong> (alkaline). Organic matter is very low. <strong>This is actually ideal for Colorado Front Range natives</strong> — they evolved in lean, alkaline, rocky soil. Resist the urge to create "rich garden soil" with heavy compost. Only light amendment needed.</p>
+      </div>
+      <div class="assess-card">
+        <span class="assess-tag assess-critical">Must Address</span>
+        <h4>Drainage &amp; Foundation Protection</h4>
+        <p>Water must drain <strong>away</strong> from the foundation — never toward it. Grade the bed surface to slope 2% minimum toward the walkway. Maintain <strong>4-6" clearance</strong> between soil/mulch surface and bottom of siding to prevent moisture wicking into the wall. Verify no downspout discharges into this bed. Use gravel, not organic mulch, against the foundation wall for drainage.</p>
+      </div>
+      <div class="assess-card">
+        <span class="assess-tag assess-good">Advantage</span>
+        <h4>Light: Amplified Full Sun</h4>
+        <p>6+ hours direct sun plus reflected light off concrete walkway and light-colored siding. The L-shaped wall creates a <strong>sun trap</strong> — light bounces between surfaces, increasing total photosynthetic radiation. South/west exposure extends afternoon heat. All selected species are rated full sun. The reflected heat also warms soil earlier in spring, benefiting the Pasque Flower's February-April bloom.</p>
+      </div>
+    </div>
+
+    <div class="warn-box" style="margin-top: 14px;">
+      <h3>Rain Shadow Warning</h3>
+      <p>Roof eaves deflect rainfall away from the foundation. This bed receives <strong>30-50% less precipitation</strong> than open ground. During the 3-4 week establishment period, you'll need to hand-water. After establishment, the drought-adapted natives won't care — but know that "an inch of rain" in the forecast may deliver almost nothing to this bed.</p>
+    </div>
+  </section>
+
   <!-- WHY NATIVE -->
   <section>
     <h2>Why Go Native?</h2>
     <div class="card">
       <p style="font-size:0.92em; color:#444; margin-bottom:14px;">
-        Colorado's Front Range is home to over <strong>1,000 native bee species</strong> (nearly 30% of all North American bees), <strong>250+ butterfly species</strong>, and <strong>1,000+ moth species</strong>. But most of these insects are <em>specialists</em> — they need specific native plants they've co-evolved with over thousands of years. A non-native ornamental garden might look nice, but it's ecologically empty.
+        Colorado is home to roughly <strong>950 native bee species</strong> (nearly 25% of all North American bees), <strong>250+ butterfly species</strong>, and over <strong>1,500 moth species</strong>. The Front Range corridor specifically supports extraordinary pollinator diversity because it sits at the convergence of Great Plains grassland, mountain foothill, and riparian ecosystems. But most of these insects are <em>specialists</em> — they need specific native plants they've co-evolved with over millennia. A non-native ornamental garden might look nice, but it's ecologically barren.
       </p>
       <p style="font-size:0.92em; color:#444; margin-bottom:14px;">
-        Research from CSU and the Xerces Society shows that <strong>native cultivars produce 30–50% fewer flowers</strong> than true native species, and attract significantly fewer pollinators. Even in a space this small, planting true Colorado natives instead of ornamentals can support dozens of bee species, multiple butterfly species, and beneficial predatory insects.
+        Research by Annie White (University of Vermont, 2016) found that <strong>native cultivars attract up to 30% fewer pollinators</strong> than true wild-type native species, and the Xerces Society documents significant reductions in floral reward (nectar volume, pollen quantity) in horticultural selections. Even in a space this small, planting true Colorado natives instead of cultivars or ornamentals can support dozens of bee species, multiple butterfly species, and beneficial predatory insects.
       </p>
       <p style="font-size:0.92em; color:#444;">
-        This design treats your 6.75 square feet as a <strong>micro-ecosystem</strong> — not just a garden bed. Every plant was chosen for its ecological relationships, not just its looks (though it'll look great too).
+        This design treats your 6.75 square feet as a <strong>micro-ecosystem</strong> — not just a garden bed. Every plant was chosen for specific ecological relationships, and the ground surface itself is designed as habitat. Six native species, four ground surface types, three vertical layers, continuous bloom from February through frost, and winter bird forage.
       </p>
     </div>
 
     <div class="bio-stats" style="margin-top: 16px;">
       <div class="bio-stat">
-        <div class="num">1,000+</div>
+        <div class="num">~950</div>
         <div class="label">Native bee species in Colorado</div>
       </div>
       <div class="bio-stat">
@@ -172,7 +239,11 @@
         <div class="label">Butterfly species on Front Range</div>
       </div>
       <div class="bio-stat">
-        <div class="num">5</div>
+        <div class="num">Feb–Oct</div>
+        <div class="label">Continuous bloom season</div>
+      </div>
+      <div class="bio-stat">
+        <div class="num">6</div>
         <div class="label">Native species in this tiny bed</div>
       </div>
     </div>
@@ -183,33 +254,36 @@
     <h2>Design Concept: Layered Micro-Habitat</h2>
     <div class="card">
       <p style="font-size:0.92em; color:#444; margin-bottom: 14px;">
-        Inspired by the Highlands Ranch water-savings xeriscape approach — boulders, native grasses, and drought-adapted natives — but scaled down to a foundation pocket. The design uses <strong>three vertical layers</strong> (ground, mid, upper) and <strong>four types of ground surface</strong> (bark mulch, native stone, bare sandy soil, living groundcover) to create maximum habitat diversity in minimum space.
+        Inspired by the natural plant communities of the Colorado Front Range foothills — where xeric wildflowers, native shrubs, and bare rocky soil create extraordinary biodiversity in harsh conditions. The design uses <strong>three vertical layers</strong> (ground, mid, upper) and <strong>four types of ground surface</strong> (decomposed granite, native stone, bare sandy soil, living groundcover) to create maximum habitat diversity in minimum space.
+      </p>
+      <p style="font-size:0.92em; color:#444; margin-bottom: 14px;">
+        Critical habitat feature: <strong>bare soil patches</strong> are intentionally left between plants. 70% of Colorado's native bees are ground-nesters — they dig small tunnels in exposed, well-drained soil to raise their young. Most landscaping smothers this habitat under thick mulch or rock. These patches aren't neglect — they're the most ecologically important square inches in the design.
       </p>
       <p style="font-size:0.92em; color:#444;">
-        Critical habitat feature: <strong>bare soil patches</strong> are intentionally left between plants. 70% of Colorado's native bees are ground-nesters — they need exposed, sandy soil to build their nests. Most landscaping smothers this habitat under thick mulch or rock.
+        <strong>Foundation protection:</strong> The wall-side strip uses decomposed granite (not organic mulch) to ensure drainage away from the foundation, prevent moisture wicking into the siding, and mimic the rocky substrate these natives evolved in. Maintain a 4-6" gap between the DG surface and the bottom of the siding at all times.
       </p>
     </div>
 
     <div class="texture-grid">
       <div class="texture-card">
-        <div class="swatch" style="background: radial-gradient(circle at 30% 40%, #c4956a, #906838);"></div>
-        <h4>Cedar Bark Mulch</h4>
-        <p>Wall-side strip — holds moisture, suppresses weeds near house wall</p>
+        <div class="swatch" style="background: radial-gradient(circle at 30% 40%, #c8b898, #a89070);"></div>
+        <h4>Decomposed Granite</h4>
+        <p>Wall-side strip — excellent drainage near foundation, mimics natural Front Range substrate, no allelopathic concerns</p>
       </div>
       <div class="texture-card">
         <div class="swatch" style="background: radial-gradient(circle at 40% 35%, #c8b898, #a89878);"></div>
         <h4>Native Colorado Stone</h4>
-        <p>1–2 accent rocks — shelter for ground beetles, spiders, beneficial insects</p>
+        <p>1-2 accent rocks — shelter for ground beetles, spiders, beneficial insects; thermal mass for overnight warmth</p>
       </div>
       <div class="texture-card">
         <div class="swatch" style="background: radial-gradient(circle at 35% 40%, #d8cca8, #c0b490);"></div>
         <h4>Bare Sandy Soil</h4>
-        <p>Small patches — critical nesting habitat for 700+ ground-nesting bee species</p>
+        <p>Small patches — critical nesting habitat for 650+ ground-nesting bee species in Colorado</p>
       </div>
       <div class="texture-card">
         <div class="swatch" style="background: radial-gradient(circle at 35% 40%, #a0c870, #78a840);"></div>
         <h4>Living Groundcover</h4>
-        <p>Walkway edge — Pussytoes mat softens pavers, hosts small native bees</p>
+        <p>Walkway edge — Pussytoes mat softens transition to pavers, hosts American Lady butterflies</p>
       </div>
     </div>
   </section>
@@ -218,7 +292,7 @@
   <section>
     <h2>Layout Plan</h2>
     <div class="card">
-      <p style="font-size:0.88em; color:#666; margin-bottom:14px;">Top-down view. Narrow bed (~18" deep × ~54" long) in a house wall corner. House wall (green siding) forms an L along the left (long edge) and top. Exposed concrete visible at top below the siding. Right side: stairs (top third), then sidewalk, then walkway. Bottom: concrete walkway. Pavers line the bottom and lower-right edges.</p>
+      <p style="font-size:0.88em; color:#666; margin-bottom:14px;">Top-down view. Narrow bed (~18" deep x ~54" long) in a house wall corner. House wall (green siding) forms an L along the left (long edge) and top. Exposed concrete visible at top below the siding. Right side: stairs (top third), then sidewalk, then walkway. Bottom: concrete walkway. Existing grey pavers line the bottom and lower-right edges.</p>
 
       <svg viewBox="0 0 340 600" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width: 440px; display: block; margin: 0 auto;">
 
@@ -255,8 +329,8 @@
         <!-- Bed outline -->
         <rect x="32" y="38" width="254" height="498" rx="4" fill="#e8e0d0" stroke="#c5b9a6" stroke-width="1" stroke-dasharray="4,3"/>
 
-        <!-- ZONE: Wall-side mulch strip (along left wall) -->
-        <rect x="34" y="42" width="40" height="490" rx="3" fill="#a07850" opacity="0.4"/>
+        <!-- ZONE: Wall-side DG strip (along left wall) -->
+        <rect x="34" y="42" width="40" height="490" rx="3" fill="#c4b090" opacity="0.4"/>
 
         <!-- Dwarf Lead Plant (wall side, upper) -->
         <ellipse cx="55" cy="130" rx="20" ry="52" fill="#6a9a50" opacity="0.6" stroke="#4a7a30" stroke-width="1"/>
@@ -273,19 +347,24 @@
         <!-- ZONE: Middle — mix of stone, bare soil, plants -->
         <rect x="76" y="42" width="106" height="490" rx="3" fill="#d8d0c0" opacity="0.35"/>
 
-        <!-- Pineleaf Penstemon (mid, upper) -->
-        <ellipse cx="128" cy="110" rx="18" ry="38" fill="#d05050" opacity="0.5" stroke="#a03030" stroke-width="1"/>
-        <text x="128" y="106" text-anchor="middle" font-size="7.5" font-weight="700" fill="#6a1818">Pineleaf</text>
-        <text x="128" y="116" text-anchor="middle" font-size="7" fill="#7a2020">Penstemon</text>
+        <!-- Rocky Mountain Penstemon (mid, upper) -->
+        <ellipse cx="128" cy="100" rx="18" ry="34" fill="#6a5ab0" opacity="0.45" stroke="#4a3a90" stroke-width="1"/>
+        <text x="128" y="95" text-anchor="middle" font-size="7" font-weight="700" fill="#2a1a60">Rocky Mtn</text>
+        <text x="128" y="105" text-anchor="middle" font-size="7" font-weight="700" fill="#2a1a60">Penstemon</text>
+
+        <!-- Pasque Flower (mid, between penstemon and bare soil) -->
+        <ellipse cx="128" cy="165" rx="13" ry="18" fill="#9868c0" opacity="0.5" stroke="#7848a0" stroke-width="1"/>
+        <text x="128" y="162" text-anchor="middle" font-size="6.5" font-weight="700" fill="#3a1860">Pasque</text>
+        <text x="128" y="171" text-anchor="middle" font-size="6.5" font-weight="700" fill="#3a1860">Flower</text>
 
         <!-- Bare soil patch 1 -->
-        <ellipse cx="130" cy="195" rx="14" ry="22" fill="#d8cca8" opacity="0.7" stroke="#b8a880" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="130" y="193" text-anchor="middle" font-size="6.5" fill="#8a7a50" font-weight="600">bare soil</text>
-        <text x="130" y="202" text-anchor="middle" font-size="5.5" fill="#8a7a50">bee nesting</text>
+        <ellipse cx="130" cy="220" rx="14" ry="20" fill="#d8cca8" opacity="0.7" stroke="#b8a880" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="130" y="218" text-anchor="middle" font-size="6.5" fill="#8a7a50" font-weight="600">bare soil</text>
+        <text x="130" y="227" text-anchor="middle" font-size="5.5" fill="#8a7a50">bee nesting</text>
 
         <!-- Native accent rock -->
-        <ellipse cx="125" cy="270" rx="14" ry="20" fill="#a89880" stroke="#887860" stroke-width="1.5"/>
-        <text x="125" y="273" text-anchor="middle" font-size="6" fill="#5a4a30" font-weight="600">rock</text>
+        <ellipse cx="125" cy="285" rx="14" ry="20" fill="#a89880" stroke="#887860" stroke-width="1.5"/>
+        <text x="125" y="288" text-anchor="middle" font-size="6" fill="#5a4a30" font-weight="600">rock</text>
 
         <!-- Blanket Flower (mid, lower) -->
         <ellipse cx="128" cy="380" rx="18" ry="40" fill="#e8c840" opacity="0.5" stroke="#c0a020" stroke-width="1"/>
@@ -329,6 +408,10 @@
         <!-- Paver labels -->
         <text x="160" y="531" text-anchor="middle" font-size="5.5" fill="#666" font-weight="600">EXISTING GREY PAVERS (keep)</text>
 
+        <!-- Foundation protection annotation -->
+        <line x1="30" y1="45" x2="30" y2="55" stroke="#c06830" stroke-width="1" stroke-dasharray="2,1"/>
+        <text x="34" y="54" font-size="5" fill="#c06830" font-weight="600">4-6" gap to siding</text>
+
         <!-- Dimension annotations -->
         <line x1="32" y1="580" x2="286" y2="580" stroke="#999" stroke-width="0.8" marker-start="url(#arrowL)" marker-end="url(#arrowR)"/>
         <text x="160" y="593" text-anchor="middle" font-size="8" fill="#999">~1.5 ft (depth)</text>
@@ -347,46 +430,48 @@
       <div class="legend">
         <div class="legend-item"><div class="legend-swatch" style="background:#6a9a50"></div> Dwarf Lead Plant</div>
         <div class="legend-item"><div class="legend-swatch" style="background:#e8884c"></div> Butterfly Milkweed</div>
-        <div class="legend-item"><div class="legend-swatch" style="background:#d05050"></div> Pineleaf Penstemon</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#6a5ab0"></div> Rocky Mtn Penstemon</div>
         <div class="legend-item"><div class="legend-swatch" style="background:#e8c840"></div> Blanket Flower</div>
         <div class="legend-item"><div class="legend-swatch" style="background:#c8dca0"></div> Pussytoes (ground cover)</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#9868c0"></div> Pasque Flower (spring ephemeral)</div>
         <div class="legend-item"><div class="legend-swatch" style="background:#d8cca8"></div> Bare soil (bee habitat)</div>
         <div class="legend-item"><div class="legend-swatch" style="background:#a89880"></div> Native accent rock</div>
       </div>
 
       <div class="callout" style="margin-top: 16px;">
-        <p><strong>Key design choice:</strong> The bare sandy soil patches between plants aren't a mistake — they're intentional habitat for the 700+ species of ground-nesting native bees in Colorado. Most landscaping inadvertently destroys this critical habitat with thick mulch layers. Keep mulch under 2" deep and leave these pockets exposed.</p>
+        <p><strong>Key design choice:</strong> The bare sandy soil patches between plants aren't a mistake — they're intentional habitat for the 650+ species of ground-nesting native bees in Colorado. Most landscaping inadvertently destroys this critical habitat with thick mulch layers. Use decomposed granite (not cedar mulch) near the wall for drainage, and leave the mid-zone pockets as exposed sandy soil.</p>
       </div>
     </div>
   </section>
 
   <!-- PLANT SELECTIONS -->
   <section>
-    <h2>Plant Selections — All Colorado Natives</h2>
-    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Every plant is native to the Colorado Front Range and chosen for its ecological relationships — not just appearance. True species (not cultivars) are preferred, as research shows cultivars produce 30–50% fewer flowers and attract significantly fewer pollinators.</p>
+    <h2>Plant Selections — All Colorado Front Range Natives</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Every plant is native to the Colorado Front Range and chosen for specific ecological relationships — not just appearance. True wild-type species only (no cultivars), as research shows cultivars produce fewer flowers, less nectar, and attract significantly fewer pollinators. Each species was verified against USDA PLANTS and Colorado Natural Heritage Program range maps.</p>
 
     <div class="plant-grid">
       <div class="plant-card">
         <h3>Dwarf Lead Plant</h3>
         <div class="botanical">Amorpha nana</div>
         <div class="details">
-          The structural anchor, tucked against the house wall at the upper end of the bed. Compact native shrub (2–3 ft) with fine-textured foliage and dense purple flower spikes in summer. One of the best native bee plants on the Front Range — its concentrated nectar attracts dozens of specialist and generalist bee species. Late-leafing, so it won't crowd spring bloomers.
+          The structural anchor, tucked against the house wall at the upper end of the bed. Compact native shrub (2-3 ft) with fine-textured compound foliage and dense purple flower spikes in summer. One of the best native bee plants on the Front Range — its concentrated nectar attracts dozens of specialist and generalist bee species. Late-leafing (mid-May), so it won't crowd spring bloomers. Nitrogen-fixing root nodules improve soil for neighboring plants. May need light pruning in year 3+ to keep within the 18" bed depth.
         </div>
         <div class="wildlife-row">
           <span class="wildlife-badge">Native bees (dozens of species)</span>
           <span class="wildlife-badge">Butterflies</span>
           <span class="wildlife-badge">Beneficial wasps</span>
+          <span class="wildlife-badge">Nitrogen fixer</span>
         </div>
         <span class="tag tag-native">CO Native</span>
         <span class="tag tag-pollinator">Top pollinator plant</span>
-        <span class="tag tag-size">2–3 ft tall/wide</span>
+        <span class="tag tag-size">2-3 ft tall/wide</span>
       </div>
 
       <div class="plant-card" style="border-left-color: #e8884c;">
         <h3>Butterfly Milkweed</h3>
         <div class="botanical">Asclepias tuberosa</div>
         <div class="details">
-          The ecological powerhouse of the bed. Bright orange flower clusters June–September. This is the <strong>only type of plant where Monarch butterflies can lay eggs and their caterpillars can develop</strong>. Unlike other milkweeds, this species stays compact (1–2 ft) and doesn't spread aggressively — perfect for a tiny bed. Also attracts native bees and hummingbirds.
+          The ecological powerhouse of the bed. Bright orange flower clusters June-September. This is the <strong>only type of plant where Monarch butterflies can lay eggs and their caterpillars can develop</strong>. Unlike other milkweeds (especially the aggressive A. speciosa), this species stays compact (1-2 ft) with a deep taproot and no rhizomatous spreading — perfect for a tiny bed. Also attracts native bees and hummingbirds. <strong>Warning:</strong> Extremely slow to emerge in spring (often late May or even June). Mark its location with a small stone so you don't accidentally plant over it or think it died.
         </div>
         <div class="wildlife-row">
           <span class="wildlife-badge">MONARCH HOST PLANT</span>
@@ -396,30 +481,31 @@
         </div>
         <span class="tag tag-native">CO Native</span>
         <span class="tag tag-host">Monarch larval host</span>
-        <span class="tag tag-size">1–2 ft tall/wide</span>
+        <span class="tag tag-size">1-2 ft tall/wide</span>
       </div>
 
-      <div class="plant-card" style="border-left-color: #d05050;">
-        <h3>Pineleaf Penstemon</h3>
-        <div class="botanical">Penstemon pinifolius</div>
+      <div class="plant-card" style="border-left-color: #6a5ab0;">
+        <h3>Rocky Mountain Penstemon</h3>
+        <div class="botanical">Penstemon strictus</div>
         <div class="details">
-          Compact, semi-evergreen native with needle-like foliage and brilliant red-orange tubular flowers. The tubular flower shape is specifically evolved for hummingbird pollination — one of the best hummingbird plants for Colorado. Blooms May–September, providing a long food source. Stays low (12–18") and tidy. Thrives in poor, gravelly soil.
+          One of the most reliable and showy native penstemons on the Colorado Front Range, abundant in the foothills from 5,000-10,000 ft. Dense spikes of blue-purple tubular flowers May-July attract both hummingbirds and native bees — the tubular shape rewards long-tongued pollinators while the vivid color draws in pollinators from a distance. Semi-evergreen basal foliage provides winter interest and year-round ground coverage. Thrives in lean, rocky, alkaline soil — the exact conditions of this foundation bed. 12-24" tall, stays compact.
         </div>
         <div class="wildlife-row">
-          <span class="wildlife-badge">Hummingbirds (primary)</span>
+          <span class="wildlife-badge">Hummingbirds</span>
           <span class="wildlife-badge">Long-tongued native bees</span>
           <span class="wildlife-badge">Hawk moths</span>
+          <span class="wildlife-badge">Butterflies</span>
         </div>
-        <span class="tag tag-native">CO Native genus</span>
-        <span class="tag tag-pollinator">Hummingbird magnet</span>
-        <span class="tag tag-size">12–18" tall</span>
+        <span class="tag tag-native">CO Front Range native</span>
+        <span class="tag tag-pollinator">Hummingbird &amp; bee magnet</span>
+        <span class="tag tag-size">12-24" tall</span>
       </div>
 
       <div class="plant-card" style="border-left-color: #e8c840;">
         <h3>Blanket Flower</h3>
         <div class="botanical">Gaillardia aristata</div>
         <div class="details">
-          Native prairie wildflower with bold red-and-yellow daisy-like blooms from early summer to first frost — the longest bloom season of any plant in this design. The open flower shape makes nectar accessible to a wide range of pollinators. Spent seed heads attract goldfinches and other seed-eating songbirds through fall and winter. Use true species, not hybrid cultivars.
+          Native prairie wildflower with bold red-and-yellow daisy-like blooms from early summer to first frost — the longest bloom season of any plant in this design. The open, composite flower head makes nectar and pollen accessible to a wide range of generalist pollinators that can't access tubular flowers. Spent seed heads attract goldfinches and other seed-eating songbirds through fall and winter — leave them standing. Use true species <em>G. aristata</em>, not the hybrid <em>G. x grandiflora</em> or named cultivars like 'Arizona Sun'.
         </div>
         <div class="wildlife-row">
           <span class="wildlife-badge">Native bees (generalist)</span>
@@ -430,14 +516,14 @@
         <span class="tag tag-native">CO Native</span>
         <span class="tag tag-bird">Bird seed source</span>
         <span class="tag tag-bee">Longest bloomer</span>
-        <span class="tag tag-size">1–1.5 ft</span>
+        <span class="tag tag-size">1-1.5 ft</span>
       </div>
 
       <div class="plant-card" style="border-left-color: #90a860;">
         <h3>Pussytoes</h3>
         <div class="botanical">Antennaria parvifolia</div>
         <div class="details">
-          A delicate native ground cover that forms low silvery-green mats just 2 inches tall. Clusters of fuzzy pink-white flower heads in spring. Spreads slowly to fill gaps along the paver edge. Despite its small size, Pussytoes is ecologically important — it's a larval host plant for American Lady butterflies and a nectar source for tiny native bees that larger plants can't serve.
+          A delicate native ground cover that forms low silvery-green mats just 2 inches tall. Clusters of fuzzy pink-white flower heads in spring. Spreads slowly by stolons to fill gaps along the paver edge — give it 2-3 years to form a solid mat. Despite its small size, Pussytoes is ecologically important — it's a larval host plant for American Lady butterflies and a nectar source for tiny native bees (including mining bees and small sweat bees) that larger flowers can't serve. The silvery foliage also provides a beautiful contrast to the green siding.
         </div>
         <div class="wildlife-row">
           <span class="wildlife-badge">American Lady host plant</span>
@@ -448,6 +534,27 @@
         <span class="tag tag-host">Butterfly larval host</span>
         <span class="tag tag-size">2" tall, spreading</span>
       </div>
+
+      <div class="plant-card" style="border-left-color: #9868c0;">
+        <h3>Pasque Flower</h3>
+        <div class="botanical">Pulsatilla patens</div>
+        <div class="details">
+          <strong>Colorado's state flower</strong> and one of the first wildflowers to bloom on the Front Range — often pushing through late snow in February-April. Fuzzy purple blooms with golden stamens open in the cold when almost nothing else is flowering, providing <strong>critical early-season pollen and nectar</strong> for queen bumble bees and other early-emerging native bees that are desperately searching for food after winter. Goes dormant by early summer, leaving space for neighboring plants to expand into. The feathery seed heads that follow the flowers are ornamental in their own right. Place near the accent rock for some thermal protection.
+        </div>
+        <div class="wildlife-row">
+          <span class="wildlife-badge">Early-season bumble bees</span>
+          <span class="wildlife-badge">Mining bees</span>
+          <span class="wildlife-badge">First pollen of the year</span>
+        </div>
+        <span class="tag tag-native">CO Native</span>
+        <span class="tag tag-state">Colorado state flower</span>
+        <span class="tag tag-pollinator">Critical early food</span>
+        <span class="tag tag-size">6-10" tall, dormant by summer</span>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 16px;">
+      <p><strong>Why Penstemon strictus instead of P. pinifolius?</strong> The original design specified Pineleaf Penstemon (<em>P. pinifolius</em>), which is native to New Mexico and Arizona — not Colorado. While it grows well here, it breaks the "100% Colorado native" rule. Rocky Mountain Penstemon is abundant in Front Range foothills, equally drought-tolerant, and attracts the same pollinators. If you specifically want red hummingbird flowers, consider <em>Penstemon barbatus</em> (Scarlet Bugle) — native to Colorado mountains, red tubular flowers, 18-30" tall.</p>
     </div>
   </section>
 
@@ -455,52 +562,59 @@
   <section>
     <h2>Seasonal Bloom &amp; Wildlife Calendar</h2>
     <div class="card">
-      <p style="font-size:0.88em; color:#666; margin-bottom:14px;">This combination provides continuous food sources from April through October and winter bird forage — no gap in the ecological chain.</p>
-      <svg viewBox="0 0 580 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
+      <p style="font-size:0.88em; color:#666; margin-bottom:14px;">This six-species combination provides continuous food sources from <strong>February through October</strong> and winter bird forage — no gap in the ecological chain. The early Pasque Flower fills the critical late-winter/early-spring gap when emerging bees are most desperate for food.</p>
+      <svg viewBox="0 0 620 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
         <!-- Month labels -->
-        <text x="30" y="18" font-size="9.5" fill="#888" text-anchor="middle">APR</text>
-        <text x="100" y="18" font-size="9.5" fill="#888" text-anchor="middle">MAY</text>
-        <text x="170" y="18" font-size="9.5" fill="#888" text-anchor="middle">JUN</text>
-        <text x="240" y="18" font-size="9.5" fill="#888" text-anchor="middle">JUL</text>
-        <text x="310" y="18" font-size="9.5" fill="#888" text-anchor="middle">AUG</text>
-        <text x="380" y="18" font-size="9.5" fill="#888" text-anchor="middle">SEP</text>
-        <text x="450" y="18" font-size="9.5" fill="#888" text-anchor="middle">OCT</text>
-        <text x="520" y="18" font-size="9.5" fill="#888" text-anchor="middle">NOV+</text>
-        <line x1="0" y1="25" x2="555" y2="25" stroke="#e0d8cc" stroke-width="0.5"/>
+        <text x="10" y="18" font-size="9.5" fill="#888" text-anchor="middle">FEB</text>
+        <text x="70" y="18" font-size="9.5" fill="#888" text-anchor="middle">MAR</text>
+        <text x="130" y="18" font-size="9.5" fill="#888" text-anchor="middle">APR</text>
+        <text x="190" y="18" font-size="9.5" fill="#888" text-anchor="middle">MAY</text>
+        <text x="250" y="18" font-size="9.5" fill="#888" text-anchor="middle">JUN</text>
+        <text x="310" y="18" font-size="9.5" fill="#888" text-anchor="middle">JUL</text>
+        <text x="370" y="18" font-size="9.5" fill="#888" text-anchor="middle">AUG</text>
+        <text x="430" y="18" font-size="9.5" fill="#888" text-anchor="middle">SEP</text>
+        <text x="490" y="18" font-size="9.5" fill="#888" text-anchor="middle">OCT</text>
+        <text x="560" y="18" font-size="9.5" fill="#888" text-anchor="middle">NOV+</text>
+        <line x1="0" y1="25" x2="590" y2="25" stroke="#e0d8cc" stroke-width="0.5"/>
+
+        <!-- Pasque Flower (earliest!) -->
+        <rect x="0" y="34" width="140" height="20" rx="10" fill="#9868c0" opacity="0.45"/>
+        <text x="70" y="48" text-anchor="middle" font-size="8" fill="#3a1860" font-weight="600">Pasque Flower bloom</text>
+        <text x="600" y="48" font-size="7.5" fill="#555">queen bumble bees</text>
 
         <!-- Pussytoes -->
-        <rect x="0" y="34" width="140" height="20" rx="10" fill="#c8dca0" opacity="0.6"/>
-        <text x="70" y="48" text-anchor="middle" font-size="8" fill="#3a5a18" font-weight="600">Pussytoes bloom</text>
-        <text x="560" y="48" font-size="7.5" fill="#555">small bees</text>
+        <rect x="90" y="62" width="120" height="20" rx="10" fill="#c8dca0" opacity="0.6"/>
+        <text x="150" y="76" text-anchor="middle" font-size="8" fill="#3a5a18" font-weight="600">Pussytoes bloom</text>
+        <text x="600" y="76" font-size="7.5" fill="#555">small bees</text>
 
         <!-- Penstemon -->
-        <rect x="70" y="62" width="280" height="20" rx="10" fill="#d05050" opacity="0.4"/>
-        <text x="210" y="76" text-anchor="middle" font-size="8" fill="#7a2020" font-weight="600">Pineleaf Penstemon bloom</text>
-        <text x="560" y="76" font-size="7.5" fill="#555">hummingbirds</text>
+        <rect x="160" y="90" width="150" height="20" rx="10" fill="#6a5ab0" opacity="0.35"/>
+        <text x="235" y="104" text-anchor="middle" font-size="8" fill="#2a1a60" font-weight="600">Rocky Mtn Penstemon bloom</text>
+        <text x="600" y="104" font-size="7.5" fill="#555">hummingbirds</text>
 
         <!-- Dwarf Lead Plant -->
-        <rect x="140" y="90" width="140" height="20" rx="10" fill="#6a9a50" opacity="0.4"/>
-        <text x="210" y="104" text-anchor="middle" font-size="8" fill="#2a5a10" font-weight="600">Lead Plant bloom</text>
-        <text x="560" y="104" font-size="7.5" fill="#555">native bees</text>
+        <rect x="220" y="118" width="120" height="20" rx="10" fill="#6a9a50" opacity="0.4"/>
+        <text x="280" y="132" text-anchor="middle" font-size="8" fill="#2a5a10" font-weight="600">Lead Plant bloom</text>
+        <text x="600" y="132" font-size="7.5" fill="#555">native bees</text>
 
         <!-- Butterfly Milkweed -->
-        <rect x="140" y="118" width="210" height="20" rx="10" fill="#e8884c" opacity="0.45"/>
-        <text x="245" y="132" text-anchor="middle" font-size="8" fill="#7a3010" font-weight="600">Butterfly Milkweed bloom</text>
-        <text x="560" y="132" font-size="7.5" fill="#a03030" font-weight="600">monarchs!</text>
+        <rect x="220" y="146" width="190" height="20" rx="10" fill="#e8884c" opacity="0.45"/>
+        <text x="315" y="160" text-anchor="middle" font-size="8" fill="#7a3010" font-weight="600">Butterfly Milkweed bloom</text>
+        <text x="600" y="160" font-size="7.5" fill="#a03030" font-weight="600">monarchs!</text>
 
         <!-- Blanket Flower -->
-        <rect x="100" y="146" width="350" height="20" rx="10" fill="#e8c840" opacity="0.45"/>
-        <text x="275" y="160" text-anchor="middle" font-size="8" fill="#6a5010" font-weight="600">Blanket Flower bloom — longest season</text>
-        <text x="560" y="160" font-size="7.5" fill="#555">all pollinators</text>
+        <rect x="190" y="174" width="300" height="20" rx="10" fill="#e8c840" opacity="0.45"/>
+        <text x="340" y="188" text-anchor="middle" font-size="8" fill="#6a5010" font-weight="600">Blanket Flower bloom — longest season</text>
+        <text x="600" y="188" font-size="7.5" fill="#555">all pollinators</text>
 
         <!-- Seed heads for birds (winter) -->
-        <rect x="350" y="174" width="205" height="20" rx="10" fill="#c8b888" opacity="0.4"/>
-        <text x="452" y="188" text-anchor="middle" font-size="8" fill="#6a5a30" font-weight="600">Seed heads — goldfinches, sparrows</text>
-        <text x="560" y="188" font-size="7.5" fill="#555">songbirds</text>
+        <rect x="400" y="202" width="190" height="20" rx="10" fill="#c8b888" opacity="0.4"/>
+        <text x="495" y="216" text-anchor="middle" font-size="8" fill="#6a5a30" font-weight="600">Seed heads — goldfinches, sparrows</text>
+        <text x="600" y="216" font-size="7.5" fill="#555">songbirds</text>
 
         <!-- Ground-nesting bees -->
-        <rect x="30" y="202" width="350" height="18" rx="9" fill="#d8cca8" opacity="0.4"/>
-        <text x="205" y="214" text-anchor="middle" font-size="7.5" fill="#8a7a50" font-style="italic">Bare soil patches active — ground-nesting bees (Apr–Sep)</text>
+        <rect x="100" y="230" width="330" height="18" rx="9" fill="#d8cca8" opacity="0.4"/>
+        <text x="265" y="242" text-anchor="middle" font-size="7.5" fill="#8a7a50" font-style="italic">Bare soil patches active — ground-nesting bees (Apr-Sep)</text>
       </svg>
     </div>
   </section>
@@ -509,33 +623,64 @@
   <section>
     <h2>What This Tiny Bed Supports</h2>
     <div class="card">
-      <p style="font-size: 0.92em; color:#444; margin-bottom: 16px;">Here's a snapshot of the ecological web this 6.75 sq ft bed can support:</p>
+      <p style="font-size: 0.92em; color:#444; margin-bottom: 16px;">Here's the ecological web this 6.75 sq ft bed can support — each species plays a distinct role, and several form mutually beneficial relationships:</p>
 
       <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div style="background:#fdf8f0; border-radius:10px; padding:14px;">
           <strong style="color:#c06830; font-size:0.9em;">Monarchs &amp; Swallowtails</strong>
-          <p style="font-size:0.82em; color:#666; margin-top:4px;">Butterfly Milkweed is the larval host — caterpillars literally cannot survive without it. Pussytoes hosts American Lady butterflies. Blanket Flower and Penstemon provide adult nectar.</p>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">Butterfly Milkweed is the larval host — caterpillars literally cannot survive without it. Pussytoes hosts American Lady butterflies. Blanket Flower and Penstemon provide adult nectar. The Front Range is on the western Monarch migration corridor.</p>
         </div>
         <div style="background:#f0f5e8; border-radius:10px; padding:14px;">
           <strong style="color:#3a6820; font-size:0.9em;">Native Bees (dozens of species)</strong>
-          <p style="font-size:0.82em; color:#666; margin-top:4px;">Lead Plant and Blanket Flower have open/accessible flower shapes serving generalist bees. Bare soil patches provide nesting sites for the 70% of Colorado bees that nest underground.</p>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">Lead Plant and Blanket Flower have open/accessible flower shapes serving generalist bees. Penstemon serves long-tongued specialists. Bare soil patches provide nesting sites for the 70% of Colorado bees that nest underground. Pasque Flower feeds the first bees of the year.</p>
         </div>
         <div style="background:#eef0f8; border-radius:10px; padding:14px;">
           <strong style="color:#2a4a7a; font-size:0.9em;">Hummingbirds</strong>
-          <p style="font-size:0.82em; color:#666; margin-top:4px;">Pineleaf Penstemon's tubular red flowers are evolved specifically for hummingbird pollination. Butterfly Milkweed also attracts them. Both bloom through peak hummingbird season (Jun–Aug).</p>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">Rocky Mountain Penstemon's tubular blue-purple flowers attract Broad-tailed and Rufous Hummingbirds. Butterfly Milkweed's orange clusters also draw them. Combined bloom covers the full hummingbird season (May-August on the Front Range).</p>
         </div>
         <div style="background:#f8f5f0; border-radius:10px; padding:14px;">
           <strong style="color:#6a5a30; font-size:0.9em;">Songbirds</strong>
-          <p style="font-size:0.82em; color:#666; margin-top:4px;">Blanket Flower and Lead Plant seed heads attract goldfinches, sparrows, and juncos through fall and winter. Leave seed heads standing — don't deadhead in fall.</p>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">Blanket Flower and Lead Plant seed heads attract American Goldfinches, Dark-eyed Juncos, and House Finches through fall and winter. Leave seed heads standing — don't deadhead in fall. The foundation wall also provides wind shelter for feeding birds.</p>
         </div>
         <div style="background:#f5f0f5; border-radius:10px; padding:14px;">
           <strong style="color:#5a4a6a; font-size:0.9em;">Beneficial Predatory Insects</strong>
-          <p style="font-size:0.82em; color:#666; margin-top:4px;">The native accent rock provides daytime shelter for ground beetles, spiders, and predatory wasps that control pest populations. Yarrow-like foliage on Pussytoes shelters tiny predators.</p>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">The native accent rock provides daytime shelter for ground beetles, spiders, and predatory wasps that control pest populations naturally. The decomposed granite surface near the wall creates hunting corridors for ground beetles. This is your natural pest control.</p>
         </div>
         <div style="background:#f8f0f0; border-radius:10px; padding:14px;">
-          <strong style="color:#7a3030; font-size:0.9em;">Hawk Moths &amp; Night Pollinators</strong>
-          <p style="font-size:0.82em; color:#666; margin-top:4px;">Penstemon and Milkweed attract sphinx/hawk moths at dusk. These are important but often-overlooked pollinators — Colorado has 100+ species.</p>
+          <strong style="color:#7a3030; font-size:0.9em;">Early-Season Pollinators</strong>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">Pasque Flower's February-April bloom is critical — queen bumble bees emerging from hibernation need immediate food. Without early pollen sources, queens may fail to establish new colonies. This one plant anchors the entire spring food web.</p>
         </div>
+        <div style="background:#f0f8f5; border-radius:10px; padding:14px;">
+          <strong style="color:#2a6a5a; font-size:0.9em;">Soil Ecology</strong>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">Dwarf Lead Plant fixes atmospheric nitrogen through root nodule bacteria, slowly enriching the soil for neighboring plants. Milkweed's deep taproot breaks up compacted subsoil. Pussytoes' stolons stabilize the surface. The plants improve their own habitat over time.</p>
+        </div>
+        <div style="background:#f8f5f8; border-radius:10px; padding:14px;">
+          <strong style="color:#6a3060; font-size:0.9em;">Hawk Moths &amp; Night Pollinators</strong>
+          <p style="font-size:0.82em; color:#666; margin-top:4px;">Penstemon and Milkweed attract sphinx/hawk moths at dusk — important but often-overlooked pollinators. Colorado has 100+ moth species active as pollinators. The foundation wall's retained warmth extends their evening activity window.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YEAR-BY-YEAR VISION -->
+  <section>
+    <h2>What to Expect: Year 1 through Year 3+</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Native gardens don't look like instant landscaping — and that's fine. The first year, roots are growing deep while tops look sparse. By year three, you'll have a self-sustaining micro-ecosystem. Don't give up after year one.</p>
+    <div class="vision-grid">
+      <div class="vision-card">
+        <h3>Year 1 — Establishing</h3>
+        <div class="vision-sub">"Roots before shoots"</div>
+        <p>The garden looks sparse and young — that's normal. Plants are investing energy in root systems, not showy tops. Butterfly Milkweed may not appear until June. Pussytoes starts as small plugs with gaps between them. Blanket Flower and Penstemon will bloom their first year but modestly. The bare soil patches will look intentionally empty (they are). You'll water 2-3x per week for the first month, then taper off. Some weeds will appear in open ground — hand-pull them gently. Expect 30-40% of mature visual impact.</p>
+      </div>
+      <div class="vision-card">
+        <h3>Year 2 — Filling In</h3>
+        <div class="vision-sub">"First real show"</div>
+        <p>Plants double in size. Lead Plant hits its stride with full flower spikes. Milkweed blooms reliably now — watch for Monarch visitors. Pussytoes mats are spreading to connect the gaps. Penstemon produces dense flower spikes. Blanket Flower may self-seed into open areas. You'll notice increased bee and butterfly activity. Watering drops to deep soaks during extended dry spells only. The ecosystem is starting to self-regulate — ladybugs and lacewings appear if aphids do. Expect 65-75% of mature visual impact.</p>
+      </div>
+      <div class="vision-card">
+        <h3>Year 3+ — Self-Sustaining</h3>
+        <div class="vision-sub">"The payoff"</div>
+        <p>The bed is a thriving micro-habitat. Pussytoes forms a solid silver-green mat along the paver edge. Lead Plant may need light pruning to stay in bounds. Blanket Flower seedlings may volunteer in nearby cracks (let them or transplant). The bare soil patches are used by nesting bees — look for tiny holes with excavated soil mounds. Almost zero supplemental watering needed. Leave stems standing through winter for overwintering insects and bird seed. The bed now generates more ecological value per square foot than most entire yards.</p>
       </div>
     </div>
   </section>
@@ -550,110 +695,167 @@
       <tbody>
         <tr>
           <td><strong>Dwarf Lead Plant</strong> <span class="cat">native plant</span></td>
-          <td>1 × 1-gallon pot (native nursery)</td>
-          <td style="text-align:right">$12–18</td>
+          <td>1 x 1-gallon pot (native nursery)</td>
+          <td style="text-align:right">$12-18</td>
         </tr>
         <tr>
           <td><strong>Butterfly Milkweed</strong> <span class="cat">native plant</span></td>
-          <td>1 × 1-gallon pot (true species, not cultivar)</td>
-          <td style="text-align:right">$10–15</td>
+          <td>1 x 1-gallon pot (true species, not cultivar)</td>
+          <td style="text-align:right">$10-15</td>
         </tr>
         <tr>
-          <td><strong>Pineleaf Penstemon</strong> <span class="cat">native plant</span></td>
-          <td>1 × 1-gallon pot</td>
-          <td style="text-align:right">$10–14</td>
+          <td><strong>Rocky Mountain Penstemon</strong> <span class="cat">native plant</span></td>
+          <td>1 x 1-gallon pot (<em>P. strictus</em>, true species)</td>
+          <td style="text-align:right">$10-14</td>
         </tr>
         <tr>
           <td><strong>Blanket Flower</strong> <span class="cat">native plant</span></td>
-          <td>1 × 1-gallon pot (true species <em>G. aristata</em>)</td>
-          <td style="text-align:right">$8–12</td>
+          <td>1 x 1-gallon pot (true species <em>G. aristata</em>)</td>
+          <td style="text-align:right">$8-12</td>
         </tr>
         <tr>
           <td><strong>Pussytoes</strong> <span class="cat">native groundcover</span></td>
-          <td>3 × 4" pots (or 1 flat of plugs)</td>
-          <td style="text-align:right">$10–18</td>
+          <td>3 x 4" pots (or 1 flat of plugs)</td>
+          <td style="text-align:right">$10-18</td>
+        </tr>
+        <tr>
+          <td><strong>Pasque Flower</strong> <span class="cat">native wildflower</span></td>
+          <td>1 x 4" pot or bare root (plant in fall or very early spring)</td>
+          <td style="text-align:right">$8-14</td>
         </tr>
         <tr>
           <td><strong>Native Colorado stone</strong> <span class="cat">hardscape</span></td>
-          <td>1–2 pieces, 6–10" (local landscape supply)</td>
-          <td style="text-align:right">$5–15</td>
+          <td>1-2 pieces, 6-10" (local landscape supply)</td>
+          <td style="text-align:right">$5-15</td>
         </tr>
         <tr>
-          <td><strong>Cedar bark mulch</strong> <span class="cat">ground cover</span></td>
-          <td>Small bag — back strip only, thin layer</td>
-          <td style="text-align:right">$5–8</td>
+          <td><strong>Decomposed granite</strong> <span class="cat">ground surface</span></td>
+          <td>Small bag — wall-side strip, thin layer for drainage</td>
+          <td style="text-align:right">$5-10</td>
         </tr>
         <tr>
           <td><strong>Coarse sand</strong> <span class="cat">bee habitat</span></td>
           <td>Small bag — for bare soil patches</td>
-          <td style="text-align:right">$4–6</td>
+          <td style="text-align:right">$4-6</td>
         </tr>
         <tr>
           <td><strong>Soil amendment</strong> <span class="cat">prep</span></td>
-          <td>Small bag compost + perlite</td>
-          <td style="text-align:right">$6–10</td>
+          <td>Small bag perlite (skip heavy compost — natives prefer lean soil)</td>
+          <td style="text-align:right">$5-8</td>
         </tr>
         <tr class="total-row">
           <td colspan="2">Estimated Total</td>
-          <td style="text-align:right">$70–$116</td>
+          <td style="text-align:right">$77-$130</td>
         </tr>
       </tbody>
     </table>
 
     <div class="tip-box" style="margin-top:14px;">
-      <h3>Where to Buy Native Species</h3>
-      <p>For true native species (not cultivars), look for: <strong>Harlequin's Gardens</strong> (Boulder), <strong>Chatfield Farms native plant sale</strong> (Denver Botanic Gardens, May), <strong>Colorado Native Plant Society sales</strong> (conps.org), or <strong>Resource Central's Garden In A Box</strong> kits (resourcecentral.org). Avoid big-box store "native" plants — they're often cultivars treated with neonicotinoid pesticides that harm the very pollinators you're trying to support. Ask nurseries specifically for pesticide-free stock.</p>
+      <h3>Where to Buy True Native Species</h3>
+      <p>For true native species (not cultivars), these are the best Front Range sources: <strong>Harlequin's Gardens</strong> (Boulder — best native selection on the Front Range), <strong>Chatfield Farms native plant sale</strong> (Denver Botanic Gardens, usually May — sells out fast, arrive early), <strong>Colorado Native Plant Society sales</strong> (conps.org — spring and fall), <strong>Resource Central's Garden In A Box</strong> (resourcecentral.org — curated native kits), and <strong>High Plains Environmental Center</strong> (Loveland). Avoid big-box store "native" plants — they're often cultivars treated with neonicotinoid pesticides that harm the very pollinators you're trying to support. <strong>Ask nurseries specifically for pesticide-free, true wild-type species.</strong></p>
     </div>
 
     <div class="callout" style="margin-top: 14px;">
-      <p><strong>Remaining budget (~$85–130):</strong> Consider adding a small native bee house ($15–20), a flat sandstone stepping stone for access ($10–15), or a solar spotlight to highlight the bed at night ($15–20). Or save it for a second native planting pocket elsewhere in the yard.</p>
+      <p><strong>Remaining budget (~$70-120):</strong> Consider adding a small native bee house ($15-20 — mount on the siding above the bed), a flat sandstone stepping stone for access ($10-15), or save the remainder for a second native planting pocket elsewhere in the yard. A small solar-powered drip irrigation timer ($25) could automate the establishment watering period.</p>
     </div>
   </section>
 
   <!-- INSTALLATION STEPS -->
   <section>
     <h2>Installation Steps</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;"><strong>Best planting window:</strong> Late April through mid-May (after last hard frost, before summer heat). Pasque Flower can be planted in early spring or fall. Total install time: ~3-4 hours for one person.</p>
     <div class="steps">
       <div class="step">
-        <h3>Clear &amp; Remove</h3>
-        <p>Pull all dead weeds and old gravel out to bare soil. Remove any landscape fabric — you won't use it in this design (it blocks ground-nesting bees). Takes about 30 minutes with a hand trowel.</p>
+        <h3>Clear &amp; Assess</h3>
+        <p>Pull all dead weeds and old gravel out to bare soil. Remove any landscape fabric — it blocks ground-nesting bees and roots. Check for buried irrigation lines or utilities. Inspect the siding-to-soil gap — measure the clearance and note the current grade direction. Takes about 30-45 minutes with a hand trowel and bucket.</p>
+      </div>
+      <div class="step">
+        <h3>Grade &amp; Protect Foundation</h3>
+        <p>This step is critical for the house. Ensure the bed surface slopes <strong>away</strong> from the foundation wall at a minimum 2% grade (about 1/4" drop per foot toward the walkway). If current grade is flat or slopes toward the house, add soil to the wall side and remove from the walkway side until the slope is correct. Maintain at least <strong>4 inches of clearance</strong> between the final soil/DG surface and the bottom of the green siding.</p>
       </div>
       <div class="step">
         <h3>Amend Soil Lightly</h3>
-        <p>Native plants generally prefer lean soil, so don't over-amend. Mix in just a little compost and perlite to the top 6". For the two bare soil patches, mix coarse sand into the top 3" to create the sandy, well-drained texture ground-nesting bees prefer.</p>
+        <p>Native plants prefer lean soil — <strong>do not over-amend</strong>. Mix a small amount of perlite into the top 6" to improve drainage (these plants hate "wet feet"). Skip heavy compost — the alkaline, low-organic-matter soil here is close to what these species evolved in. For the two bare soil patches, mix coarse sand into the top 3" to create the well-drained, sandy texture that ground-nesting bees prefer.</p>
       </div>
       <div class="step">
-        <h3>Place the Rock First</h3>
-        <p>Position your 1–2 native accent rocks in the middle zone. Partially bury them so they look natural (about 1/3 buried). Spaces between and under the rock edges will become insect shelter.</p>
+        <h3>Place Rock &amp; DG First</h3>
+        <p>Position your 1-2 native accent rocks in the middle zone. Partially bury them (about 1/3 below grade) so they look natural — spaces underneath and beside them become insect shelter. Spread a thin layer (1") of decomposed granite in the wall-side strip. The DG should not touch the siding — keep it 4-6" below the siding edge.</p>
       </div>
       <div class="step">
         <h3>Plant Back to Front</h3>
-        <p>Start with Dwarf Lead Plant (wall side, upper end, 4" from wall) and Butterfly Milkweed (wall side, lower end). Then Pineleaf Penstemon (middle zone, upper) and Blanket Flower (middle zone, lower). Finish with Pussytoes plugs along the walkway edge, spaced ~8" apart. Water everything deeply.</p>
+        <p><strong>Back row (wall-side, in DG zone):</strong> Dwarf Lead Plant at the upper end (6" from wall, 6" from corner). Butterfly Milkweed at the lower end (6" from wall). <strong>Middle zone:</strong> Rocky Mountain Penstemon (upper middle). Pasque Flower (between Penstemon and first bare soil patch, near rock for thermal mass). Blanket Flower (lower middle). <strong>Front zone:</strong> Pussytoes plugs along the walkway edge, spaced ~8" apart. Plant all at crown level or slightly high — never bury crowns. Water everything deeply.</p>
       </div>
       <div class="step">
-        <h3>Apply Mulch &mdash; Selectively</h3>
-        <p>Spread a thin layer (1–2" max) of cedar bark mulch in the wall-side strip around the Lead Plant and Milkweed only. Leave the middle zone with exposed sandy soil patches between the rock and plants. Leave the walkway-side zone for Pussytoes to spread into naturally.</p>
+        <h3>Establish Bare Soil Patches</h3>
+        <p>Between plants in the middle zone, create two clear patches of exposed sandy soil (6" x 8" minimum each). These are not leftover space — they're intentional habitat. Smooth the surface lightly and ensure good sun exposure reaches the ground. Mark them with a small flat stone at the edge so you remember not to mulch over them.</p>
       </div>
       <div class="step">
-        <h3>Water &amp; Establish</h3>
-        <p>Deep water 2–3 times/week for 3–4 weeks. Note: Butterfly Milkweed is slow to emerge in spring (often late May) — don't panic if it looks dead. After establishment, these natives need almost no supplemental water. Total install time: ~2–3 hours.</p>
+        <h3>Water &amp; Establish (3-4 weeks)</h3>
+        <p>Deep water 2-3 times per week for 3-4 weeks. Water at the base of each plant, not overhead. The rain shadow from the eaves means natural rainfall won't help much during establishment. After 4 weeks, reduce to once per week. After 8 weeks, stop scheduled watering — these natives should be self-sufficient except during extreme drought (2+ weeks without any rain in summer). <strong>Butterfly Milkweed is slow to emerge in spring (often late May) — don't panic if it looks dead.</strong></p>
       </div>
     </div>
   </section>
 
   <!-- SEASONAL CARE -->
   <section>
-    <h2>Seasonal Care (Minimal!)</h2>
+    <h2>Seasonal Care Calendar</h2>
     <div class="card">
-      <p style="font-size: 0.92em; color: #555;"><strong>Spring (March–April):</strong> Resist the urge to clean up! Leave last year's dead stems until temperatures are consistently above 50°F — overwintering beneficial insects are still sheltering inside. Then cut back dead growth. Butterfly Milkweed won't emerge until late May — mark it so you don't accidentally plant over it.</p>
-      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>Summer (May–September):</strong> Almost nothing. Enjoy watching the pollinators. Deadhead Blanket Flower if you want continuous blooms, OR leave some spent heads for goldfinches — your call. No pesticides, ever.</p>
-      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>Fall (October–November):</strong> Leave everything standing. Seed heads feed birds. Hollow stems shelter overwintering insects. The Pussytoes stays evergreen. This is when the bed earns its ecological keep.</p>
-      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>Watering:</strong> After year one, these natives are extremely drought-adapted. Occasional deep watering during extended dry spells only. The Milkweed and Lead Plant have deep taproots that access moisture other plants can't reach.</p>
+      <p style="font-size: 0.92em; color: #555;"><strong>February-March:</strong> Watch for Pasque Flower — it may bloom through late snow. Do NOT clean up last year's dead stems yet. Overwintering beneficial insects (native bees, beetles, lacewings) are still sheltering inside hollow stems and under leaf litter. Wait until daytime temps are consistently above 50 degrees F.</p>
+      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>April:</strong> Once temps are consistently above 50 degrees F, cut back dead stems to 4-6" stubs (leave some for late-emerging insects). Pussytoes begins blooming. Mark the Milkweed location with a stone — it won't show until late May. Pasque Flower is finishing bloom and developing feathery seed heads.</p>
+      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>May:</strong> Penstemon begins its blue-purple spike display. Lead Plant leafs out (it's one of the last to break dormancy — this is normal). Milkweed may begin emerging late in the month. Hand-pull any weeds that appear in bare soil patches — be careful not to disturb bee nesting holes (look for small round holes ~1/4" diameter with tiny soil mounds).</p>
+      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>June-August:</strong> Peak season. Enjoy watching the pollinators. Blanket Flower hits its stride. Milkweed blooms — watch for Monarch eggs (tiny white dots) on leaf undersides. If you see aphids on the Milkweed, <strong>leave them</strong> — ladybugs and lacewings will find them within days. Deadhead Blanket Flower to extend bloom, OR leave some spent heads for goldfinches — your call. Pasque Flower has gone dormant — its spot may look empty, which is fine.</p>
+      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>September-October:</strong> Blanket Flower continues until frost. Seed heads forming on Lead Plant and Blanket Flower — goldfinches arrive. Pussytoes stays evergreen. Begin leaving ALL spent stems and seed heads standing for winter.</p>
+      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>November-January:</strong> Do nothing. Seed heads feed winter birds. Hollow stems shelter overwintering insects. Pussytoes' silver mats and the evergreen Penstemon basal foliage provide winter visual interest. The accent rock retains daytime warmth, creating a micro-shelter for dormant insects underneath.</p>
+      <p style="font-size: 0.92em; color: #555; margin-top: 12px;"><strong>Watering (after year 1):</strong> Almost none. These natives are drought-adapted to Colorado's 15-17" average annual precipitation. Deep-water only during extended dry spells (2+ weeks without rain in summer). Milkweed and Lead Plant have deep taproots that access moisture other plants can't reach. Over-watering causes root rot and is the #1 killer of xeric natives in home gardens.</p>
     </div>
+  </section>
 
-    <div class="tip-box" style="margin-top: 14px;">
-      <h3>The #1 Rule for a Biodiversity Garden</h3>
-      <p><strong>No pesticides. Period.</strong> Even "organic" insecticides kill beneficial insects. Neonicotinoid-treated plants (common at big-box stores) are toxic to pollinators for years. Buy from native plant nurseries that guarantee pesticide-free stock. If you see aphids on the milkweed — that's food for ladybugs and lacewings. The ecosystem will self-regulate.</p>
+  <!-- COMMON MISTAKES -->
+  <section>
+    <h2>Common Mistakes to Avoid</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">These are the errors that kill native pocket gardens — mostly well-intentioned habits from conventional gardening that don't apply here.</p>
+    <div class="mistake-grid">
+      <div class="mistake-card">
+        <h4>Over-watering</h4>
+        <p>The #1 killer. These plants evolved with 15" of annual rain. After establishment, supplemental water causes root rot, fungal disease, and floppy growth. Water deeply but infrequently — or not at all.</p>
+      </div>
+      <div class="mistake-card">
+        <h4>Over-amending the soil</h4>
+        <p>Rich, composted "garden soil" kills xeric natives. They evolved in lean, rocky, alkaline ground. Adding too much organic matter retains moisture and changes soil chemistry. A handful of perlite is all you need.</p>
+      </div>
+      <div class="mistake-card">
+        <h4>Fall cleanup</h4>
+        <p>Cutting down dead stems and raking leaves in fall destroys overwintering habitat for the very insects and birds you're trying to support. Leave everything standing until late April.</p>
+      </div>
+      <div class="mistake-card">
+        <h4>Buying cultivars</h4>
+        <p>"Mesa Red" Blanket Flower, "Dark Towers" Penstemon, or "Hello Yellow" Milkweed are cultivars with reduced nectar, fewer flowers, or altered chemistry. Buy true wild-type species only.</p>
+      </div>
+      <div class="mistake-card">
+        <h4>Any pesticide — even "organic"</h4>
+        <p>Neem oil kills caterpillars. Bt kills butterfly larvae. Neonicotinoid-treated nursery plants are toxic for years. The ecosystem self-regulates if you let it. Aphids = ladybug food.</p>
+      </div>
+      <div class="mistake-card">
+        <h4>Thick mulch everywhere</h4>
+        <p>Over 2" of mulch smothers ground-nesting bees and blocks Pussytoes from spreading. Use DG near the wall for drainage, and leave mid-zone soil exposed. Bare ground is habitat, not neglect.</p>
+      </div>
+      <div class="mistake-card">
+        <h4>Planting too deep</h4>
+        <p>Xeric natives hate buried crowns — it leads to rot. Plant at soil level or slightly high. Milkweed, Lead Plant, and Penstemon are especially sensitive to being set too deep.</p>
+      </div>
+      <div class="mistake-card">
+        <h4>Giving up after year 1</h4>
+        <p>Native gardens look sparse the first year — plants are building root systems, not putting on a show. By year 3, the bed will be fuller and more alive than any instant landscaping. Be patient.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOLOGICAL DESIGN PRINCIPLES -->
+  <section>
+    <h2>The #1 Rule for a Biodiversity Garden</h2>
+    <div class="tip-box">
+      <h3>No pesticides. Period.</h3>
+      <p><strong>Even "organic" insecticides kill beneficial insects indiscriminately.</strong> Neonicotinoid-treated plants (common at big-box stores) are toxic to pollinators for years after application — the chemicals persist in soil and are taken up by roots. Buy exclusively from native plant nurseries that guarantee pesticide-free stock. If you see aphids on the milkweed — that's food for ladybugs and lacewings, which will arrive within days. If you see caterpillars eating leaves — that might be Monarch larvae doing exactly what you planted this bed for. The ecosystem will self-regulate if you let it. Your job is to plant the right species, stand back, and watch the food web assemble itself.</p>
     </div>
   </section>
 
@@ -661,20 +863,26 @@
   <section>
     <h2>Sources &amp; Resources</h2>
     <div class="card source-list">
-      <p><a href="https://resourcecentral.org/top-10-drought-tolerant-plants-for-colorado/" target="_blank">Resource Central — Top 10 Drought-Tolerant Plants for Colorado</a></p>
-      <p><a href="https://engagement.source.colostate.edu/top-20-drought-tolerant-perennial-flowers-colorado/" target="_blank">CSU Extension — Top 20 Drought-Tolerant Perennial Flowers for Colorado</a></p>
-      <p><a href="https://conps.org/" target="_blank">Colorado Native Plant Society</a></p>
+      <p><strong>Plant sourcing &amp; native nurseries:</strong></p>
+      <p><a href="https://harlequinsgardens.com/" target="_blank">Harlequin's Gardens (Boulder)</a> — Best native plant selection on the Front Range</p>
+      <p><a href="https://www.botanicgardens.org/chatfield-farms" target="_blank">Chatfield Farms / Denver Botanic Gardens</a> — Annual native plant sale (May)</p>
+      <p><a href="https://conps.org/" target="_blank">Colorado Native Plant Society</a> — Plant sales, workshops, native garden tours</p>
+      <p><a href="https://resourcecentral.org/" target="_blank">Resource Central</a> — Garden In A Box native plant kits</p>
+      <p style="margin-top: 10px;"><strong>Design &amp; ecological references:</strong></p>
       <p><a href="https://xerces.org/pollinator-conservation/pollinator-friendly-plant-lists" target="_blank">Xerces Society — Pollinator-Friendly Plant Lists</a></p>
       <p><a href="https://dnr.colorado.gov/native-pollinating-insects-health-study" target="_blank">Colorado DNR — Native Pollinating Insects Health Study</a></p>
       <p><a href="https://frontrange.wildones.org/" target="_blank">Wild Ones Front Range Chapter</a></p>
-      <p><a href="https://resourcecentral.org/" target="_blank">Resource Central — Garden In A Box Program</a></p>
-      <p><a href="https://nicksgardencenter.com/gardening-blog/low-maintenance-outdoor-plants-for-the-colorados-front-range/" target="_blank">Nick's Garden Center — Low-Maintenance Plants for Front Range</a></p>
+      <p><a href="https://engagement.source.colostate.edu/top-20-drought-tolerant-perennial-flowers-colorado/" target="_blank">CSU Extension — Drought-Tolerant Perennial Flowers for Colorado</a></p>
+      <p style="margin-top: 10px;"><strong>Research cited:</strong></p>
+      <p>White, A. (2016). "From Nursery to Nature: Evaluating Native Herbaceous Flowering Plants Versus Native Cultivars for Pollinator Habitat Restoration." University of Vermont.</p>
+      <p>Xerces Society for Invertebrate Conservation. "Nesting and Overwintering Habitat for Pollinators and Other Beneficial Insects."</p>
     </div>
   </section>
 
   <div class="footer">
-    Native Biodiversity Pocket Garden — Yard 26 &middot; Created March 2026<br>
-    <span style="font-size:0.9em;">Designed for maximum ecological value in minimum space</span>
+    Native Biodiversity Pocket Garden — Yard 26 &middot; Revised March 2026<br>
+    <span style="font-size:0.9em;">Multi-disciplinary design: landscape architecture, horticulture, ecology, soil science</span><br>
+    <span style="font-size:0.85em;">6 Colorado native species &middot; Feb-Oct continuous bloom &middot; 6.75 sq ft micro-ecosystem</span>
   </div>
 </div>
 

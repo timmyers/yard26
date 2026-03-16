@@ -6,6 +6,7 @@
 <title>Native Biodiversity Pocket Garden — Foundation Bed Design</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 48px; }
   body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; line-height: 1.65; }
 
   .hero {
@@ -18,6 +19,24 @@
   .hero .specs { display: flex; gap: 16px; justify-content: center; margin-top: 22px; flex-wrap: wrap; }
   .hero .spec { background: rgba(255,255,255,0.14); border-radius: 10px; padding: 9px 16px; font-size: 0.85em; }
   .hero .spec strong { display: block; font-size: 1.05em; }
+
+  /* Sticky nav */
+  .page-nav {
+    background: rgba(245,240,235,0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid #ddd8d0; position: sticky; top: 0; z-index: 100;
+    padding: 8px 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .page-nav ul {
+    display: flex; gap: 4px; list-style: none; max-width: 840px; margin: 0 auto; padding: 0 20px;
+    white-space: nowrap;
+  }
+  .page-nav a {
+    display: block; font-size: 0.72em; color: #555; text-decoration: none;
+    padding: 4px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s;
+    font-weight: 500;
+  }
+  .page-nav a:hover { background: #e0f0d0; color: #2a4a20; }
+  .page-nav a.nav-highlight { background: #3a5c30; color: white; font-weight: 600; }
 
   .container { max-width: 840px; margin: 0 auto; padding: 0 20px; }
   section { margin: 40px 0; }
@@ -214,10 +233,33 @@
   </div>
 </div>
 
+<nav class="page-nav">
+  <ul>
+    <li><a href="#status">Status</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#assessment">Assessment</a></li>
+    <li><a href="#solar">Solar</a></li>
+    <li><a href="#why-native">Why Native</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#layout">Layout</a></li>
+    <li><a href="#plants">Plants</a></li>
+    <li><a href="#bloom">Bloom Calendar</a></li>
+    <li><a href="#ecology">Ecology</a></li>
+    <li><a href="#timeline-vision">Year 1–3</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#buying">Buying Guide</a></li>
+    <li><a href="#install">Install</a></li>
+    <li><a href="#work-plan" class="nav-highlight">Work Plan</a></li>
+    <li><a href="#care">Care</a></li>
+    <li><a href="#mistakes">Mistakes</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ul>
+</nav>
+
 <div class="container">
 
   <!-- INITIAL STATUS -->
-  <section>
+  <section id="status">
     <h2>Initial Status — March 2026</h2>
     <div class="card" style="text-align: center;">
       <img src="foundation-bed-initial-status.jpg" alt="Foundation bed initial status — narrow strip along house wall corner with dead weeds and debris" class="status-photo">
@@ -228,7 +270,7 @@
   </section>
 
   <!-- COMPLETED VISION -->
-  <section>
+  <section id="vision">
     <h2>Completed Vision — Year 1 Late Summer</h2>
     <div class="card" style="text-align: center;">
       <img src="foundation-bed-vision-year1.png" alt="Rendering of the completed foundation bed at Year 1 — six Colorado native species with bare soil patches, decomposed granite, and native sandstone rock" class="status-photo">
@@ -239,7 +281,7 @@
   </section>
 
   <!-- SITE ASSESSMENT -->
-  <section>
+  <section id="assessment">
     <h2>Professional Site Assessment</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Before planting, a professional team evaluates the site from four disciplines: microclimate, soil, drainage, and light. This foundation corner has quirks that actually <em>favor</em> Colorado natives — if we work with them, not against them.</p>
 
@@ -273,7 +315,7 @@
   </section>
 
   <!-- GEOSPATIAL & SOLAR ANALYSIS -->
-  <section>
+  <section id="solar">
     <h2>Geospatial &amp; Solar Analysis</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Compass-verified wall bearings and GPS coordinates (39.5391°N, 105.0158°W) provide precise sun exposure data for this bed. The house walls create a defined sun window — understanding it drives every plant placement decision.</p>
 
@@ -356,7 +398,7 @@
   </section>
 
   <!-- WHY NATIVE -->
-  <section>
+  <section id="why-native">
     <h2>Why Go Native?</h2>
     <div class="card">
       <p style="font-size:0.92em; color:#444; margin-bottom:14px;">
@@ -395,7 +437,7 @@
   </section>
 
   <!-- DESIGN CONCEPT -->
-  <section>
+  <section id="design">
     <h2>Design Concept: L-Shaped Clusters</h2>
     <div class="card">
       <p style="font-size:0.92em; color:#444; margin-bottom: 14px;">
@@ -445,7 +487,7 @@
   </section>
 
   <!-- LAYOUT DIAGRAM -->
-  <section>
+  <section id="layout">
     <h2>Layout Plan</h2>
     <div class="card">
       <p style="font-size:0.88em; color:#666; margin-bottom:14px;">Top-down view. Foundation bed (28" wide × 84" long) in a house wall corner. Plants are organized into two L-shaped clusters along the 84" length — one at the corner end, one at the stairs end — with an open habitat zone in the center. Taller plants sit against the wall, shorter ones step forward. Pussytoes groundcover runs the full length along the paver edge.</p>
@@ -633,7 +675,7 @@
   </section>
 
   <!-- PLANT SELECTIONS -->
-  <section>
+  <section id="plants">
     <h2>Plant Selections — All Colorado Front Range Natives</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Every plant is native to the Colorado Front Range and chosen for specific ecological relationships — not just appearance. True wild-type species only (no cultivars), as research shows cultivars produce fewer flowers, less nectar, and attract significantly fewer pollinators. Each species was verified against USDA PLANTS and Colorado Natural Heritage Program range maps.</p>
 
@@ -747,7 +789,7 @@
   </section>
 
   <!-- BLOOM & WILDLIFE CALENDAR -->
-  <section>
+  <section id="bloom">
     <h2>Seasonal Bloom &amp; Wildlife Calendar</h2>
     <div class="card">
       <p style="font-size:0.88em; color:#666; margin-bottom:14px;">This six-species combination provides continuous food sources from <strong>February through October</strong> and winter bird forage — no gap in the ecological chain. The early Pasque Flower fills the critical late-winter/early-spring gap when emerging bees are most desperate for food.</p>
@@ -808,7 +850,7 @@
   </section>
 
   <!-- ECOLOGICAL RELATIONSHIPS -->
-  <section>
+  <section id="ecology">
     <h2>What This Tiny Bed Supports</h2>
     <div class="card">
       <p style="font-size: 0.92em; color:#444; margin-bottom: 16px;">Here's the ecological web this 16.3 sq ft bed can support — each species plays a distinct role, and several form mutually beneficial relationships:</p>
@@ -851,7 +893,7 @@
   </section>
 
   <!-- YEAR-BY-YEAR VISION -->
-  <section>
+  <section id="timeline-vision">
     <h2>What to Expect: Year 1 through Year 3+</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Native gardens don't look like instant landscaping — and that's fine. The first year, roots are growing deep while tops look sparse. By year three, you'll have a self-sustaining micro-ecosystem. Don't give up after year one.</p>
     <div class="vision-grid">
@@ -874,7 +916,7 @@
   </section>
 
   <!-- MATERIALS & BUDGET -->
-  <section>
+  <section id="budget">
     <h2>Materials &amp; Budget</h2>
     <table class="budget-table">
       <thead>
@@ -949,7 +991,7 @@
   </section>
 
   <!-- BUYING GUIDE -->
-  <section>
+  <section id="buying">
     <h2>Buying Guide</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;">All six plants have been confirmed on Harlequin's Gardens' inventory list. One trip to Boulder for plants, one trip to Home Depot for hardscape materials. Below: exactly what to ask for, what to avoid, when to go, and fallback substitutions.</p>
 
@@ -1071,7 +1113,7 @@
   </section>
 
   <!-- INSTALLATION STEPS -->
-  <section>
+  <section id="install">
     <h2>Installation Steps</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;"><strong>Best planting window:</strong> Late April through mid-May (after last hard frost, before summer heat). Pasque Flower can be planted in early spring or fall. Total install time: ~3-4 hours for one person.</p>
     <div class="steps">
@@ -1107,7 +1149,7 @@
   </section>
 
   <!-- PROJECT WORK PLAN -->
-  <section>
+  <section id="work-plan">
     <h2>Project Work Plan</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Six phases from site prep to first-season peak. Each phase is a self-contained work session with a clear goal, task checklist, and an image rendering prompt so you can visualize what the bed should look like when that phase is complete. Total hands-on time: ~7-8 hours spread over 4 months.</p>
 
@@ -1154,7 +1196,7 @@
               <li>Store all materials in a sheltered spot (garage or covered patio). Keep the Pasque Flower potted and watered — do not plant yet until Phase 2 is done.</li>
             </ul>
           </div>
-          <div class="render-prompt">Photorealistic eye-level photograph of a narrow empty garden bed (28 inches wide, 7 feet long) tucked into a house wall corner with green horizontal lap siding, Highlands Ranch Colorado suburban neighborhood. The bed is filled with dead brown weeds, scattered old gravel, and leaf debris. Exposed concrete foundation strip visible between the siding and the soil. L-shaped corner — long green wall on the left, short green wall across the top. Concrete stairs upper-right, grey concrete sidewalk along right side and bottom. A small potted purple Pasque Flower in a black nursery pot sits on the sidewalk next to the bed alongside a bag of decomposed granite and a few flat sandstone pieces, ready to be installed. Late afternoon March light, blue sky, dry Colorado spring, a few patches of old snow in the background lawn. Shot on iPhone, natural lighting.</div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow empty garden bed (28 inches wide, 7 feet long) tucked into a house wall corner with green horizontal lap siding, Colorado suburban home. The bed is filled with dead brown weeds, scattered old gravel, and leaf debris. Exposed concrete foundation strip visible between the siding and the soil. L-shaped corner — long green wall on the left, short green wall across the top. Concrete stairs upper-right, grey concrete sidewalk along right side and bottom. A small potted purple pasque flower in a black nursery pot sits on the sidewalk next to the bed alongside a bag of decomposed granite and a few flat sandstone pieces, ready to be installed. Late afternoon March light, blue sky, dry Colorado spring. Shot on iPhone, natural lighting.</div>
         </div>
       </div>
 
@@ -1180,7 +1222,7 @@
               <li><strong>Plant Pasque Flower</strong> (10 min) — Plant near the accent rock (thermal protection). Crown at soil level. Water deeply.</li>
             </ul>
           </div>
-          <div class="render-prompt">Photorealistic eye-level photograph of a freshly prepared narrow garden bed (28 inches wide, 7 feet long) tucked into a house wall corner with green horizontal lap siding, Highlands Ranch Colorado. The bed has been completely cleared — clean bare earth visible, properly graded sloping slightly away from the house. A thin strip of tan decomposed granite runs along the wall base. A natural sandstone accent rock (8 inches) sits partially buried in the center of the bed. Two or three thin flat sandstone pieces lean against the exposed concrete foundation between the siding and soil, softening the transition. Two small bare sandy soil patches flank the rock. One small purple Pasque Flower (Pulsatilla patens) with fuzzy stems is planted near the rock, blooming with violet-purple cup-shaped flowers. The rest of the bed is empty bare earth, ready for planting. Concrete stairs upper-right, grey sidewalk along right and bottom. Early April Colorado light, clear sky, fresh spring feel. Shot on iPhone, natural lighting.</div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a freshly prepared narrow garden bed (28 inches wide, 7 feet long) tucked into a house wall corner with green horizontal lap siding, Colorado Front Range suburb. The bed has been completely cleared — clean bare earth visible, properly graded sloping slightly away from the house. A thin strip of tan decomposed granite runs along the wall base. A natural sandstone accent rock (8 inches) sits partially buried in the center of the bed. Two or three thin flat sandstone pieces lean against the exposed concrete foundation between the siding and soil, softening the transition. Two small bare sandy soil patches flank the rock. One small purple Pasque Flower (Pulsatilla patens) with fuzzy stems is planted near the rock, blooming with violet-purple cup-shaped flowers. The rest of the bed is empty bare earth, ready for planting. Concrete stairs upper-right, grey sidewalk along right and bottom. Early April Colorado light, clear sky, fresh spring feel. Shot on iPhone, natural lighting.</div>
         </div>
       </div>
 
@@ -1204,7 +1246,7 @@
               <li>Begin establishment watering schedule: deep water every 2-3 days for the next 4 weeks.</li>
             </ul>
           </div>
-          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, late April. Five native plants freshly planted in dark moist soil. At the far end (corner): a small Dwarf Lead Plant shrub with fine compound leaves against the wall, and a Rocky Mountain Penstemon with a rosette of green basal leaves stepping forward in front of it. Near the stairs end: a young Blanket Flower plant (no blooms yet, just green foliage) in the forward position, with a flat marker stone behind it reserving a spot. In the center: a small purple Pasque Flower finishing its bloom near a partially buried sandstone accent rock, with two bare sandy soil patches visible. Along the front paver edge: three tiny silver-green Pussytoes plugs spaced apart with bare soil between them. Tan decomposed granite strip along the wall base. Flat sandstone pieces leaned against concrete foundation. Freshly watered soil is dark and damp. The plants are small and young — clearly just planted, with gaps between them. Early spring Colorado light, blue sky, green grass starting in the background. Shot on iPhone, natural lighting.</div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Colorado Front Range suburb, late April. Five native plants freshly planted in dark moist soil. At the far end (corner): a small Dwarf Lead Plant shrub with fine compound leaves against the wall, and a Rocky Mountain Penstemon with a rosette of green basal leaves stepping forward in front of it. Near the stairs end: a young Blanket Flower plant (no blooms yet, just green foliage) in the forward position, with a flat marker stone behind it reserving a spot. In the center: a small purple Pasque Flower finishing its bloom near a partially buried sandstone accent rock, with two bare sandy soil patches visible. Along the front paver edge: three tiny silver-green Pussytoes plugs spaced apart with bare soil between them. Tan decomposed granite strip along the wall base. Flat sandstone pieces leaned against concrete foundation. Freshly watered soil is dark and damp. The plants are small and young — clearly just planted, with gaps between them. Early spring Colorado light, blue sky, green grass starting in the background. Shot on iPhone, natural lighting.</div>
         </div>
       </div>
 
@@ -1226,7 +1268,7 @@
               <li>Continue establishment watering: 2-3x per week. You're about 3 weeks into the watering schedule for the Phase 3 plants, starting fresh for the Milkweed.</li>
             </ul>
           </div>
-          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, mid-May. Six native plants growing in the bed. Corner end: a Dwarf Lead Plant with fresh compound leaves against the wall, Rocky Mountain Penstemon with emerging blue-purple flower buds in front. Center: the Pasque Flower has finished blooming and shows wispy feathery seed heads near the accent rock, two bare sandy soil patches visible. Stairs end: a freshly planted Butterfly Milkweed with small orange-budded stems against the wall (just planted, small), a Blanket Flower with green foliage growing in front. Along the front edge: three small Pussytoes plugs showing new silver-green growth, still with gaps between them. Decomposed granite strip along wall, flat sandstone against concrete. Plants are still small and young with visible soil between them — this is a first-year garden just getting established. Late spring Colorado light, warm afternoon, green lawns and trees in full leaf in the background. Shot on iPhone, natural lighting.</div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Colorado Front Range suburb, mid-May. Six native plants growing in the bed. Corner end: a Dwarf Lead Plant with fresh compound leaves against the wall, Rocky Mountain Penstemon with emerging blue-purple flower buds in front. Center: the Pasque Flower has finished blooming and shows wispy feathery seed heads near the accent rock, two bare sandy soil patches visible. Stairs end: a freshly planted Butterfly Milkweed with small orange-budded stems against the wall (just planted, small), a Blanket Flower with green foliage growing in front. Along the front edge: three small Pussytoes plugs showing new silver-green growth, still with gaps between them. Decomposed granite strip along wall, flat sandstone against concrete. Plants are still small and young with visible soil between them — this is a first-year garden just getting established. Late spring Colorado light, warm afternoon, green lawns and trees in full leaf in the background. Shot on iPhone, natural lighting.</div>
         </div>
       </div>
 
@@ -1250,7 +1292,7 @@
               <li><strong>Pollinator log (optional but fun)</strong> — Note what you see visiting: bumble bees, small native bees, hummingbirds, butterflies. Take photos for comparison next year.</li>
             </ul>
           </div>
-          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, late June. The garden is coming alive with first-year growth. Corner end: Dwarf Lead Plant with lush fine-textured compound green foliage against the wall, starting to show purple flower spike buds. Rocky Mountain Penstemon in front of it is blooming — dense spikes of vivid blue-purple tubular flowers, 18 inches tall. Center: the Pasque Flower spot looks empty (dormant), accent rock with one or two bare sandy soil patches visible. A single bumble bee hovers near the Penstemon flowers. Stairs end: Butterfly Milkweed has put up green stems with narrow leaves (no flowers yet, still small). Blanket Flower is blooming — cheerful red-and-yellow daisy-like flowers on wiry stems. Along the front edge: Pussytoes showing denser silver-green mats, still with gaps between plugs. Decomposed granite strip along wall, flat sandstone against concrete. Plants are modest in size — clearly year one — but the bed has color and life. Bright Colorado summer light, vivid blue sky, warm afternoon. Shot on iPhone, natural lighting.</div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Colorado Front Range suburb, late June. The garden is coming alive with first-year growth. Corner end: Dwarf Lead Plant with lush fine-textured compound green foliage against the wall, starting to show purple flower spike buds. Rocky Mountain Penstemon in front of it is blooming — dense spikes of vivid blue-purple tubular flowers, 18 inches tall. Center: the Pasque Flower spot looks empty (dormant), accent rock with one or two bare sandy soil patches visible. A single bumble bee hovers near the Penstemon flowers. Stairs end: Butterfly Milkweed has put up green stems with narrow leaves (no flowers yet, still small). Blanket Flower is blooming — cheerful red-and-yellow daisy-like flowers on wiry stems. Along the front edge: Pussytoes showing denser silver-green mats, still with gaps between plugs. Decomposed granite strip along wall, flat sandstone against concrete. Plants are modest in size — clearly year one — but the bed has color and life. Bright Colorado summer light, vivid blue sky, warm afternoon. Shot on iPhone, natural lighting.</div>
         </div>
       </div>
 
@@ -1274,7 +1316,7 @@
               <li><strong>Look ahead</strong> — By September, leave all seed heads and stems standing for winter. No fall cleanup. Goldfinches and sparrows will feed on seeds through October. Overwintering insects will shelter in hollow stems.</li>
             </ul>
           </div>
-          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, peak of summer late July. The garden is in full first-year bloom, vibrant and alive. Corner end: Dwarf Lead Plant covered in dense dark purple flower spikes, three or four bumble bees and small native bees visiting the flowers. Rocky Mountain Penstemon has finished blooming, semi-evergreen foliage still green. Center: accent rock flanked by bare sandy soil patches, one tiny hole visible in the soil (bee nest). Milkweed patch at stairs end is blooming — clusters of vivid orange flowers, a Monarch butterfly perched on one flower cluster with wings open. Blanket Flower in full spectacular bloom — many red-and-yellow daisy flowers on wiry stems, a small native bee on one flower. Pussytoes along the front edge forming denser silver-green mats, spreading to start connecting. Some spent Blanket Flower seed heads left standing. The bed looks full of life despite the plants still being modest first-year size — color everywhere, insects active. Bright high Colorado summer sun, intense blue sky, vivid saturated colors. Shot on iPhone, natural lighting, golden hour warmth.</div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Colorado Front Range suburb, peak of summer late July. The garden is in full first-year bloom, vibrant and alive. Corner end: Dwarf Lead Plant covered in dense dark purple flower spikes, three or four bumble bees and small native bees visiting the flowers. Rocky Mountain Penstemon has finished blooming, semi-evergreen foliage still green. Center: accent rock flanked by bare sandy soil patches, one tiny hole visible in the soil (bee nest). Milkweed patch at stairs end is blooming — clusters of vivid orange flowers, a Monarch butterfly perched on one flower cluster with wings open. Blanket Flower in full spectacular bloom — many red-and-yellow daisy flowers on wiry stems, a small native bee on one flower. Pussytoes along the front edge forming denser silver-green mats, spreading to start connecting. Some spent Blanket Flower seed heads left standing. The bed looks full of life despite the plants still being modest first-year size — color everywhere, insects active. Bright high Colorado summer sun, intense blue sky, vivid saturated colors. Shot on iPhone, natural lighting, golden hour warmth.</div>
         </div>
       </div>
 
@@ -1291,7 +1333,7 @@
   </section>
 
   <!-- SEASONAL CARE -->
-  <section>
+  <section id="care">
     <h2>Seasonal Care Calendar</h2>
     <div class="card">
       <p style="font-size: 0.92em; color: #555;"><strong>February-March:</strong> Watch for Pasque Flower — it may bloom through late snow. Do NOT clean up last year's dead stems yet. Overwintering beneficial insects (native bees, beetles, lacewings) are still sheltering inside hollow stems and under leaf litter. Wait until daytime temps are consistently above 50 degrees F.</p>
@@ -1305,7 +1347,7 @@
   </section>
 
   <!-- COMMON MISTAKES -->
-  <section>
+  <section id="mistakes">
     <h2>Common Mistakes to Avoid</h2>
     <p style="font-size:0.88em; color:#666; margin-bottom:16px;">These are the errors that kill native pocket gardens — mostly well-intentioned habits from conventional gardening that don't apply here.</p>
     <div class="mistake-grid">
@@ -1345,7 +1387,7 @@
   </section>
 
   <!-- ECOLOGICAL DESIGN PRINCIPLES -->
-  <section>
+  <section id="biodiversity-rule">
     <h2>The #1 Rule for a Biodiversity Garden</h2>
     <div class="tip-box">
       <h3>No pesticides. Period.</h3>
@@ -1354,7 +1396,7 @@
   </section>
 
   <!-- SOURCES -->
-  <section>
+  <section id="sources">
     <h2>Sources &amp; Resources</h2>
     <div class="card source-list">
       <p><strong>Plant sourcing &amp; native nurseries:</strong></p>

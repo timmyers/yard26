@@ -9,12 +9,16 @@ Yard planning and landscape design project for "Yard 26." This repo tracks desig
 ### Foundation Bed (house wall corner)
 - **File:** `foundation-bed-design.html` — self-contained HTML design document with SVG layout diagram
 - **Photo:** `foundation-bed-initial-status.jpg` — initial condition (March 2026)
-- **Location:** Narrow ~1.5 × 4.5 ft strip in house wall corner — green siding forms L-shape along left (long edge) and top, exposed concrete below siding at top, stairs at upper-right (~1/3), sidewalk and walkway along right and bottom
-- **Exposure:** Full sun (6+ hours)
-- **Climate:** Colorado Front Range, Zones 4–5
+- **Address:** 9736 Whitecliff Pl, Highlands Ranch, CO 80129
+- **GPS:** 39.5391°N, 105.0158°W — elevation 5,900 ft
+- **Dimensions:** 28 × 84 in (2.3 × 7 ft) = 16.3 sq ft — measured on-site
+- **Location:** Foundation bed in house wall corner — green siding forms L-shape; long wall (84", faces 147° SSE) along left, short wall (28", faces 237° WSW) across top. Stairs at upper-right, sidewalk and walkway along right and bottom
+- **Orientation:** South-facing — open arc spans 147°–237° azimuth (SSE to WSW), centered on ~192° (nearly due south)
+- **Exposure:** ~5.5 hrs midday sun (summer peak), ~4.5 hrs at equinox — borderline full sun. Morning and late afternoon blocked by house walls. Midday sun is highest-intensity. 18% UV boost at elevation.
+- **Climate:** Colorado Front Range, Zone 5b
 - **Budget:** Under $200 (estimated $77–130 for materials)
 - **Design philosophy:** Native biodiversity pocket garden — every plant chosen for ecological relationships, not just aesthetics. Intentional bare soil patches for ground-nesting bees.
-- **Microclimate:** Foundation heat island (effective Zone 5b-6a), rain shadow from eaves, amplified sun from concrete/siding reflection
+- **Microclimate:** Foundation heat island (effective Zone 6a-6b), rain shadow from eaves (40-60% less precip), SSE-facing long wall reflects midday sun/heat into bed
 - **Design:** Three vertical layers (ground, mid, upper) with four ground surface types (decomposed granite, native stone, bare sandy soil, living groundcover)
 - **Plants (6 Colorado Front Range natives):** Dwarf Lead Plant (structural anchor), Butterfly Milkweed (monarch host), Rocky Mountain Penstemon (hummingbird/bee magnet), Blanket Flower (longest bloomer), Pussytoes (native groundcover), Pasque Flower (CO state flower, early-spring ephemeral)
 - **Key rule:** No pesticides, no cultivars — true native species only. Source from native nurseries (Harlequin's Gardens, Chatfield Farms sales, Resource Central)

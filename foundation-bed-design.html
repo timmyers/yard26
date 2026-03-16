@@ -143,8 +143,59 @@
   .mistake-card h4 { font-size: 0.88em; color: #8b3014; margin-bottom: 4px; }
   .mistake-card p { font-size: 0.8em; color: #666; }
 
+  /* Work Plan Timeline */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ''; position: absolute; left: 13px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, #7a9e50, #3a5c30); border-radius: 1px; }
+  .phase {
+    position: relative; margin-bottom: 28px;
+  }
+  .phase::before {
+    content: ''; position: absolute; left: -25px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #7a9e50; border: 3px solid #f5f0eb;
+    box-shadow: 0 0 0 2px #7a9e50;
+  }
+  .phase.phase-active::before { background: #e8c840; box-shadow: 0 0 0 2px #c0a020; }
+  .phase.phase-future::before { background: #c5c0b8; box-shadow: 0 0 0 2px #aaa; }
+  .phase-header {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px;
+  }
+  .phase-name { font-size: 1.05em; font-weight: 700; color: #2a4a20; }
+  .phase-date { font-size: 0.82em; color: #888; font-weight: 600; }
+  .phase-time { font-size: 0.75em; color: #999; background: #f0ece5; padding: 2px 8px; border-radius: 8px; }
+  .phase-body { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .phase-goal { font-size: 0.85em; color: #3a5c30; font-weight: 600; margin-bottom: 8px; }
+  .phase-tasks { font-size: 0.85em; color: #555; }
+  .phase-tasks li { margin-bottom: 4px; }
+  .phase-checklist { list-style: none; padding: 0; margin: 8px 0 0; }
+  .phase-checklist li { font-size: 0.85em; color: #555; padding: 3px 0 3px 22px; position: relative; }
+  .phase-checklist li::before { content: '☐'; position: absolute; left: 0; color: #999; }
+
+  .render-prompt {
+    background: #1a1a2e; border-radius: 10px; padding: 14px 16px; margin-top: 12px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.78em; color: #c8d8c0; line-height: 1.6;
+    border: 1px solid #2a2a4a; position: relative;
+  }
+  .render-prompt::before {
+    content: 'Image prompt'; position: absolute; top: -9px; left: 12px;
+    font-size: 0.72em; background: #1a1a2e; color: #7a9e50; padding: 0 6px;
+    font-family: 'Segoe UI', system-ui, sans-serif; font-weight: 600; letter-spacing: 0.5px;
+  }
+
+  .session-summary {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px;
+  }
+  .session-stat {
+    background: white; border-radius: 10px; padding: 12px; text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-top: 3px solid #7a9e50;
+  }
+  .session-stat .num { font-size: 1.3em; font-weight: 800; color: #3a5c30; }
+  .session-stat .label { font-size: 0.75em; color: #666; margin-top: 2px; }
+
   @media (max-width: 600px) {
     .assess-grid, .vision-grid, .mistake-grid { grid-template-columns: 1fr; }
+    .session-summary { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -1052,6 +1103,190 @@
         <h3>Water &amp; Establish (3-4 weeks)</h3>
         <p>Deep water 2-3 times per week for 3-4 weeks. Water at the base of each plant, not overhead. The rain shadow from the eaves means natural rainfall won't help much during establishment. After 4 weeks, reduce to once per week. After 8 weeks, stop scheduled watering — these natives should be self-sufficient except during extreme drought (2+ weeks without any rain in summer). <strong>Butterfly Milkweed is slow to emerge in spring (often late May) — don't panic if it looks dead.</strong></p>
       </div>
+    </div>
+  </section>
+
+  <!-- PROJECT WORK PLAN -->
+  <section>
+    <h2>Project Work Plan</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Six phases from site prep to first-season peak. Each phase is a self-contained work session with a clear goal, task checklist, and an image rendering prompt so you can visualize what the bed should look like when that phase is complete. Total hands-on time: ~7-8 hours spread over 4 months.</p>
+
+    <div class="session-summary">
+      <div class="session-stat">
+        <div class="num">6</div>
+        <div class="label">Work phases</div>
+      </div>
+      <div class="session-stat">
+        <div class="num">~8 hrs</div>
+        <div class="label">Total hands-on time</div>
+      </div>
+      <div class="session-stat">
+        <div class="num">Mar–Aug</div>
+        <div class="label">Timeline span</div>
+      </div>
+      <div class="session-stat">
+        <div class="num">3</div>
+        <div class="label">Shopping trips</div>
+      </div>
+      <div class="session-stat">
+        <div class="num">$82–140</div>
+        <div class="label">Total budget</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- PHASE 1 -->
+      <div class="phase phase-active">
+        <div class="phase-header">
+          <span class="phase-name">Phase 1: Materials Run &amp; First Purchase</span>
+          <span class="phase-date">March 15–31, 2026</span>
+          <span class="phase-time">~2 hrs (shopping only)</span>
+        </div>
+        <div class="phase-body">
+          <div class="phase-goal">Goal: All hardscape materials and the Pasque Flower secured before the spring rush.</div>
+          <div class="phase-tasks">
+            <p style="margin-bottom: 6px;">Two stops — Harlequin's Gardens (Boulder) for the Pasque Flower and to confirm spring stock, then Home Depot for hardscape materials. Do these in a single day trip or spread across a weekend.</p>
+            <ul class="phase-checklist">
+              <li>Call Harlequin's Gardens (303-939-9403) — confirm Pasque Flower (<em>Pulsatilla patens</em>) is in stock. Ask about spring availability timeline for the other 5 species.</li>
+              <li>Drive to Harlequin's — buy 1x Pasque Flower (in bloom now, sells out by April). While there, scout the native section and note what's already available.</li>
+              <li>Home Depot — pick up: 1 bag DG (0.5 cu ft), 1 bag coarse sand (Quikrete All-Purpose), 1 bag perlite (8 qt), 1 accent rock (6-10" natural sandstone), 2-3 flat flagstone pieces.</li>
+              <li>Store all materials in a sheltered spot (garage or covered patio). Keep the Pasque Flower potted and watered — do not plant yet until Phase 2 is done.</li>
+            </ul>
+          </div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow empty garden bed (28 inches wide, 7 feet long) tucked into a house wall corner with green horizontal lap siding, Highlands Ranch Colorado suburban neighborhood. The bed is filled with dead brown weeds, scattered old gravel, and leaf debris. Exposed concrete foundation strip visible between the siding and the soil. L-shaped corner — long green wall on the left, short green wall across the top. Concrete stairs upper-right, grey concrete sidewalk along right side and bottom. A small potted purple Pasque Flower in a black nursery pot sits on the sidewalk next to the bed alongside a bag of decomposed granite and a few flat sandstone pieces, ready to be installed. Late afternoon March light, blue sky, dry Colorado spring, a few patches of old snow in the background lawn. Shot on iPhone, natural lighting.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase phase-future">
+        <div class="phase-header">
+          <span class="phase-name">Phase 2: Site Prep &amp; Hardscape</span>
+          <span class="phase-date">April 5–6, 2026 (first weekend)</span>
+          <span class="phase-time">~2.5 hrs</span>
+        </div>
+        <div class="phase-body">
+          <div class="phase-goal">Goal: Clean bed with correct grade, DG drainage strip, accent rock placed, sandstone leaned against concrete, bare soil patches prepared. Bed is ready for planting.</div>
+          <div class="phase-tasks">
+            <p style="margin-bottom: 6px;">This is the biggest single work session. You're transforming the bed from neglected corner to prepared habitat. Work in order — clearing, grading, then hardscape placement.</p>
+            <ul class="phase-checklist">
+              <li><strong>Clear the bed</strong> (30-45 min) — Pull all dead weeds to bare soil. Remove any old landscape fabric. Scrape out loose gravel and debris. Bag everything for trash.</li>
+              <li><strong>Check &amp; set grade</strong> (20 min) — Use a level or just eyeball water flow. Bed must slope away from the foundation at 2%+ (¼" per foot toward walkway). Add soil to wall side or scrape from walkway side as needed. Verify 4-6" gap between soil surface and bottom of siding.</li>
+              <li><strong>Amend soil lightly</strong> (15 min) — Mix perlite into the top 6" across the bed. Not heavy compost — just enough to break up compaction. For the two bare soil patch zones (center of the bed), mix coarse sand into the top 3".</li>
+              <li><strong>Place DG strip</strong> (10 min) — Spread 1" of decomposed granite along the wall base, running the full 84" length. Keep it 4-6" below the siding edge.</li>
+              <li><strong>Set accent rock</strong> (10 min) — Position in the open center zone (roughly midpoint of the 84" length). Bury ⅓ below grade so it looks natural and creates insect shelter underneath.</li>
+              <li><strong>Lean sandstone against concrete</strong> (10 min) — Place 2-3 flat pieces against the exposed concrete strip between the siding and the bed. Leave air gaps between pieces for drainage and ventilation.</li>
+              <li><strong>Establish bare soil patches</strong> (10 min) — Smooth two patches of sandy soil (6" × 8" each) in the open center zone, one on each side of the accent rock. Mark edges with a small flat stone.</li>
+              <li><strong>Plant Pasque Flower</strong> (10 min) — Plant near the accent rock (thermal protection). Crown at soil level. Water deeply.</li>
+            </ul>
+          </div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a freshly prepared narrow garden bed (28 inches wide, 7 feet long) tucked into a house wall corner with green horizontal lap siding, Highlands Ranch Colorado. The bed has been completely cleared — clean bare earth visible, properly graded sloping slightly away from the house. A thin strip of tan decomposed granite runs along the wall base. A natural sandstone accent rock (8 inches) sits partially buried in the center of the bed. Two or three thin flat sandstone pieces lean against the exposed concrete foundation between the siding and soil, softening the transition. Two small bare sandy soil patches flank the rock. One small purple Pasque Flower (Pulsatilla patens) with fuzzy stems is planted near the rock, blooming with violet-purple cup-shaped flowers. The rest of the bed is empty bare earth, ready for planting. Concrete stairs upper-right, grey sidewalk along right and bottom. Early April Colorado light, clear sky, fresh spring feel. Shot on iPhone, natural lighting.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="phase phase-future">
+        <div class="phase-header">
+          <span class="phase-name">Phase 3: Main Planting Day</span>
+          <span class="phase-date">April 25–26, 2026</span>
+          <span class="phase-time">~2 hrs (+ shopping trip)</span>
+        </div>
+        <div class="phase-body">
+          <div class="phase-goal">Goal: 5 of 6 species in the ground — both L-shaped clusters taking shape, Pussytoes lining the front edge. Only Butterfly Milkweed remains (not available until May).</div>
+          <div class="phase-tasks">
+            <p style="margin-bottom: 6px;">Morning: drive to Harlequin's for the main plant purchase. Afternoon: plant everything. This is the most satisfying session — the bed goes from bare to garden in one afternoon.</p>
+            <ul class="phase-checklist">
+              <li><strong>Harlequin's trip</strong> — Buy: 1x Dwarf Lead Plant (<em>Amorpha nana</em>, 1-gal), 1x Rocky Mountain Penstemon (<em>P. strictus</em>, 1-gal), 1x Blanket Flower (<em>G. aristata</em>, 1-gal — "BldrCo" ecotype is fine), 3x Pussytoes (<em>A. parvifolia</em>, 4" pots). Confirm all tags say species name with no quoted cultivar name.</li>
+              <li><strong>Corner cluster</strong> — Plant Dwarf Lead Plant against the wall (6" from wall, 6" from corner end). Plant Rocky Mountain Penstemon stepping forward in front of it. Both at crown level.</li>
+              <li><strong>Stairs cluster (partial)</strong> — Plant Blanket Flower in the forward position of the stairs cluster. Leave the back-wall position empty for the Milkweed (mark with a stone so you remember).</li>
+              <li><strong>Front edge</strong> — Plant 3 Pussytoes plugs along the paver/walkway edge, spaced ~8" apart. These will spread to fill gaps over 2-3 years.</li>
+              <li><strong>Water deeply</strong> — Soak each plant at the base. The rain shadow means no natural rain will help — you're their only water source for the next month.</li>
+              <li>Begin establishment watering schedule: deep water every 2-3 days for the next 4 weeks.</li>
+            </ul>
+          </div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, late April. Five native plants freshly planted in dark moist soil. At the far end (corner): a small Dwarf Lead Plant shrub with fine compound leaves against the wall, and a Rocky Mountain Penstemon with a rosette of green basal leaves stepping forward in front of it. Near the stairs end: a young Blanket Flower plant (no blooms yet, just green foliage) in the forward position, with a flat marker stone behind it reserving a spot. In the center: a small purple Pasque Flower finishing its bloom near a partially buried sandstone accent rock, with two bare sandy soil patches visible. Along the front paver edge: three tiny silver-green Pussytoes plugs spaced apart with bare soil between them. Tan decomposed granite strip along the wall base. Flat sandstone pieces leaned against concrete foundation. Freshly watered soil is dark and damp. The plants are small and young — clearly just planted, with gaps between them. Early spring Colorado light, blue sky, green grass starting in the background. Shot on iPhone, natural lighting.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 -->
+      <div class="phase phase-future">
+        <div class="phase-header">
+          <span class="phase-name">Phase 4: Milkweed Planting</span>
+          <span class="phase-date">May 16–17, 2026</span>
+          <span class="phase-time">~30 min (+ shopping trip)</span>
+        </div>
+        <div class="phase-body">
+          <div class="phase-goal">Goal: All 6 species in the ground. The design is structurally complete.</div>
+          <div class="phase-tasks">
+            <p style="margin-bottom: 6px;">Quick trip to Harlequin's for the final plant, then 15 minutes of planting. Butterfly Milkweed emerges late and isn't stocked until May. This completes the bed.</p>
+            <ul class="phase-checklist">
+              <li><strong>Harlequin's trip</strong> — Buy 1x Butterfly Milkweed (<em>Asclepias tuberosa</em>, 1-gal, true species). Confirm it's <em>tuberosa</em> (compact, non-spreading), not <em>speciosa</em> (aggressive spreader).</li>
+              <li><strong>Plant in stairs cluster</strong> — Place in the reserved back-wall position (where the marker stone is), 6" from the wall. Crown at soil level. Water deeply.</li>
+              <li><strong>Check on everything else</strong> — Lead Plant should be leafing out. Penstemon may have early flower buds. Pussytoes should show new growth. Pasque Flower is developing feathery seed heads (normal — it goes dormant soon). Pull any weeds.</li>
+              <li>Continue establishment watering: 2-3x per week. You're about 3 weeks into the watering schedule for the Phase 3 plants, starting fresh for the Milkweed.</li>
+            </ul>
+          </div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, mid-May. Six native plants growing in the bed. Corner end: a Dwarf Lead Plant with fresh compound leaves against the wall, Rocky Mountain Penstemon with emerging blue-purple flower buds in front. Center: the Pasque Flower has finished blooming and shows wispy feathery seed heads near the accent rock, two bare sandy soil patches visible. Stairs end: a freshly planted Butterfly Milkweed with small orange-budded stems against the wall (just planted, small), a Blanket Flower with green foliage growing in front. Along the front edge: three small Pussytoes plugs showing new silver-green growth, still with gaps between them. Decomposed granite strip along wall, flat sandstone against concrete. Plants are still small and young with visible soil between them — this is a first-year garden just getting established. Late spring Colorado light, warm afternoon, green lawns and trees in full leaf in the background. Shot on iPhone, natural lighting.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 5 -->
+      <div class="phase phase-future">
+        <div class="phase-header">
+          <span class="phase-name">Phase 5: Establishment &amp; First Blooms</span>
+          <span class="phase-date">June 1 – June 30, 2026</span>
+          <span class="phase-time">~15 min every 2-3 days (watering)</span>
+        </div>
+        <div class="phase-body">
+          <div class="phase-goal">Goal: All plants showing active growth. Watering tapers from 2-3x/week to 1x/week by month's end. First real flowers appearing on Penstemon, Blanket Flower, and Lead Plant.</div>
+          <div class="phase-tasks">
+            <p style="margin-bottom: 6px;">This phase is mostly patience and watering. The plants are building root systems — "roots before shoots." You'll start seeing the first real blooms and possibly the first pollinator visitors. Resist the urge to add anything or rearrange.</p>
+            <ul class="phase-checklist">
+              <li><strong>Weeks 1-2</strong> — Continue watering 2-3x per week at the base of each plant. Deep soaks, not sprinkles. The rain shadow means you're the only water source.</li>
+              <li><strong>Weeks 3-4</strong> — Taper to 1x per week. Watch for signs of stress (wilting in morning = needs water; wilting only in afternoon heat = normal).</li>
+              <li><strong>Weed patrol</strong> — Hand-pull any weeds weekly, especially in bare soil patches. Be gentle near Pussytoes — don't disturb their shallow stolons. Check bare soil for tiny round holes (~¼" diameter) — those are native bee nests. Do not disturb them.</li>
+              <li><strong>First bloom watch</strong> — Rocky Mountain Penstemon should bloom (dense blue-purple spikes). Blanket Flower may begin showing red-and-yellow buds. Lead Plant flower spikes may start forming. Butterfly Milkweed is still getting established (patience).</li>
+              <li>Pasque Flower is going dormant — its spot will look empty. This is normal. Do not plant over it.</li>
+              <li><strong>Pollinator log (optional but fun)</strong> — Note what you see visiting: bumble bees, small native bees, hummingbirds, butterflies. Take photos for comparison next year.</li>
+            </ul>
+          </div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, late June. The garden is coming alive with first-year growth. Corner end: Dwarf Lead Plant with lush fine-textured compound green foliage against the wall, starting to show purple flower spike buds. Rocky Mountain Penstemon in front of it is blooming — dense spikes of vivid blue-purple tubular flowers, 18 inches tall. Center: the Pasque Flower spot looks empty (dormant), accent rock with one or two bare sandy soil patches visible. A single bumble bee hovers near the Penstemon flowers. Stairs end: Butterfly Milkweed has put up green stems with narrow leaves (no flowers yet, still small). Blanket Flower is blooming — cheerful red-and-yellow daisy-like flowers on wiry stems. Along the front edge: Pussytoes showing denser silver-green mats, still with gaps between plugs. Decomposed granite strip along wall, flat sandstone against concrete. Plants are modest in size — clearly year one — but the bed has color and life. Bright Colorado summer light, vivid blue sky, warm afternoon. Shot on iPhone, natural lighting.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 6 -->
+      <div class="phase phase-future">
+        <div class="phase-header">
+          <span class="phase-name">Phase 6: First-Season Peak</span>
+          <span class="phase-date">July – August 2026</span>
+          <span class="phase-time">~5 min/week (observation only)</span>
+        </div>
+        <div class="phase-body">
+          <div class="phase-goal">Goal: Maximum bloom, active pollinator visits, possible Monarch sighting. Stop supplemental watering except during 2+ week dry spells. The bed is running on its own.</div>
+          <div class="phase-tasks">
+            <p style="margin-bottom: 6px;">This is the payoff. Your job now is to watch, enjoy, and resist the urge to "tidy up." The ecosystem is assembling itself. Every species should be blooming or fruiting. The bare soil patches should be seeing bee activity.</p>
+            <ul class="phase-checklist">
+              <li><strong>Stop scheduled watering</strong> — Only deep-water during extended dry spells (2+ weeks without rain). Over-watering is the #1 killer of established xeric natives.</li>
+              <li><strong>Observe the ecosystem</strong> — Lead Plant blooms attract dense bee activity (this is spectacular — dozens of bees at once). Milkweed should bloom bright orange — check leaf undersides for tiny white Monarch eggs. Blanket Flower at full power, non-stop blooms. Penstemon finishing up for the season.</li>
+              <li><strong>Do NOT deadhead everything</strong> — Leave some Blanket Flower spent heads for goldfinch seed. Leave Penstemon spent stalks. Deadheading Blanket Flower extends bloom but removes bird food — your choice, or compromise and deadhead half.</li>
+              <li><strong>If aphids appear on Milkweed</strong> — Do nothing. Ladybugs and lacewings will arrive within days. This is the ecosystem working. No pesticides, ever.</li>
+              <li><strong>Document</strong> — Take comparison photos from the same angle as Phase 2. You'll be amazed at the difference. Note which pollinators you see — this is your baseline for measuring next year's increase.</li>
+              <li><strong>Look ahead</strong> — By September, leave all seed heads and stems standing for winter. No fall cleanup. Goldfinches and sparrows will feed on seeds through October. Overwintering insects will shelter in hollow stems.</li>
+            </ul>
+          </div>
+          <div class="render-prompt">Photorealistic eye-level photograph of a narrow foundation garden bed (28 × 84 inches) in a house wall corner with green horizontal lap siding, Highlands Ranch Colorado, peak of summer late July. The garden is in full first-year bloom, vibrant and alive. Corner end: Dwarf Lead Plant covered in dense dark purple flower spikes, three or four bumble bees and small native bees visiting the flowers. Rocky Mountain Penstemon has finished blooming, semi-evergreen foliage still green. Center: accent rock flanked by bare sandy soil patches, one tiny hole visible in the soil (bee nest). Milkweed patch at stairs end is blooming — clusters of vivid orange flowers, a Monarch butterfly perched on one flower cluster with wings open. Blanket Flower in full spectacular bloom — many red-and-yellow daisy flowers on wiry stems, a small native bee on one flower. Pussytoes along the front edge forming denser silver-green mats, spreading to start connecting. Some spent Blanket Flower seed heads left standing. The bed looks full of life despite the plants still being modest first-year size — color everywhere, insects active. Bright high Colorado summer sun, intense blue sky, vivid saturated colors. Shot on iPhone, natural lighting, golden hour warmth.</div>
+        </div>
+      </div>
+
+    </div><!-- end timeline -->
+
+    <div class="callout" style="margin-top: 20px;">
+      <p><strong>After Phase 6 — what's next?</strong> Leave everything standing through winter. In late April 2027, cut dead stems to 4-6" stubs (leave some for late-emerging insects). Year 2 will blow your mind — plants double in size, Pussytoes mats connect, Lead Plant may need light pruning. By Year 3 the bed is self-sustaining: nearly zero watering, continuous bloom Feb-Oct, and more ecological value per square foot than most entire yards.</p>
+    </div>
+
+    <div class="tip-box" style="margin-top: 14px;">
+      <h3>Using the Rendering Prompts</h3>
+      <p>Each phase above includes an image generation prompt you can paste directly into an AI image generator to visualize what the bed should look like at that stage. The prompts are written to maintain consistent scene composition (same camera angle, same house, same Colorado setting) so the images form a progression. For best results, generate all six in sequence and compare them side by side — you'll see the transformation from bare dirt to living ecosystem.</p>
     </div>
   </section>
 

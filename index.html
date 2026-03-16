@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yard 26</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f8f7f4;
+            color: #2d2d2d;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 3rem;
+        }
+        .projects {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 640px;
+        }
+        a.card {
+            display: block;
+            background: #fff;
+            border: 1px solid #e5e2db;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        a.card:hover {
+            border-color: #c5c0b6;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .card h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+        .card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .tag {
+            display: inline-block;
+            background: #eef5e9;
+            color: #4a7c30;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.2em 0.6em;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yard 26</h1>
+    <p class="subtitle">Landscape plans &amp; native garden design</p>
+    <div class="projects">
+        <a class="card" href="foundation-bed-design.html">
+            <span class="tag">In Progress</span>
+            <h2>Foundation Bed</h2>
+            <p>Native biodiversity pocket garden in a 2.3 x 7 ft foundation corner. Six Colorado Front Range natives, designed for pollinators and ground-nesting bees.</p>
+        </a>
+    </div>
+</body>
+</html>

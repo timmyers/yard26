@@ -24,16 +24,17 @@
   .page-nav {
     background: rgba(245,240,235,0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid #ddd8d0; position: sticky; top: 0; z-index: 100;
-    padding: 8px 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding: 6px 0;
   }
   .page-nav ul {
-    display: flex; gap: 4px; list-style: none; max-width: 840px; margin: 0 auto; padding: 0 20px;
-    white-space: nowrap;
+    display: flex; flex-wrap: wrap; gap: 3px; list-style: none;
+    max-width: 840px; margin: 0 auto; padding: 0 20px;
+    justify-content: center;
   }
   .page-nav a {
-    display: block; font-size: 0.72em; color: #555; text-decoration: none;
-    padding: 4px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s;
-    font-weight: 500;
+    display: block; font-size: 0.7em; color: #555; text-decoration: none;
+    padding: 3px 8px; border-radius: 6px; transition: background 0.15s, color 0.15s;
+    font-weight: 500; white-space: nowrap;
   }
   .page-nav a:hover { background: #e0f0d0; color: #2a4a20; }
   .page-nav a.nav-highlight { background: #3a5c30; color: white; font-weight: 600; }

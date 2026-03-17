@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Analysis — Foundation Bed Sun &amp; Suitability Review</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 48px; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; line-height: 1.65; }
+
+  .hero {
+    background: linear-gradient(135deg, #3a5c30 0%, #557a48 40%, #7a9e50 100%);
+    color: white; text-align: center; padding: 50px 20px 40px;
+  }
+  .hero h1 { font-size: 1.9em; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 1em; opacity: 0.92; max-width: 620px; margin: 0 auto; }
+
+  .page-nav {
+    background: rgba(245,240,235,0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid #ddd8d0; position: sticky; top: 0; z-index: 100; padding: 6px 0;
+  }
+  .page-nav ul { display: flex; flex-wrap: wrap; gap: 3px; list-style: none; max-width: 840px; margin: 0 auto; padding: 0 20px; justify-content: center; }
+  .page-nav a { display: block; font-size: 0.7em; color: #555; text-decoration: none; padding: 3px 8px; border-radius: 6px; font-weight: 500; white-space: nowrap; }
+  .page-nav a:hover { background: #e0f0d0; color: #2a4a20; }
+
+  .container { max-width: 840px; margin: 0 auto; padding: 0 20px; }
+  section { margin: 40px 0; }
+  section h2 { font-size: 1.45em; color: #3a5c30; border-bottom: 2px solid #b8d4a0; padding-bottom: 8px; margin-bottom: 18px; }
+
+  .card { background: white; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 16px; }
+
+  .tip-box { background: #fdf8f0; border: 1px solid #e8d8c0; border-radius: 12px; padding: 18px; margin-top: 14px; }
+  .tip-box h3 { color: #8b6914; font-size: 0.95em; margin-bottom: 6px; }
+  .tip-box p { font-size: 0.88em; color: #6b5a3a; }
+
+  .callout { background: #eef5e8; border-radius: 12px; padding: 18px; margin-top: 14px; border-left: 4px solid #7a9e50; }
+  .callout strong { color: #2a4a20; }
+  .callout p { font-size: 0.9em; color: #3a5a30; }
+
+  .warn-box { background: #fef3f0; border: 1px solid #e8c8c0; border-radius: 12px; padding: 18px; margin-top: 14px; }
+  .warn-box h3 { color: #8b3014; font-size: 0.95em; margin-bottom: 6px; }
+  .warn-box p { font-size: 0.88em; color: #6b3a2a; }
+
+  /* Plant analysis cards */
+  .plant-analysis {
+    background: white; border-radius: 14px; padding: 0; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 20px;
+  }
+  .plant-analysis-header {
+    display: flex; gap: 0; align-items: stretch;
+  }
+  .plant-photo {
+    width: 200px; min-height: 200px; flex-shrink: 0;
+    background-size: cover; background-position: center;
+    background-color: #e8e4de;
+  }
+  .plant-info { padding: 20px; flex: 1; }
+  .plant-info h3 { font-size: 1.15em; color: #2a4a20; margin-bottom: 1px; }
+  .plant-info .botanical { font-style: italic; color: #888; font-size: 0.85em; margin-bottom: 10px; }
+  .plant-info .specs { font-size: 0.85em; color: #555; }
+  .plant-info .specs strong { color: #3a5c30; }
+
+  .plant-analysis-body { padding: 0 20px 20px; }
+
+  .sun-meter { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+  .sun-bar { flex: 1; height: 10px; background: #eee; border-radius: 5px; overflow: hidden; }
+  .sun-fill { height: 100%; border-radius: 5px; }
+  .sun-label { font-size: 0.78em; color: #666; min-width: 80px; }
+
+  .verdict { display: inline-block; font-size: 0.78em; padding: 3px 10px; border-radius: 12px; font-weight: 600; margin-top: 6px; }
+  .verdict-good { background: #e0f0d0; color: #3a6820; }
+  .verdict-ok { background: #fff3d0; color: #8a6a10; }
+  .verdict-risk { background: #fde0e0; color: #a03030; }
+
+  .tag { display: inline-block; font-size: 0.72em; padding: 2px 8px; border-radius: 20px; margin-right: 3px; margin-top: 4px; }
+  .tag-sun { background: #fff8e0; color: #8a7a20; }
+  .tag-shade { background: #e8e0f8; color: #5a4a7a; }
+  .tag-heat { background: #fde8e0; color: #8a4020; }
+  .tag-native { background: #e0f0d0; color: #3a6820; }
+  .tag-alt { background: #e0e8f0; color: #2a4a7a; }
+
+  .comparison-table {
+    width: 100%; border-collapse: collapse; background: white;
+    border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-top: 14px;
+  }
+  .comparison-table th { background: #3a5c30; color: white; text-align: left; padding: 10px 14px; font-weight: 600; font-size: 0.85em; }
+  .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #eee; font-size: 0.85em; }
+  .comparison-table tr:last-child td { border-bottom: none; }
+
+  .footer { text-align: center; padding: 30px 20px; color: #999; font-size: 0.78em; }
+
+  @media (max-width: 600px) {
+    .plant-analysis-header { flex-direction: column; }
+    .plant-photo { width: 100%; min-height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Plant Suitability Analysis</h1>
+  <div class="subtitle">Sun exposure, heat tolerance, and alternative species for the foundation bed</div>
+</div>
+
+<nav class="page-nav">
+  <ul>
+    <li><a href="#site">Site Conditions</a></li>
+    <li><a href="#current">Current Selections</a></li>
+    <li><a href="#alternatives">Alternatives</a></li>
+    <li><a href="#recommendation">Recommendation</a></li>
+    <li><a href="foundation-bed-design.html">&larr; Back to Main Plan</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- SITE CONDITIONS -->
+  <section id="site">
+    <h2>Site Light &amp; Heat Conditions</h2>
+
+    <div class="card">
+      <h3 style="font-size:1em; color:#2a4a20; margin-bottom:12px;">Measured Sun Exposure</h3>
+      <div class="specs" style="font-size:0.88em; color:#555;">
+        <p><strong>Summer peak:</strong> ~5.5 hrs direct sun (midday window, ~10:30am–4pm)</p>
+        <p><strong>Equinox:</strong> ~4.5 hrs direct sun</p>
+        <p><strong>Sun arc:</strong> 147°–237° azimuth (SSE to WSW), centered on ~192° (nearly due south)</p>
+        <p><strong>Blocked by:</strong> House walls block morning (before ~10:30am) and late afternoon (after ~4pm)</p>
+        <p style="margin-top:10px;"><strong>Classification:</strong> Borderline full sun / part sun. Most references define full sun as 6+ hrs. This site falls just short at 5.5 hrs peak.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:1em; color:#2a4a20; margin-bottom:12px;">Factors That Boost Effective Light</h3>
+      <p style="font-size:0.85em; color:#666; margin-bottom:12px;">The raw hour count understates the actual light energy reaching these plants:</p>
+      <div style="display:grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 0.88em;">
+        <div style="font-weight:700; color:#3a5c30;">Midday intensity</div>
+        <div style="color:#555;">All 5.5 hrs fall in the highest-intensity window (solar noon ± 3hrs). One hour of midday sun delivers ~2x the photosynthetically active radiation (PAR) of an early morning hour.</div>
+        <div style="font-weight:700; color:#3a5c30;">Elevation UV boost</div>
+        <div style="color:#555;">At 5,900 ft, UV intensity is ~18% higher than sea level. Plants adapted to lower elevations may actually receive <em>more</em> effective radiation here than in 6 hrs of lowland sun.</div>
+        <div style="font-weight:700; color:#3a5c30;">Wall reflection</div>
+        <div style="color:#555;">The SSE-facing green siding reflects diffuse light and heat back into the bed. Foundation concrete absorbs and re-radiates heat. This creates a measurably warmer, brighter microclimate.</div>
+        <div style="font-weight:700; color:#3a5c30;">Foundation heat island</div>
+        <div style="color:#555;">Effective growing zone is 6a–6b despite being in Zone 5b. Warmer soil, earlier spring thaw, extended season. Plants experience conditions roughly one zone warmer than the surrounding yard.</div>
+      </div>
+      <div class="callout" style="margin-top:14px;">
+        <p><strong>Estimated effective sun equivalent:</strong> The 5.5 hrs of midday sun at elevation with wall reflection likely delivers PAR equivalent to <strong>6.5–7.5 hrs</strong> of sun at a flat, sea-level, open-field site. This is solidly in the "full sun" range for practical purposes.</p>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <h3>Future Shading Risk: Front Yard Tree</h3>
+      <p>A small tree in the front yard may reduce sun reaching the bed now or in the future as it grows. The open arc (147°–237° azimuth) faces south, so a tree to the south or southwest of the bed would have the biggest impact. Monitor canopy spread annually — even partial canopy filtering during the midday window would push the site firmly into part-sun territory (4–5 hrs effective). If this happens, the part-sun alternatives listed below become the primary picks rather than fallbacks.</p>
+    </div>
+  </section>
+
+  <!-- CURRENT PLANT SELECTIONS -->
+  <section id="current">
+    <h2>Current Selections — Sun Suitability</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">Each plant rated against the site's 5.5 hrs midday sun + microclimate boosters. Feedback from Tagawa Gardens nursery staff noted Amorpha and Agastache as the highest-risk species for reduced performance.</p>
+
+    <!-- Amorpha nana -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ad/Amorpha_nana.jpg');"></div>
+        <div class="plant-info">
+          <h3>Dwarf Lead Plant</h3>
+          <div class="botanical">Amorpha nana</div>
+          <div class="specs">
+            <p><strong>Role:</strong> Structural anchor, corner cluster</p>
+            <p><strong>Sun need:</strong> Full sun (6+ hrs ideal)</p>
+            <p><strong>Height:</strong> 1–2 ft</p>
+            <p><strong>Special value:</strong> Nitrogen fixer, specialist bee host</p>
+          </div>
+          <span class="verdict verdict-risk">At Risk — Tagawa's flagged</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Analysis:</strong> Amorpha nana is a prairie species that truly thrives in full, open sun. At 5.5 hrs it will survive but may become leggy (stretching toward light) and produce fewer of its distinctive purple flower spikes. The nitrogen-fixing root nodules still function regardless of sun, so soil-building value is retained. Tagawa's staff specifically flagged this as needing 6+ hrs.</p>
+        <div class="sun-meter">
+          <span class="sun-label">Site provides</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:69%; background: linear-gradient(90deg, #f0c040, #e8a020);"></div></div>
+          <span class="sun-label" style="text-align:right;">5.5 / 8 hrs</span>
+        </div>
+        <div class="sun-meter">
+          <span class="sun-label">Needs (ideal)</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:75%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">6+ hrs</span>
+        </div>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>With microclimate boost:</strong> Effective ~6.5–7.5 hrs equivalent likely meets minimum. May still underperform vs. an open prairie site but should flower adequately.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:4px;"><strong>If tree shading increases:</strong> Would be the first plant to struggle. Consider swapping if effective sun drops below 5 hrs.</p>
+      </div>
+    </div>
+
+    <!-- Asclepias tuberosa -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Asclepias_tuberosa_interior.jpg/960px-Asclepias_tuberosa_interior.jpg');"></div>
+        <div class="plant-info">
+          <h3>Butterfly Milkweed</h3>
+          <div class="botanical">Asclepias tuberosa</div>
+          <div class="specs">
+            <p><strong>Role:</strong> Monarch host, corner cluster (tallest)</p>
+            <p><strong>Sun need:</strong> Full sun (6+ hrs ideal), tolerates light shade</p>
+            <p><strong>Height:</strong> 1–2.5 ft</p>
+            <p><strong>Special value:</strong> Monarch butterfly obligate host plant</p>
+          </div>
+          <span class="verdict verdict-ok">Moderate — should perform</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Analysis:</strong> Asclepias tuberosa prefers full sun but is more adaptable than Amorpha. In part sun it may produce fewer flower clusters and slightly shorter stems, but foliage production (the part Monarch caterpillars need) is less affected by light levels. Its deep taproot makes it extremely drought-hardy. The hot foundation microclimate actually suits it well — it loves heat.</p>
+        <div class="sun-meter">
+          <span class="sun-label">Site provides</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:69%; background: linear-gradient(90deg, #f0c040, #e8a020);"></div></div>
+          <span class="sun-label" style="text-align:right;">5.5 / 8 hrs</span>
+        </div>
+        <div class="sun-meter">
+          <span class="sun-label">Needs (ideal)</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:75%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">6+ hrs</span>
+        </div>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>With microclimate boost:</strong> Should do well. Heat from the foundation wall is a net positive for this species. Monarch host function is unaffected by slightly reduced light.</p>
+      </div>
+    </div>
+
+    <!-- Agastache foeniculum -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Agastache_foeniculum02.jpg/960px-Agastache_foeniculum02.jpg');"></div>
+        <div class="plant-info">
+          <h3>Anise Hyssop</h3>
+          <div class="botanical">Agastache foeniculum</div>
+          <div class="specs">
+            <p><strong>Role:</strong> Hummingbird magnet, stairs anchor</p>
+            <p><strong>Sun need:</strong> Full sun (6+ hrs ideal)</p>
+            <p><strong>Height:</strong> 2–4 ft</p>
+            <p><strong>Special value:</strong> Top hummingbird attractant, long bloom (June–Sept)</p>
+          </div>
+          <span class="verdict verdict-risk">At Risk — Tagawa's flagged</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Analysis:</strong> Tagawa's specifically noted Agastache as likely to show reduced flowering. In part sun, Agastache produces fewer flower spikes, and existing spikes may be shorter. Since its primary role is as the hummingbird magnet, reduced flowering directly undercuts its ecological purpose. However, it's aromatic and still attracts pollinators even with fewer blooms. It may also get taller and floppier as it reaches for light.</p>
+        <div class="sun-meter">
+          <span class="sun-label">Site provides</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:69%; background: linear-gradient(90deg, #f0c040, #e8a020);"></div></div>
+          <span class="sun-label" style="text-align:right;">5.5 / 8 hrs</span>
+        </div>
+        <div class="sun-meter">
+          <span class="sun-label">Needs (ideal)</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:75%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">6+ hrs</span>
+        </div>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>With microclimate boost:</strong> Marginal. The effective equivalent helps, but Agastache really wants open-sky sun. This is the strongest candidate for replacement if you want to optimize.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:4px;"><strong>If tree shading increases:</strong> Would be the most visibly affected — expect significantly fewer flower spikes and a leggy habit.</p>
+      </div>
+    </div>
+
+    <!-- Gaillardia aristata -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Gaillardia_aristata_0059.JPG/960px-Gaillardia_aristata_0059.JPG');"></div>
+        <div class="plant-info">
+          <h3>Blanket Flower</h3>
+          <div class="botanical">Gaillardia aristata</div>
+          <div class="specs">
+            <p><strong>Role:</strong> Longest bloomer, center accent</p>
+            <p><strong>Sun need:</strong> Full sun preferred, tolerates part sun</p>
+            <p><strong>Height:</strong> 1–1.5 ft</p>
+            <p><strong>Special value:</strong> Blooms June–October, bird seed source</p>
+          </div>
+          <span class="verdict verdict-ok">Moderate — should perform</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Analysis:</strong> Gaillardia is more forgiving than Amorpha or Agastache. It blooms prolifically in full sun but still produces good flower output in 5–6 hrs. May have slightly fewer blooms and a marginally shorter bloom season. The hot, dry foundation microclimate is actually ideal for this species — it rots in wet shade but thrives in heat.</p>
+        <div class="sun-meter">
+          <span class="sun-label">Site provides</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:69%; background: linear-gradient(90deg, #90c840, #70b030);"></div></div>
+          <span class="sun-label" style="text-align:right;">5.5 / 8 hrs</span>
+        </div>
+        <div class="sun-meter">
+          <span class="sun-label">Needs (ideal)</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:75%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">6+ hrs</span>
+        </div>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>With microclimate boost:</strong> Should do well. One of the safer picks for this site.</p>
+      </div>
+    </div>
+
+    <!-- Antennaria parvifolia -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/cd/Antennaria_parvifolia.jpg');"></div>
+        <div class="plant-info">
+          <h3>Pussytoes</h3>
+          <div class="botanical">Antennaria parvifolia</div>
+          <div class="specs">
+            <p><strong>Role:</strong> Native groundcover, front edge</p>
+            <p><strong>Sun need:</strong> Full sun to part sun — very flexible</p>
+            <p><strong>Height:</strong> 2–6 in</p>
+            <p><strong>Special value:</strong> American Lady butterfly host, ground-nesting bee habitat</p>
+          </div>
+          <span class="verdict verdict-good">Good Fit</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Analysis:</strong> Pussytoes is one of the most adaptable native groundcovers on the Front Range. It grows in full sun road cuts and part-shade woodland edges alike. The silver foliage reflects excess radiation. Low profile means it benefits from reflected heat off the walkway concrete. No concerns at this site.</p>
+        <div class="sun-meter">
+          <span class="sun-label">Site provides</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:69%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">5.5 / 8 hrs</span>
+        </div>
+        <div class="sun-meter">
+          <span class="sun-label">Needs (ideal)</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:50%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">4+ hrs</span>
+        </div>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>With microclimate boost:</strong> No issues. Would still thrive even with increased tree shade.</p>
+      </div>
+    </div>
+
+    <!-- Pulsatilla patens -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Pulsatilla_patens01%28js%29.jpg/960px-Pulsatilla_patens01%28js%29.jpg');"></div>
+        <div class="plant-info">
+          <h3>Pasque Flower</h3>
+          <div class="botanical">Pulsatilla patens</div>
+          <div class="specs">
+            <p><strong>Role:</strong> Early-spring ephemeral, center accent</p>
+            <p><strong>Sun need:</strong> Full sun to part sun</p>
+            <p><strong>Height:</strong> 4–8 in</p>
+            <p><strong>Special value:</strong> CO state flower, earliest bloomer (Feb–April), critical early bee food</p>
+          </div>
+          <span class="verdict verdict-good">Good Fit</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Analysis:</strong> Pasque Flower blooms in late winter/early spring when the sun angle is lower and trees are leafless — so it gets maximum available light during its active period. By the time the canopy fills in and sun hours drop, it's already going dormant. The foundation heat island actually helps it break dormancy earlier. This is one of the best-suited plants for the site.</p>
+        <div class="sun-meter">
+          <span class="sun-label">Site provides</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:69%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">5.5 / 8 hrs</span>
+        </div>
+        <div class="sun-meter">
+          <span class="sun-label">Needs (ideal)</span>
+          <div class="sun-bar"><div class="sun-fill" style="width:50%; background: linear-gradient(90deg, #70b050, #3a8030);"></div></div>
+          <span class="sun-label" style="text-align:right;">4+ hrs</span>
+        </div>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>With microclimate boost:</strong> Excellent. Foundation warmth is a genuine advantage for early emergence. 5x plants reserved at Tagawa's for May 4 pickup.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:4px;"><strong>If tree shading increases:</strong> Minimal impact — it's dormant by the time summer canopy is full.</p>
+      </div>
+    </div>
+
+    <!-- Summary table -->
+    <div class="card" style="margin-top: 20px;">
+      <h3 style="font-size:1em; color:#2a4a20; margin-bottom:12px;">Summary</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr><th>Plant</th><th>Sun Need</th><th>Site Rating</th><th>Tree Risk</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Dwarf Lead Plant</strong></td><td>6+ hrs (full sun)</td><td><span class="verdict verdict-risk" style="margin:0;">At Risk</span></td><td>High</td></tr>
+          <tr><td><strong>Butterfly Milkweed</strong></td><td>6+ hrs (tolerates some shade)</td><td><span class="verdict verdict-ok" style="margin:0;">Moderate</span></td><td>Medium</td></tr>
+          <tr><td><strong>Anise Hyssop</strong></td><td>6+ hrs (full sun)</td><td><span class="verdict verdict-risk" style="margin:0;">At Risk</span></td><td>High</td></tr>
+          <tr><td><strong>Blanket Flower</strong></td><td>6+ hrs (tolerates part sun)</td><td><span class="verdict verdict-ok" style="margin:0;">Moderate</span></td><td>Medium</td></tr>
+          <tr><td><strong>Pussytoes</strong></td><td>4+ hrs (very flexible)</td><td><span class="verdict verdict-good" style="margin:0;">Good Fit</span></td><td>Low</td></tr>
+          <tr><td><strong>Pasque Flower</strong></td><td>4+ hrs (blooms before canopy)</td><td><span class="verdict verdict-good" style="margin:0;">Good Fit</span></td><td>Low</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ALTERNATIVES -->
+  <section id="alternatives">
+    <h2>Part-Sun Native Alternatives</h2>
+    <p style="font-size:0.88em; color:#666; margin-bottom:16px;">These replacements thrive in 4–6 hrs of sun but can also handle the intense midday heat and UV of the foundation microclimate. Only relevant if current selections underperform or if the front yard tree reduces sun further.</p>
+
+    <h3 style="font-size:1.1em; color:#2a4a20; margin: 20px 0 12px;">Replacements for Dwarf Lead Plant <span style="font-size:0.75em; color:#888;">(structural anchor role)</span></h3>
+
+    <!-- Monarda fistulosa -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Monarda_fistulosa_Arkansas.jpg/960px-Monarda_fistulosa_Arkansas.jpg');"></div>
+        <div class="plant-info">
+          <h3>Wild Bergamot</h3>
+          <div class="botanical">Monarda fistulosa</div>
+          <div class="specs">
+            <p><strong>Sun range:</strong> 4–8 hrs — extremely flexible</p>
+            <p><strong>Heat tolerance:</strong> Excellent — handles reflected heat well</p>
+            <p><strong>Height:</strong> 2–4 ft</p>
+            <p><strong>Pollinator value:</strong> Top-tier bee + hummingbird plant</p>
+          </div>
+          <span class="tag tag-native">CO Native</span>
+          <span class="tag tag-alt">Could replace Lead Plant OR Agastache</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Why consider:</strong> Monarda fistulosa is arguably the single most versatile native perennial for this site. It thrives across a huge sun range, handles heat and drought, and provides outstanding pollinator value for bees, butterflies, and hummingbirds. The lavender flower heads are showy and long-blooming (July–September).</p>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>Tradeoffs:</strong> Spreads by rhizomes and can be aggressive in a 16 sq ft bed — would need annual containment/division. Loses the nitrogen-fixing benefit of Amorpha. Taller than Lead Plant (2–4 ft vs 1–2 ft), so placement matters.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:4px;"><strong>Heat resilience:</strong> Native to hot, dry prairies and open woodland edges. Handles foundation heat island conditions without issue. Aromatic foliage may actually intensify in heat.</p>
+      </div>
+    </div>
+
+    <!-- Penstemon virens -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Penstemon_virens_close.png/960px-Penstemon_virens_close.png');"></div>
+        <div class="plant-info">
+          <h3>Front Range Penstemon</h3>
+          <div class="botanical">Penstemon virens</div>
+          <div class="specs">
+            <p><strong>Sun range:</strong> Part sun to full sun</p>
+            <p><strong>Heat tolerance:</strong> Excellent — native to hot rocky slopes</p>
+            <p><strong>Height:</strong> 8–12 in</p>
+            <p><strong>Pollinator value:</strong> Great hummingbird plant, native bees</p>
+          </div>
+          <span class="tag tag-native">CO Native</span>
+          <span class="tag tag-alt">Could replace Lead Plant</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Why consider:</strong> A compact Front Range endemic that grows on hot, rocky outcrops — essentially the same microclimate as a foundation bed. Tubular blue-purple flowers are excellent hummingbird attractants. Very well-adapted to the exact conditions of this site.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>Tradeoffs:</strong> Shorter (8–12") so less structural presence than Lead Plant. No nitrogen-fixing benefit. Shorter bloom period (May–June). May need replacement every 3–5 years as penstemons can be short-lived.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:4px;"><strong>Heat resilience:</strong> Outstanding. This is a rock garden plant that actively prefers hot, well-drained conditions. Would love the DG strip zone.</p>
+      </div>
+    </div>
+
+    <!-- Mahonia repens -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Berberis_repens-_Anders_Hastings_01.jpg/960px-Berberis_repens-_Anders_Hastings_01.jpg');"></div>
+        <div class="plant-info">
+          <h3>Creeping Oregon Grape</h3>
+          <div class="botanical">Mahonia repens</div>
+          <div class="specs">
+            <p><strong>Sun range:</strong> Part shade to full sun — widest tolerance</p>
+            <p><strong>Heat tolerance:</strong> Very good — handles reflected heat</p>
+            <p><strong>Height:</strong> 6–12 in</p>
+            <p><strong>Pollinator value:</strong> Early bee flowers, berries for birds</p>
+          </div>
+          <span class="tag tag-native">CO Native</span>
+          <span class="tag tag-alt">Could replace Lead Plant</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Why consider:</strong> Evergreen shrub that provides year-round structure — the only option here with winter visual interest. Yellow spring flowers appear early for bees, followed by blue berries for birds. Holly-like leaves are architectural. Extremely adaptable to sun/shade range.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>Tradeoffs:</strong> Not a pollinator powerhouse compared to Amorpha or Monarda. No nitrogen-fixing benefit. Spreads slowly by underground stems — manageable in this bed size. Less showy flowers.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:4px;"><strong>Heat resilience:</strong> Very good. Found naturally on hot, dry hillsides across the Front Range. The evergreen foliage handles winter sun scorch at elevation. Would be the most future-proof pick if the tree creates significantly more shade.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.1em; color:#2a4a20; margin: 30px 0 12px;">Replacements for Anise Hyssop <span style="font-size:0.75em; color:#888;">(hummingbird magnet role)</span></h3>
+
+    <!-- Penstemon strictus -->
+    <div class="plant-analysis">
+      <div class="plant-analysis-header">
+        <div class="plant-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Penstemon_strictus_-_Todd_Boland_01.jpg/960px-Penstemon_strictus_-_Todd_Boland_01.jpg');"></div>
+        <div class="plant-info">
+          <h3>Rocky Mountain Penstemon</h3>
+          <div class="botanical">Penstemon strictus</div>
+          <div class="specs">
+            <p><strong>Sun range:</strong> Part sun to full sun</p>
+            <p><strong>Heat tolerance:</strong> Excellent — very drought-tough</p>
+            <p><strong>Height:</strong> 1.5–2.5 ft</p>
+            <p><strong>Pollinator value:</strong> Excellent hummingbird magnet, native bees</p>
+          </div>
+          <span class="tag tag-native">CO Native</span>
+          <span class="tag tag-alt">Could replace Agastache</span>
+        </div>
+      </div>
+      <div class="plant-analysis-body">
+        <p style="font-size:0.88em; color:#555; margin-top:12px;"><strong>Why consider:</strong> The most commonly seen native Penstemon on the Front Range. Deep blue-purple tubular flowers are a hummingbird favorite. Very well-adapted to Colorado's heat, drought, and alkaline soils. Handles part sun much better than Agastache — it grows naturally on partly-shaded mountain slopes.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:8px;"><strong>Tradeoffs:</strong> Bloom period is shorter (June–July, ~4–6 weeks vs Agastache's June–September). You'd lose about 2 months of hummingbird-attracting flowers. Not aromatic like Agastache. May need replacement every 4–6 years.</p>
+        <p style="font-size:0.85em; color:#555; margin-top:4px;"><strong>Heat resilience:</strong> Outstanding. Thrives in hot, dry, well-drained conditions. The DG strip and foundation heat would feel like home.</p>
+      </div>
+    </div>
+
+    <!-- Monarda again note -->
+    <div class="callout">
+      <p><strong>Note:</strong> <em>Monarda fistulosa</em> (Wild Bergamot) listed above could also replace Agastache — it fills the same hummingbird/bee magnet role with a similar bloom period (July–September) and much better shade tolerance. If only making one swap, Monarda replacing Agastache is the highest-impact change.</p>
+    </div>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section id="recommendation">
+    <h2>Recommendation</h2>
+
+    <div class="card">
+      <h3 style="font-size:1em; color:#2a4a20; margin-bottom:12px;">If Sun Stays at Current Levels (~5.5 hrs midday)</h3>
+      <p style="font-size:0.88em; color:#555;">The microclimate factors (elevation UV, midday intensity, wall reflection) likely push effective light into the full-sun range. <strong>Keep the current plan as-is</strong> and monitor in Year 1. The two at-risk species (Amorpha, Agastache) may show slightly reduced flowering but should still perform their ecological roles. If either clearly struggles by midsummer, swap in Monarda fistulosa the following spring — it's available everywhere and establishes fast.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:1em; color:#2a4a20; margin-bottom:12px;">If Tree Shade Increases (drops to ~4–5 hrs)</h3>
+      <p style="font-size:0.88em; color:#555;">This changes the calculus. Recommended swaps in priority order:</p>
+      <ol style="font-size:0.88em; color:#555; margin-top:8px; padding-left:20px;">
+        <li><strong>Agastache → Monarda fistulosa</strong> — Highest impact swap. Same hummingbird/bee value, much better shade tolerance, similar bloom timing. Watch for spreading.</li>
+        <li><strong>Amorpha nana → Mahonia repens</strong> — Best structural replacement. Evergreen, extremely shade-adaptable, year-round interest. Loses nitrogen-fixing but gains winter presence.</li>
+        <li><strong>Keep everything else</strong> — Blanket Flower, Milkweed, Pussytoes, and Pasque Flower all handle 4–5 hrs adequately.</li>
+      </ol>
+    </div>
+
+    <div class="tip-box">
+      <h3>The "Try First, Swap Later" Approach</h3>
+      <p>Native plants are resilient. A slightly underperforming Agastache still feeds more pollinators than no Agastache. Plant the current selections in spring 2026, observe through the first growing season, and make data-driven swap decisions in spring 2027 if needed. The alternatives listed here aren't going anywhere — they'll be available at Tagawa's or Harlequin's next year too.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">
+  <p>Plant Analysis — Foundation Bed, 9736 Whitecliff Pl &middot; Compiled March 2026</p>
+  <p style="margin-top:4px;"><a href="foundation-bed-design.html" style="color:#557a48;">&larr; Back to Main Design Plan</a></p>
+</div>
+
+</body>
+</html>

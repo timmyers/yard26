@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yard Overview — Breadth-First Survey &amp; Priority Plan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 48px; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f0eb; color: #2d2a26; line-height: 1.65; }
+
+  .hero {
+    background: linear-gradient(135deg, #3a4c5c 0%, #4a6a5c 40%, #5a8a60 100%);
+    color: white; text-align: center; padding: 60px 20px 50px;
+  }
+  .hero h1 { font-size: 2.1em; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 1.05em; opacity: 0.92; max-width: 580px; margin: 0 auto 6px; }
+  .hero .tagline { font-size: 0.88em; opacity: 0.75; font-style: italic; }
+  .hero .specs { display: flex; gap: 16px; justify-content: center; margin-top: 22px; flex-wrap: wrap; }
+  .hero .spec { background: rgba(255,255,255,0.14); border-radius: 10px; padding: 9px 16px; font-size: 0.85em; }
+  .hero .spec strong { display: block; font-size: 1.05em; }
+
+  .page-nav {
+    background: rgba(245,240,235,0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid #ddd8d0; position: sticky; top: 0; z-index: 100;
+    padding: 6px 0;
+  }
+  .page-nav ul {
+    display: flex; flex-wrap: wrap; gap: 3px; list-style: none;
+    max-width: 840px; margin: 0 auto; padding: 0 20px;
+    justify-content: center;
+  }
+  .page-nav a {
+    display: block; font-size: 0.7em; color: #555; text-decoration: none;
+    padding: 3px 8px; border-radius: 6px; transition: background 0.15s, color 0.15s;
+    font-weight: 500; white-space: nowrap;
+  }
+  .page-nav a:hover { background: #d0e0e8; color: #2a3a4a; }
+
+  .container { max-width: 840px; margin: 0 auto; padding: 0 20px; }
+  section { margin: 40px 0; }
+  section h2 { font-size: 1.45em; color: #3a4c5c; border-bottom: 2px solid #a0c4b8; padding-bottom: 8px; margin-bottom: 18px; }
+
+  .card { background: white; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 16px; }
+
+  .zone-card {
+    background: white; border-radius: 14px; padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 16px;
+    border-left: 4px solid #a0c4b8;
+  }
+  .zone-card h3 { font-size: 1.05em; color: #2a3a4a; margin-bottom: 4px; }
+  .zone-card .zone-meta { font-size: 0.82em; color: #888; margin-bottom: 10px; }
+  .zone-card p { font-size: 0.9em; color: #555; margin-bottom: 8px; }
+  .zone-card .photos { font-size: 0.8em; color: #999; }
+  .zone-card img { width: 100%; border-radius: 10px; margin-top: 10px; }
+
+  .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 10px; }
+  .photo-grid img { width: 100%; border-radius: 8px; aspect-ratio: 4/3; object-fit: cover; }
+
+  .priority-urgent { border-left-color: #c44; }
+  .priority-urgent h3::before { content: ""; margin-right: 6px; }
+  .priority-high { border-left-color: #d90; }
+  .priority-high h3::before { content: ""; margin-right: 6px; }
+  .priority-medium { border-left-color: #5a8a60; }
+  .priority-medium h3::before { content: ""; margin-right: 6px; }
+  .priority-low { border-left-color: #88a; }
+
+  .tag {
+    display: inline-block; font-size: 0.72em; padding: 2px 8px;
+    border-radius: 20px; margin-right: 3px; margin-bottom: 3px;
+  }
+  .tag-urgent { background: #fde0e0; color: #a03030; }
+  .tag-spring { background: #e0f0d0; color: #3a6820; }
+  .tag-summer { background: #fff3d0; color: #8a6a10; }
+  .tag-ongoing { background: #dde8f8; color: #2a4a7a; }
+  .tag-lowcost { background: #f0ecf8; color: #5a4a7a; }
+  .tag-diy { background: #f0f0f0; color: #555; }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 6px 0 6px 24px; position: relative; font-size: 0.9em; color: #444; border-bottom: 1px solid #f0ede8; }
+  .checklist li::before { content: ""; position: absolute; left: 0; }
+
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #d0ccc5; }
+  .timeline-item { position: relative; margin-bottom: 20px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -22px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%; background: #5a8a60; border: 2px solid #f5f0eb;
+  }
+  .timeline-item.urgent::before { background: #c44; }
+  .timeline-item h3 { font-size: 0.95em; color: #2a3a4a; }
+  .timeline-item p { font-size: 0.85em; color: #666; }
+
+  .tip-box { background: #fdf8f0; border: 1px solid #e8d8c0; border-radius: 12px; padding: 18px; margin-top: 14px; }
+  .tip-box h3 { color: #8b6914; font-size: 0.95em; margin-bottom: 6px; }
+  .tip-box p, .tip-box li { font-size: 0.88em; color: #6b5a3a; }
+  .tip-box ul { margin-top: 6px; padding-left: 18px; }
+
+  .warn-box { background: #fef3f0; border: 1px solid #e8c8c0; border-radius: 12px; padding: 18px; margin-top: 14px; }
+  .warn-box h3 { color: #8b3014; font-size: 0.95em; margin-bottom: 6px; }
+  .warn-box p { font-size: 0.88em; color: #6b3a2a; }
+
+  .callout { background: #eef5e8; border-radius: 12px; padding: 18px; margin-top: 14px; border-left: 4px solid #5a8a60; }
+  .callout strong { color: #2a4a20; }
+  .callout p { font-size: 0.9em; color: #3a5a30; }
+
+  .back-link { display: inline-block; margin: 20px 0; font-size: 0.85em; color: #5a8a60; text-decoration: none; }
+  .back-link:hover { text-decoration: underline; }
+
+  table.overview-table {
+    width: 100%; border-collapse: collapse; background: white;
+    border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 16px;
+  }
+  table.overview-table th { background: #3a4c5c; color: white; text-align: left; padding: 12px 14px; font-weight: 600; font-size: 0.85em; }
+  table.overview-table td { padding: 10px 14px; border-bottom: 1px solid #eee; font-size: 0.85em; vertical-align: top; }
+  table.overview-table tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 16px 35px; }
+    .hero h1 { font-size: 1.6em; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Yard 26 — Full Yard Overview</h1>
+  <p class="subtitle">Breadth-first survey of every zone, prioritized for 2026</p>
+  <p class="tagline">9736 Whitecliff Pl, Highlands Ranch, CO &middot; Zone 5b &middot; 5,900 ft</p>
+  <div class="specs">
+    <div class="spec"><strong>8 Zones</strong>Identified</div>
+    <div class="spec"><strong>Spring 2026</strong>Action window</div>
+    <div class="spec"><strong>Native Lawn</strong>Buffalo Grass transition</div>
+  </div>
+</div>
+
+<nav class="page-nav">
+  <ul>
+    <li><a href="index.html">&larr; Home</a></li>
+    <li><a href="#priority-map">Priority Map</a></li>
+    <li><a href="#zone-1">Downspouts</a></li>
+    <li><a href="#zone-1b">Hose Bibs</a></li>
+    <li><a href="#zone-2">Lawn Health</a></li>
+    <li><a href="#zone-3">Front Porch Stairs</a></li>
+    <li><a href="#zone-4">Tree Ring</a></li>
+    <li><a href="#zone-5">Front Beds</a></li>
+    <li><a href="#zone-6">Deck Edge</a></li>
+    <li><a href="#zone-7">Side Yard</a></li>
+    <li><a href="#zone-8">Gate &amp; Shed Side</a></li>
+    <li><a href="#seasonal-plan">Seasonal Plan</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<a class="back-link" href="index.html">&larr; Back to Yard 26</a>
+
+<!-- ============================================================ -->
+<section id="priority-map">
+  <h2>Priority Map</h2>
+  <p style="font-size:0.9em; color:#666; margin-bottom:16px;">All identified zones ranked by urgency. The foundation bed has its <a href="foundation-bed-design.html">own dedicated plan</a> — everything else lives here.</p>
+
+  <table class="overview-table">
+    <thead>
+      <tr><th>Priority</th><th>Zone</th><th>Issue / Opportunity</th><th>Timing</th><th>Est. Cost</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="tag tag-urgent">Urgent</span></td><td>Downspouts &amp; Drainage</td><td>Water hitting foundation, erosion, no splash blocks</td><td>Now (March)</td><td>$20–60</td></tr>
+      <tr><td><span class="tag tag-urgent">Urgent</span></td><td>Hose Bibs</td><td>Both bibs leaky / poor connections — need repair or replacement for irrigation</td><td>Now (March)</td><td>$15–80</td></tr>
+      <tr><td><span class="tag tag-urgent">Urgent</span></td><td>Native Lawn Transition</td><td>Clover bridge + Buffalo Grass / Blue Grama overseed — eliminate irrigation by 2028</td><td>April–June</td><td>$95–150</td></tr>
+      <tr><td><span class="tag tag-spring">High</span></td><td>Front Porch Stairs</td><td>Delaminating treads, drainage between stairs &amp; house</td><td>Spring</td><td>$40–100</td></tr>
+      <tr><td><span class="tag tag-spring">High</span></td><td>Tree Ring</td><td>Empty brick circle — native underplanting opportunity</td><td>May</td><td>$30–60</td></tr>
+      <tr><td><span class="tag tag-summer">Medium</span></td><td>Front Yard Beds</td><td>Bare soil around porch, retaining wall bed</td><td>Late spring</td><td>$50–120</td></tr>
+      <tr><td><span class="tag tag-summer">Medium</span></td><td>Deck/Hot Tub Edge</td><td>Tulips emerging — enhance with more natives</td><td>After bloom</td><td>$30–60</td></tr>
+      <tr><td><span class="tag tag-ongoing">Lower</span></td><td>Side Yard Strip</td><td>Narrow shade strip, fence aging</td><td>Summer</td><td>$20–50</td></tr>
+      <tr><td><span class="tag tag-ongoing">Lower</span></td><td>Gate &amp; Shed Side</td><td>Gravel strip, sparse grass near brick facade</td><td>Summer</td><td>$20–40</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-1">
+  <h2>Zone 1: Downspouts &amp; Drainage</h2>
+
+  <div class="zone-card priority-urgent">
+    <h3>Foundation Water Management</h3>
+    <div class="zone-meta">Priority: URGENT &middot; Cost: $20–60 &middot; Time: 1–2 hours</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7127.jpeg" alt="Downspout dumping water at foundation">
+      <img src="triage/IMG_7128.jpeg" alt="Stairs area with water pooling">
+      <img src="triage/IMG_7131.jpeg" alt="Side yard downspout with corrugated extension">
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <h3>Why This Is Urgent</h3>
+    <p>Multiple downspouts are dumping water directly at the foundation. Photo 1 shows active water splashing against exposed concrete with no splash block. At 5,900 ft elevation with freeze-thaw cycles through April, this causes foundation erosion, ice damage, and soil washout. Fix before spring rains intensify.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Action Plan</h3>
+    <ul class="checklist">
+      <li>Audit all downspouts around the house — count how many lack splash blocks or extensions</li>
+      <li>Buy splash blocks ($5–8 each at Home Depot) or downspout extensions for every unmanaged outlet</li>
+      <li>For the patio downspout (Photo 1): remove vinca/myrtle from foundation base, install splash block directing water away from house onto pavers</li>
+      <li>For the side yard downspout (Photo 5): ensure corrugated extension reaches at least 4 ft from foundation</li>
+      <li>Grade soil away from foundation at all downspout locations — minimum 2% slope for first 6 ft</li>
+      <li>Verify the stairs-area downspout (Photo 2) isn't funneling water under the deck structure</li>
+      <li><strong>Redirect toward beds, not just "away":</strong> at 5,900 ft in semi-arid CO, downspout water is a resource. Use flexible extensions to direct runoff toward tree ring, front beds, or lawn — 6+ ft from foundation. Free irrigation from every storm.</li>
+    </ul>
+  </div>
+
+  <div class="tip-box">
+    <h3>Shopping List</h3>
+    <ul>
+      <li>Splash blocks (concrete or plastic) &times; 3–4: $15–32</li>
+      <li>Downspout extension(s) if needed: $8–15 each</li>
+      <li>Optional: flexible downspout adapter for tight corners: $6</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-1b">
+  <h2>Zone 1b: Hose Bibs</h2>
+
+  <div class="zone-card priority-urgent">
+    <h3>Leaky Hose Connections</h3>
+    <div class="zone-meta">Priority: URGENT (needed for clover watering) &middot; 2 bibs identified &middot; Both leaking</div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Current State</h3>
+    <p style="font-size:0.9em; color:#555;">Two hose bibs on the property, both with poor connections and leaking. This needs to be fixed before clover seeding — you'll need reliable light watering 1–2x daily for 2–3 weeks during germination.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Investigation &amp; Fix</h3>
+    <ul class="checklist">
+      <li>Locate and photograph both bibs — note which walls they're on</li>
+      <li>Check if the leak is at the bib itself (stem packing) or at the hose connection (threads)</li>
+      <li><strong>Thread leak:</strong> replace the hose washer ($1) and/or use a new brass quick-connect adapter ($5–8)</li>
+      <li><strong>Stem/packing leak:</strong> tighten packing nut behind handle (1/4 turn with pliers). If still leaking, replace packing washer ($2) or the whole frost-free sillcock ($15–30 + install)</li>
+      <li>Check if either bib has an anti-siphon / vacuum breaker — required by code for hose-end irrigation</li>
+      <li>Evaluate whether a third bib location would help (e.g., backyard near deck). Adding a bib is a plumber job ($150–300) — investigate but don't rush</li>
+    </ul>
+  </div>
+
+  <div class="tip-box">
+    <h3>Quick Fix Kit — Home Depot Run</h3>
+    <ul>
+      <li>Hose washers (multi-pack): $3</li>
+      <li>Brass quick-connect set (male + female): $8–12</li>
+      <li>Teflon tape: $2</li>
+      <li>Replacement frost-free sillcock (if needed, measure length first): $15–30</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-2">
+  <h2>Zone 2: Native Lawn Transition</h2>
+
+  <div class="zone-card priority-urgent">
+    <h3>Buffalo Grass + Blue Grama — Clover Bridge Strategy</h3>
+    <div class="zone-meta">Priority: URGENT (timing-sensitive) &middot; Cost: $95–150 &middot; 2-year transition</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7170.jpeg" alt="Front yard full view">
+      <img src="triage/IMG_7171.jpeg" alt="Front yard from driveway angle">
+      <img src="triage/IMG_7161.jpeg" alt="Driveway triangle lawn">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Current State</h3>
+    <p style="font-size:0.9em; color:#555;">Kentucky bluegrass lawn, dormant but greening up for spring. KBG is the biggest water consumer on the property — a non-native monoculture that needs 1–1.5" of irrigation per week all summer. The lawn is ~2,000 sq ft of the yard's total area, making it the single highest-impact zone for both water savings and native biodiversity.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">The Vision: A Native Lawn That Runs on Rain</h3>
+    <p style="font-size:0.9em; color:#555; margin-bottom:12px;">Goal: transition from KBG to <strong>Buffalo Grass</strong> (<em>Bouteloua dactyloides</em>) + <strong>Blue Grama</strong> (<em>Bouteloua gracilis</em>, Colorado's state grass) — both native to this exact location on the Front Range. Use Dutch white clover as a 1–2 year bridge to keep the lawn functional and green while buffalo grass establishes underneath. By 2028: a native lawn that needs <strong>zero supplemental irrigation</strong>.</p>
+
+    <table class="overview-table" style="margin-bottom:16px;">
+      <thead><tr><th></th><th>KBG (current)</th><th>Clover-only</th><th>Buffalo + Blue Grama (target)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Native</strong></td><td>No</td><td>No</td><td>Yes</td></tr>
+        <tr><td><strong>Water need</strong></td><td>1–1.5"/week</td><td>0.5"/week</td><td>Rainfall only</td></tr>
+        <tr><td><strong>Fertilizer</strong></td><td>Yes</td><td>No</td><td>No</td></tr>
+        <tr><td><strong>Herbicide</strong></td><td>Often</td><td>Can't</td><td>No</td></tr>
+        <tr><td><strong>Dog-durable</strong></td><td>Good</td><td>Good</td><td>Good</td></tr>
+        <tr><td><strong>Pollinator value</strong></td><td>Zero</td><td>High</td><td>Moderate (skipper butterfly host)</td></tr>
+        <tr><td><strong>Brown months</strong></td><td>~5 (Nov–Mar)</td><td>~4</td><td>~7 (Oct–Apr)</td></tr>
+        <tr><td><strong>Annual water saved vs KBG</strong></td><td>—</td><td>15–25k gal</td><td>35–45k gal</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="font-size:0.9em; color:#3a4c5c; margin: 14px 0 8px;">Year 1: Spring 2026 — Clover Bridge + Buffalo Grass Seeding</h4>
+    <ul class="checklist">
+      <li><strong>April (soil 50&deg;F+):</strong> Scalp KBG to 1.5–2", aggressive power rake or dethatch to expose soil</li>
+      <li>Overseed entire lawn with Dutch white clover (<em>Trifolium repens</em>) at 2–4 oz per 1,000 sq ft — mix with fine sand for even distribution</li>
+      <li>Lightly rake for seed-to-soil contact. Water lightly 1–2x daily for 2–3 weeks until clover establishes</li>
+      <li>Do NOT apply any herbicide — clover is a broadleaf</li>
+      <li><strong>Late May / early June (soil 60&deg;F+):</strong> Overseed Buffalo Grass + Blue Grama mix into the clover/KBG lawn</li>
+      <li>Water lightly for 3–4 weeks for buffalo grass germination, then <strong>stop all supplemental irrigation</strong></li>
+      <li>No fertilizer. Mow at 3" max — favors buffalo grass over KBG</li>
+    </ul>
+
+    <h4 style="font-size:0.9em; color:#3a4c5c; margin: 14px 0 8px;">Year 1: Summer 2026 — Let Nature Select</h4>
+    <ul class="checklist">
+      <li>Zero supplemental water after buffalo grass establishment period</li>
+      <li>KBG weakens and thins without irrigation or fertilizer</li>
+      <li>Clover stays green through dry spells — visual bridge while buffalo grass grows slowly underneath</li>
+      <li>Buffalo grass seedlings are small but establishing root systems</li>
+      <li>Leave clover flowers uncut when possible — pollinator food all summer</li>
+    </ul>
+
+    <h4 style="font-size:0.9em; color:#3a4c5c; margin: 14px 0 8px;">Year 1: Fall 2026 — Spot Seed</h4>
+    <ul class="checklist">
+      <li>September: spot-seed any bare patches with more buffalo grass + blue grama</li>
+      <li>Do NOT overseed fine fescue — it would compete with the buffalo grass transition</li>
+      <li>Lawn goes dormant in October — that's fine and expected</li>
+    </ul>
+
+    <h4 style="font-size:0.9em; color:#3a4c5c; margin: 14px 0 8px;">Year 2: 2027 — Buffalo Grass Takes Over</h4>
+    <ul class="checklist">
+      <li>Zero supplemental irrigation all year</li>
+      <li>KBG continues retreating — it can't survive on 15–17" of annual rainfall alone</li>
+      <li>Buffalo grass fills gaps via stolons, blue grama bunches fill in</li>
+      <li>Clover persists in moister microsites (near downspout redirects, shade pockets) — still providing pollinator food</li>
+      <li>Overseed thin spots in May/June if needed</li>
+    </ul>
+
+    <h4 style="font-size:0.9em; color:#3a4c5c; margin: 14px 0 8px;">Year 3: 2028 — Done</h4>
+    <ul class="checklist">
+      <li>Buffalo grass + blue grama dominant, clover as minority pollinator patches</li>
+      <li>KBG mostly gone</li>
+      <li>Lawn runs on rainfall alone: ~15–17" annually in Highlands Ranch</li>
+      <li>Mow monthly, or not at all (buffalo grass tops out at 4–5")</li>
+      <li>Green June through September — exactly the months you're outside with the dogs</li>
+    </ul>
+  </div>
+
+  <div class="tip-box">
+    <h3>Why Buffalo Grass + Blue Grama for This Yard</h3>
+    <ul>
+      <li><strong>Truly native:</strong> both species are indigenous to the Colorado Front Range — not imports like KBG or clover</li>
+      <li><strong>Zero irrigation:</strong> evolved for exactly this elevation and rainfall (15–17"/yr)</li>
+      <li><strong>Dog-friendly:</strong> durable under traffic, more urine-resistant than KBG, soft on paws</li>
+      <li><strong>Ecological consistency:</strong> matches the native-species philosophy of the foundation bed and other plantings</li>
+      <li><strong>Skipper butterfly host:</strong> buffalo grass is a larval host for several native skipper species</li>
+      <li><strong>Blue Grama beauty:</strong> "eyelash" seed heads in late summer are iconic Great Plains grassland</li>
+      <li><strong>Mow less:</strong> buffalo grass stays 4–5" unmowed, blue grama similar. Monthly or never.</li>
+      <li><strong>No inputs ever:</strong> no fertilizer, no herbicide, no aeration, no dethatching after establishment</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <strong>Water savings estimate</strong>
+    <p>A native buffalo grass + blue grama lawn at this elevation needs zero supplemental irrigation once established. For a ~2,000 sq ft lawn currently on KBG, that eliminates roughly <strong>35,000–45,000 gallons per season</strong>. The clover bridge year still saves 50–70% vs. pure KBG while the transition happens.</p>
+  </div>
+
+  <div class="tip-box">
+    <h3>The Brown Lawn Question</h3>
+    <p>Buffalo grass is warm-season: green June–September, brown October–April (~7 months). KBG is already brown ~5 months at this elevation. The difference is about 2 extra months of dormancy — and the green months are exactly when you're outside enjoying the yard. A dormant native lawn in winter looks intentional, not neglected. Colorado is trending this way — many Front Range water districts offer rebates for turf conversion to native grasses.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Shopping List</h3>
+    <table class="overview-table">
+      <thead><tr><th>Item</th><th>Amount</th><th>Est. Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Dutch White Clover seed (bridge year)</td><td>8–16 oz</td><td>$10–20</td></tr>
+        <tr><td>Buffalo Grass seed (treated)</td><td>2 lbs (1 lb/1,000 sq ft)</td><td>$30–50</td></tr>
+        <tr><td>Blue Grama seed</td><td>0.5–1 lb</td><td>$10–15</td></tr>
+        <tr><td>Play sand (mixing medium)</td><td>1 bag</td><td>$4</td></tr>
+        <tr><td>Power rake / dethatcher rental</td><td>Half day</td><td>$40–60</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn-box">
+    <h3>HOA Check</h3>
+    <p>Colorado HB 21-1229 prohibits HOAs from banning xeriscaping, which includes native grass lawns. A buffalo grass lawn is mowable, maintained-looking, and green in summer. Still worth reading your CC&amp;Rs to know the landscape — a mixed lawn (clover + native grass) during the transition year is indistinguishable from a conventional lawn.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Dog Considerations</h3>
+    <ul class="checklist">
+      <li>Buffalo grass + clover are both non-toxic and soft on paws</li>
+      <li>Both are more urine-resistant than KBG — nitrogen-fixing clover handles urine nitrogen better, and buffalo grass is naturally tougher</li>
+      <li>Watch where the dogs run, dig, and lie down before planting beds — their paths are infrastructure, not obstacles</li>
+      <li>Foundation bed: Butterfly Milkweed (<em>Asclepias tuberosa</em>) is toxic to dogs if ingested — the bitter taste usually deters them, but note the risk for plant-chewers</li>
+      <li>Foundation bed bare soil patches (for ground-nesting bees) may attract dog digging — a few flat stones as subtle barriers help</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-3">
+  <h2>Zone 3: Front Porch Stairs</h2>
+
+  <div class="zone-card priority-high">
+    <h3>Stair Treads &amp; Adjacent Drainage</h3>
+    <div class="zone-meta">Priority: High &middot; Cost: $40–100 &middot; Time: half day</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7128.jpeg" alt="Delaminating stair treads">
+      <img src="triage/IMG_7169.jpeg" alt="Side view of house with stairs">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Issues Identified</h3>
+    <ul class="checklist">
+      <li><strong>Delaminating composite treads:</strong> nosings are peeling on multiple steps — safety hazard when wet/icy</li>
+      <li><strong>Drainage:</strong> downspout between stairs and planter box is funneling water into a tight gap</li>
+      <li><strong>Settling pavers:</strong> brick pavers at stair base are uneven, weeds growing through joints</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Action Plan</h3>
+    <ul class="checklist">
+      <li>Assess composite tread condition — if just the nosing cap, can be repaired with construction adhesive + clamps. If structural, may need tread replacement</li>
+      <li>Redirect the downspout between stairs and house wall with a short extension or splash block</li>
+      <li>Re-level pavers at stair base: lift, add sand bedding, re-set, fill joints with polymeric sand</li>
+      <li>Pull weeds from paver joints and apply polymeric sand to prevent regrowth</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-4">
+  <h2>Zone 4: Front Yard Tree Ring</h2>
+
+  <div class="zone-card priority-high">
+    <h3>Native Underplanting Opportunity</h3>
+    <div class="zone-meta">Priority: High (high visibility, easy win) &middot; Cost: $30–60 &middot; Time: 2–3 hours</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7160.jpeg" alt="Tree ring with brick border">
+      <img src="triage/IMG_7170.jpeg" alt="Tree in context of front yard">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Current State</h3>
+    <p style="font-size:0.9em; color:#555;">Deciduous tree (likely crabapple or ornamental pear) with a brick paver circle at base. Inside the ring is bare — just grass and weeds. This is a high-visibility spot from the street, and the tree creates dappled shade in summer, making it perfect for shade-tolerant native underplanting.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Planting Ideas (Part-Shade Natives)</h3>
+    <ul class="checklist">
+      <li><strong>Wild Geranium</strong> (<em>Geranium caespitosum</em>) — pink blooms May–June, shade-tolerant CO native</li>
+      <li><strong>Pussytoes</strong> (<em>Antennaria rosea</em>) — you're already using this in the foundation bed, great groundcover under trees</li>
+      <li><strong>Creeping Oregon Grape</strong> (<em>Mahonia repens</em>) — evergreen, yellow spring blooms, bird berries</li>
+      <li><strong>Wild Strawberry</strong> (<em>Fragaria virginiana</em>) — native groundcover, white flowers, spreads via runners</li>
+      <li>Mulch with wood chips (not piled against trunk — leave a 4" gap)</li>
+    </ul>
+  </div>
+
+  <div class="tip-box">
+    <h3>Keep It Simple</h3>
+    <p>Pick 2–3 species max for this small ring. A mass planting of one groundcover (like Pussytoes or Wild Strawberry) with one accent (Wild Geranium) looks more intentional than a scattered mix.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-5">
+  <h2>Zone 5: Front Yard Beds</h2>
+
+  <div class="zone-card priority-medium">
+    <h3>Porch Perimeter &amp; Retaining Wall Bed</h3>
+    <div class="zone-meta">Priority: Medium &middot; Cost: $50–120 &middot; Time: weekend project</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7159.jpeg" alt="Front bed area near porch">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Current State</h3>
+    <p style="font-size:0.9em; color:#555;">Large bare-soil bed wrapping around the concrete front porch. Brick paver edging separates it from lawn. A dormant shrub (possibly spirea or barberry) at the back near a stone retaining wall. This is the natural expansion zone from your foundation bed project — same south-facing exposure, similar conditions.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Approach</h3>
+    <ul class="checklist">
+      <li>ID the existing shrub when it leafs out — decide keep/replace</li>
+      <li>Extend the native planting philosophy from the foundation bed</li>
+      <li>Consider repeating some foundation bed species for visual continuity (Blanket Flower, Agastache)</li>
+      <li>Add taller structure plants along the retaining wall for layered height</li>
+      <li>Mulch with DG near house, wood chips further out</li>
+    </ul>
+    <p style="font-size:0.85em; color:#888; margin-top:10px;">Hold off on detailed design until the foundation bed is installed and you can see how the two areas relate.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-6">
+  <h2>Zone 6: Deck / Hot Tub Edge</h2>
+
+  <div class="zone-card priority-medium">
+    <h3>Tulip Bed &amp; Deck Perimeter</h3>
+    <div class="zone-meta">Priority: Medium &middot; Cost: $30–60 &middot; Best after tulip bloom</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7163.jpeg" alt="Tulips emerging at deck base">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Current State</h3>
+    <p style="font-size:0.9em; color:#555;">Tulip foliage already ~6" tall along the deck/hot tub base (mid-March). Mulched bed with edging blocks. This area has existing life — let it bloom, note the colors, then decide what to add around it.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Plan</h3>
+    <ul class="checklist">
+      <li>Let tulips bloom — photograph and note colors/varieties (April)</li>
+      <li>After foliage dies back, interplant with summer-blooming natives that fill the gap</li>
+      <li>Good companions: Blanket Flower, Prairie Coneflower, or low ornamental grasses</li>
+      <li>Refresh mulch layer after planting</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-7">
+  <h2>Zone 7: Side Yard Strip</h2>
+
+  <div class="zone-card priority-low">
+    <h3>Fence-Line Shade Strip</h3>
+    <div class="zone-meta">Priority: Lower &middot; Cost: $20–50 &middot; Summer project</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7130.jpeg" alt="Side yard between house and fence">
+      <img src="triage/IMG_7129.jpeg" alt="Ornamental grass at fence base">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Current State</h3>
+    <p style="font-size:0.9em; color:#555;">Narrow strip between house and privacy fence. Gets limited sun (shaded by house and fence). Existing ornamental bunch grass at fence base — dormant but alive. Fence showing age at bottom boards. String lights suggest it's used as a passthrough or hangout space.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Notes</h3>
+    <ul class="checklist">
+      <li>ID the ornamental grass when it greens up — if it's a native (Blue Grama, etc.), keep it</li>
+      <li>This is a shade zone — different plant palette than the sunny front</li>
+      <li>Fence repair may be needed — check bottom boards for rot</li>
+      <li>Downspout with corrugated extension is functional but could be tidied up</li>
+      <li><strong>Dog traffic:</strong> if dogs use this as a throughway, don't fight it with plantings — DG or gravel path with existing ornamental grass at edges. Trying to establish groundcover in a dog highway wastes money</li>
+      <li>Low priority unless you use this space regularly</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="zone-8">
+  <h2>Zone 8: Gate &amp; Shed Side</h2>
+
+  <div class="zone-card priority-low">
+    <h3>Side Gate &amp; Gravel Strip</h3>
+    <div class="zone-meta">Priority: Lower &middot; Cost: $20–40 &middot; Summer project</div>
+    <div class="photo-grid">
+      <img src="triage/IMG_7162.jpeg" alt="Gate next to brick facade">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Current State</h3>
+    <p style="font-size:0.9em; color:#555;">Wood gate adjacent to brick facade, composite deck visible behind. Gravel/bare dirt strip along the foundation with sparse grass. Downspout at corner. Primarily utilitarian — gate access to backyard.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:#2a3a4a; margin-bottom:10px;">Notes</h3>
+    <ul class="checklist">
+      <li>Ensure downspout drains away from foundation (same as Zone 1 audit)</li>
+      <li>Extend gravel into a clean path — stop fighting sparse grass. Same logic as side yard: utilitarian zones get hardscape, not plantings</li>
+      <li>Low visibility, low priority — functional improvements only</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="seasonal-plan">
+  <h2>2026 Seasonal Action Plan</h2>
+
+  <div class="card">
+    <div class="timeline">
+      <div class="timeline-item urgent">
+        <h3>March / Early April</h3>
+        <p>Fix all downspouts — splash blocks, extensions, redirect toward beds where possible. Fix hose bibs (prerequisite for clover germination watering). Order clover + buffalo grass + blue grama seed. Check soil temp at 2" depth.</p>
+      </div>
+      <div class="timeline-item urgent">
+        <h3>Mid-April (soil 50&deg;F+)</h3>
+        <p>Scalp KBG to 1.5–2", power rake to expose soil. Overseed Dutch white clover — mix with sand, broadcast, rake, water lightly 1–2x daily for 2–3 weeks. Continue foundation bed soil prep.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>May</h3>
+        <p>Foundation bed planting (Tagawa Gardens reservation May 4). Plant tree ring with native groundcover. Photograph tulips at deck edge. Stair tread repair when weather is warm and dry.</p>
+      </div>
+      <div class="timeline-item urgent">
+        <h3>Late May / Early June (soil 60&deg;F+)</h3>
+        <p>Overseed Buffalo Grass + Blue Grama into clover/KBG lawn. Water lightly 3–4 weeks for germination. Then <strong>stop all supplemental lawn irrigation</strong>. This is the key moment — KBG begins its retreat.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>June–August</h3>
+        <p>Zero lawn irrigation. Clover stays green (visual bridge). Buffalo grass seedlings establishing. KBG thinning. Water foundation bed natives deeply 1x/week (first-year establishment). ID mystery plants (side yard grass, front shrub). Observe dog traffic patterns before committing to any bed plantings.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>September</h3>
+        <p>Spot-seed bare lawn patches with buffalo grass + blue grama. Expand front beds if foundation bed is thriving. Plant deck-edge companions after tulip foliage dies back.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>October</h3>
+        <p>Final deep water for beds only (lawn needs nothing). Mulch beds. Lawn goes dormant — expected and fine. Document what worked for Year 2.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Total estimated budget for all zones: $300–640</strong>
+    <p>Spread across the season. Most critical work (downspouts + hose bibs + clover seed) costs under $100 and happens first. Buffalo grass seed is the largest single line item ($30–50) but eliminates irrigation costs permanently by 2028.</p>
+  </div>
+</section>
+
+<a class="back-link" href="index.html" style="margin-bottom:60px;">&larr; Back to Yard 26</a>
+
+</div>
+</body>
+</html>
